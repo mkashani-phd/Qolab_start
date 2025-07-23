@@ -1,0 +1,363 @@
+{
+    "created_at": "2024-12-05T10:54:30+01:00",
+    "metadata": {
+        "name": "07b_IQ_Blobs",
+        "data_path": "2024-12-05/#138_07b_IQ_Blobs_105430"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_runs": 2000,
+                "reset_type_thermal_or_active": "thermal",
+                "flux_point_joint_or_independent": "joint",
+                "operation_name": "readout",
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": true
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_runs": {
+                        "default": 2000,
+                        "title": "Num Runs",
+                        "type": "integer"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "thermal",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "operation_name": {
+                        "default": "readout",
+                        "title": "Operation Name",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": true,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 138,
+    "parents": [
+        137
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/operations/readout/integration_weights_angle",
+            "value": 2.5400282858783862,
+            "old": 2.5809250629411196
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/operations/readout/threshold",
+            "value": -0.037281052664164684,
+            "old": 0.03519489667349379
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/operations/readout/rus_exit_threshold",
+            "value": -0.04220679278127068,
+            "old": 0.03220125531798692
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/confusion_matrix",
+            "value": [
+                [
+                    0.963,
+                    0.037
+                ],
+                [
+                    0.0735,
+                    0.9265
+                ]
+            ],
+            "old": [
+                [
+                    0.8995,
+                    0.1005
+                ],
+                [
+                    0.2975,
+                    0.7025
+                ]
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/integration_weights_angle",
+            "value": -38.65949364556967,
+            "old": -34.333913823639236
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/threshold",
+            "value": -0.01803144495139876,
+            "old": 0.012466724463008621
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/rus_exit_threshold",
+            "value": -0.027772498151116876,
+            "old": 0.006284055524537736
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/confusion_matrix",
+            "value": [
+                [
+                    0.9935,
+                    0.0065
+                ],
+                [
+                    0.0915,
+                    0.9085
+                ]
+            ],
+            "old": [
+                [
+                    0.995,
+                    0.005
+                ],
+                [
+                    0.1005,
+                    0.8995
+                ]
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/integration_weights_angle",
+            "value": -23.509882076865182,
+            "old": -18.102174911932558
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/threshold",
+            "value": -0.030052416639388967,
+            "old": 0.029430523954868733
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/rus_exit_threshold",
+            "value": -0.03721638409391771,
+            "old": 0.022438494800943252
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/confusion_matrix",
+            "value": [
+                [
+                    0.99,
+                    0.01
+                ],
+                [
+                    0.0535,
+                    0.9465
+                ]
+            ],
+            "old": [
+                [
+                    0.988,
+                    0.012
+                ],
+                [
+                    0.0685,
+                    0.9315
+                ]
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/operations/readout/integration_weights_angle",
+            "value": 2.5400282858783862,
+            "old": 2.5400282858783862
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/operations/readout/threshold",
+            "value": -0.037281052664164684,
+            "old": -0.037281052664164684
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/operations/readout/rus_exit_threshold",
+            "value": -0.04220679278127068,
+            "old": -0.04220679278127068
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/confusion_matrix",
+            "value": [
+                [
+                    0.963,
+                    0.037
+                ],
+                [
+                    0.0735,
+                    0.9265
+                ]
+            ],
+            "old": [
+                [
+                    0.963,
+                    0.037
+                ],
+                [
+                    0.0735,
+                    0.9265
+                ]
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/integration_weights_angle",
+            "value": -38.65949364556967,
+            "old": -38.65949364556967
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/threshold",
+            "value": -0.01803144495139876,
+            "old": -0.01803144495139876
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/rus_exit_threshold",
+            "value": -0.027772498151116876,
+            "old": -0.027772498151116876
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/confusion_matrix",
+            "value": [
+                [
+                    0.9935,
+                    0.0065
+                ],
+                [
+                    0.0915,
+                    0.9085
+                ]
+            ],
+            "old": [
+                [
+                    0.9935,
+                    0.0065
+                ],
+                [
+                    0.0915,
+                    0.9085
+                ]
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/integration_weights_angle",
+            "value": -23.509882076865182,
+            "old": -23.509882076865182
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/threshold",
+            "value": -0.030052416639388967,
+            "old": -0.030052416639388967
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/rus_exit_threshold",
+            "value": -0.03721638409391771,
+            "old": -0.03721638409391771
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/confusion_matrix",
+            "value": [
+                [
+                    0.99,
+                    0.01
+                ],
+                [
+                    0.0535,
+                    0.9465
+                ]
+            ],
+            "old": [
+                [
+                    0.99,
+                    0.01
+                ],
+                [
+                    0.0535,
+                    0.9465
+                ]
+            ]
+        }
+    ]
+}

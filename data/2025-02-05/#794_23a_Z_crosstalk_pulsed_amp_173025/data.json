@@ -1,0 +1,30 @@
+{
+    "crosstalk_matrix_with_fit": "./crosstalk_matrix_with_fit.png",
+    "crosstalk_matrix": [
+        [
+            1.0,
+            0.0653203142441014
+        ],
+        [
+            0.027547547054675325,
+            1.0
+        ]
+    ],
+    "crosstalk_matrix_figure": "./crosstalk_matrix_figure.png",
+    "initial_parameters": {
+        "qubits": [
+            "q4",
+            "q5"
+        ],
+        "duration_ns": 64,
+        "timeout": 100,
+        "target_qubit_frequency_in_ghz": 0.1,
+        "num_averages": 100,
+        "amplitude_step": 0.01,
+        "max_amplitude": 0.4,
+        "flux_point_joint_or_independent": "joint",
+        "reset_type_thermal_or_active": "thermal",
+        "simulate": false,
+        "load_data_id": null
+    }
+}

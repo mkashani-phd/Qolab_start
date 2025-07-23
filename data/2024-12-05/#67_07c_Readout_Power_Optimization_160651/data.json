@@ -1,0 +1,53 @@
+{
+    "ds": "./ds.h5",
+    "results": {
+        "q1": {
+            "best_amp": 0.5811255568455033,
+            "angle": 5.741001067360246,
+            "threshold": -0.0491599046227392,
+            "fidelity": 94.325,
+            "confusion_matrix": "./arrays.npz#results.q1.confusion_matrix",
+            "rus_threshold": -0.054671072339593146
+        },
+        "q4": {
+            "best_amp": 0.13020232944284132,
+            "angle": 6.266144707722914,
+            "threshold": -0.010783900346272742,
+            "fidelity": 91.5,
+            "confusion_matrix": "./arrays.npz#results.q4.confusion_matrix",
+            "rus_threshold": -0.017174997516628134
+        },
+        "q5": {
+            "best_amp": 0.5340360695995086,
+            "angle": 5.9743457233330055,
+            "threshold": -0.04001293682433621,
+            "fidelity": 96.875,
+            "confusion_matrix": "./arrays.npz#results.q5.confusion_matrix",
+            "rus_threshold": -0.04831011142874594
+        }
+    },
+    "figs": {},
+    "figure_assignment_fid": "./figure_assignment_fid.png",
+    "figure_IQ_blobs": "./figure_IQ_blobs.png",
+    "figure_fidelities": "./figure_fidelities.png",
+    "initial_parameters": {
+        "qubits": [
+            "q1",
+            "q4",
+            "q5"
+        ],
+        "num_runs": 2000,
+        "reset_type_thermal_or_active": "thermal",
+        "flux_point_joint_or_independent": "joint",
+        "start_amp": 0.5,
+        "end_amp": 1.99,
+        "num_amps": 10,
+        "outliers_threshold": 0.98,
+        "plot_raw": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": true
+    }
+}

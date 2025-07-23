@@ -1,0 +1,51 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q2": {
+            "resonator_frequency": "./arrays.npz#fit_results.q2.resonator_frequency",
+            "min_offset": -0.3754999263655256,
+            "offset": 0.12891830719469127,
+            "dv_phi0": 1.0088364671204337,
+            "m_pH": 0.10249431237863472
+        },
+        "q3": {
+            "resonator_frequency": "./arrays.npz#fit_results.q3.resonator_frequency",
+            "min_offset": 0.0924096649020344,
+            "offset": -0.406809907424105,
+            "dv_phi0": 0.9984391446522788,
+            "m_pH": 0.10356164474702219
+        },
+        "q4": {
+            "resonator_frequency": "./arrays.npz#fit_results.q4.resonator_frequency",
+            "min_offset": 0.3101418175787798,
+            "offset": -0.17649691971761874,
+            "dv_phi0": 0.9732774745927971,
+            "m_pH": 0.1062389736732177
+        },
+        "q5": {
+            "resonator_frequency": "./arrays.npz#fit_results.q5.resonator_frequency",
+            "min_offset": -0.44061040455378164,
+            "offset": 0.08332582337963047,
+            "dv_phi0": 1.0478724558668242,
+            "m_pH": 0.09867613126109431
+        }
+    },
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 10,
+        "min_flux_offset_in_v": -1.0,
+        "max_flux_offset_in_v": 1.0,
+        "num_flux_points": 201,
+        "frequency_span_in_mhz": 6.0,
+        "frequency_step_in_mhz": 0.1,
+        "flux_point_joint_or_independent": "joint",
+        "input_line_impedance_in_ohm": 50.0,
+        "line_attenuation_in_db": 0.0,
+        "update_flux_min": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null
+    }
+}

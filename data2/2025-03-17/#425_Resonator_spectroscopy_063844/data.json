@@ -1,0 +1,17 @@
+{
+    "ds": "./ds.h5",
+    "lorentzian_fits": "./lorentzian_fits.png",
+    "initial_parameters": {
+        "qubits": [
+            "q4"
+        ],
+        "num_averages": 100,
+        "frequency_span_in_mhz": 15.0,
+        "frequency_step_in_mhz": 0.05,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": true
+    }
+}

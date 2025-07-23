@@ -1,0 +1,153 @@
+{
+    "created_at": "2024-12-05T16:11:55-06:00",
+    "metadata": {
+        "name": "02c_Resonator_Spectroscopy_vs_Amplitude",
+        "data_path": "2024-12-05/#253_02c_Resonator_Spectroscopy_vs_Amplitude_161155"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 100,
+                "frequency_span_in_mhz": 15.0,
+                "frequency_step_in_mhz": 0.1,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "max_power_dbm": -30,
+                "min_power_dbm": -50,
+                "num_power_points": 100,
+                "max_amp": 0.1,
+                "flux_point_joint_or_independent": "independent",
+                "ro_line_attenuation_dB": 0.0,
+                "derivative_crossing_threshold_in_hz_per_dbm": -50000,
+                "derivative_smoothing_window_num_points": 30,
+                "moving_average_filter_window_num_points": 30,
+                "multiplexed": true,
+                "load_data_id": null
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "frequency_span_in_mhz": {
+                        "default": 15,
+                        "title": "Frequency Span In Mhz",
+                        "type": "number"
+                    },
+                    "frequency_step_in_mhz": {
+                        "default": 0.1,
+                        "title": "Frequency Step In Mhz",
+                        "type": "number"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "max_power_dbm": {
+                        "default": -30,
+                        "title": "Max Power Dbm",
+                        "type": "integer"
+                    },
+                    "min_power_dbm": {
+                        "default": -50,
+                        "title": "Min Power Dbm",
+                        "type": "integer"
+                    },
+                    "num_power_points": {
+                        "default": 100,
+                        "title": "Num Power Points",
+                        "type": "integer"
+                    },
+                    "max_amp": {
+                        "default": 0.1,
+                        "title": "Max Amp",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "independent",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "ro_line_attenuation_dB": {
+                        "default": 0,
+                        "title": "Ro Line Attenuation Db",
+                        "type": "number"
+                    },
+                    "derivative_crossing_threshold_in_hz_per_dbm": {
+                        "default": -50000,
+                        "title": "Derivative Crossing Threshold In Hz Per Dbm",
+                        "type": "integer"
+                    },
+                    "derivative_smoothing_window_num_points": {
+                        "default": 30,
+                        "title": "Derivative Smoothing Window Num Points",
+                        "type": "integer"
+                    },
+                    "moving_average_filter_window_num_points": {
+                        "default": 30,
+                        "title": "Moving Average Filter Window Num Points",
+                        "type": "integer"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 253,
+    "parents": [
+        252
+    ]
+}

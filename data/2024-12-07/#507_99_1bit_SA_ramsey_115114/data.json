@@ -1,0 +1,15 @@
+{
+    "ds": "./ds.h5",
+    "figure_raw": "./figure_raw.png",
+    "ds_final": "./ds_final.h5",
+    "figure_bins": "./figure_bins.png",
+    "figure_fft": "./figure_fft.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 200,
+        "dc_offset": 0.015,
+        "flux_point_joint_or_independent": "joint",
+        "simulate": false,
+        "timeout": 100
+    }
+}

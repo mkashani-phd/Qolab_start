@@ -1,0 +1,466 @@
+{
+    "created_at": "2025-02-21T12:10:54+01:00",
+    "metadata": {
+        "name": "03a_Qubit_Spectroscopy",
+        "data_path": "2025-02-21/#101_03a_Qubit_Spectroscopy_121054"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 500,
+                "operation": "saturation",
+                "operation_amplitude_factor": 0.1,
+                "operation_len_in_ns": null,
+                "frequency_span_in_mhz": 100.0,
+                "frequency_step_in_mhz": 0.25,
+                "flux_point_joint_or_independent": "joint",
+                "target_peak_width": 2000000.0,
+                "arbitrary_flux_bias": null,
+                "arbitrary_qubit_frequency_in_ghz": null,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 500,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "operation": {
+                        "default": "saturation",
+                        "title": "Operation",
+                        "type": "string"
+                    },
+                    "operation_amplitude_factor": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 0.1,
+                        "title": "Operation Amplitude Factor"
+                    },
+                    "operation_len_in_ns": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Operation Len In Ns"
+                    },
+                    "frequency_span_in_mhz": {
+                        "default": 100,
+                        "title": "Frequency Span In Mhz",
+                        "type": "number"
+                    },
+                    "frequency_step_in_mhz": {
+                        "default": 0.25,
+                        "title": "Frequency Step In Mhz",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "target_peak_width": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 2000000.0,
+                        "title": "Target Peak Width"
+                    },
+                    "arbitrary_flux_bias": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Arbitrary Flux Bias"
+                    },
+                    "arbitrary_qubit_frequency_in_ghz": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Arbitrary Qubit Frequency In Ghz"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": true,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 101,
+    "parents": [
+        100
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -64648378.69029637,
+            "old": -64898378.69029637
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/operations/readout/integration_weights_angle",
+            "value": 3.328226430339751,
+            "old": 3.3988684441609927
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/operations/saturation/amplitude",
+            "value": 0.07051440235317943,
+            "old": 0.11363943641370197
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.3461367631328489,
+            "old": 0.5578262790552665
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/intermediate_frequency",
+            "value": -55176558.88162188,
+            "old": -54926558.88162188
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/resonator/operations/readout/integration_weights_angle",
+            "value": 3.019358216713409,
+            "old": 3.0770793823688436
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/operations/saturation/amplitude",
+            "value": 0.0932777250248612,
+            "old": 0.09248468506478609
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.45787596200261366,
+            "old": 0.4539831362017151
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": -62749205.03060453,
+            "old": -62249205.03060453
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/integration_weights_angle",
+            "value": 3.6850290989114445,
+            "old": 3.5876147352826333
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/operations/saturation/amplitude",
+            "value": 0.015215428170803218,
+            "old": 0.02020888550786081
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.07468855837909152,
+            "old": 0.09920013476364492
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -58504338.3386485,
+            "old": -58254338.3386485
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/integration_weights_angle",
+            "value": 2.7050208416688752,
+            "old": 3.0439082451738297
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/operations/saturation/amplitude",
+            "value": 0.015155246730900362,
+            "old": 0.02721058888970498
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.07439314342677704,
+            "old": 0.1335696658683581
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -64648378.69029637,
+            "old": -64648378.69029637
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/operations/readout/integration_weights_angle",
+            "value": 3.328226430339751,
+            "old": 3.328226430339751
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/operations/saturation/amplitude",
+            "value": 0.07051440235317943,
+            "old": 0.07051440235317943
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.3461367631328489,
+            "old": 0.3461367631328489
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/intermediate_frequency",
+            "value": -55176558.88162188,
+            "old": -55176558.88162188
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/resonator/operations/readout/integration_weights_angle",
+            "value": 3.019358216713409,
+            "old": 3.019358216713409
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/operations/saturation/amplitude",
+            "value": 0.0932777250248612,
+            "old": 0.0932777250248612
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.45787596200261366,
+            "old": 0.45787596200261366
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": -62749205.03060453,
+            "old": -62749205.03060453
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/integration_weights_angle",
+            "value": 3.6850290989114445,
+            "old": 3.6850290989114445
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/operations/saturation/amplitude",
+            "value": 0.015215428170803218,
+            "old": 0.015215428170803218
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.07468855837909152,
+            "old": 0.07468855837909152
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -58504338.3386485,
+            "old": -58504338.3386485
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/integration_weights_angle",
+            "value": 2.7050208416688752,
+            "old": 2.7050208416688752
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/operations/saturation/amplitude",
+            "value": 0.015155246730900362,
+            "old": 0.015155246730900362
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.07439314342677704,
+            "old": 0.07439314342677704
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -64648378.69029637,
+            "old": -64648378.69029637
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/operations/readout/integration_weights_angle",
+            "value": 3.328226430339751,
+            "old": 3.328226430339751
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/operations/saturation/amplitude",
+            "value": 0.07051440235317943,
+            "old": 0.07051440235317943
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.3461367631328489,
+            "old": 0.3461367631328489
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/intermediate_frequency",
+            "value": -55176558.88162188,
+            "old": -55176558.88162188
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/resonator/operations/readout/integration_weights_angle",
+            "value": 3.019358216713409,
+            "old": 3.019358216713409
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/operations/saturation/amplitude",
+            "value": 0.0932777250248612,
+            "old": 0.0932777250248612
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q3/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.45787596200261366,
+            "old": 0.45787596200261366
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": -62749205.03060453,
+            "old": -62749205.03060453
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/operations/readout/integration_weights_angle",
+            "value": 3.6850290989114445,
+            "old": 3.6850290989114445
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/operations/saturation/amplitude",
+            "value": 0.015215428170803218,
+            "old": 0.015215428170803218
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.07468855837909152,
+            "old": 0.07468855837909152
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -58504338.3386485,
+            "old": -58504338.3386485
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/operations/readout/integration_weights_angle",
+            "value": 2.7050208416688752,
+            "old": 2.7050208416688752
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/operations/saturation/amplitude",
+            "value": 0.015155246730900362,
+            "old": 0.015155246730900362
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/operations/x180_DragCosine/amplitude",
+            "value": 0.07439314342677704,
+            "old": 0.07439314342677704
+        }
+    ]
+}

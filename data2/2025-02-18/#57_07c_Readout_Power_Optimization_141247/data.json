@@ -1,0 +1,57 @@
+{
+    "ds": "./ds.h5",
+    "results": {
+        "q2": {
+            "best_amp": 0.04625644444444445,
+            "angle": 0.014170458920996332,
+            "threshold": 0.012208470954698162,
+            "fidelity": 91.625,
+            "confusion_matrix": "./arrays.npz#results.q2.confusion_matrix",
+            "rus_threshold": 0.007101507288990073
+        },
+        "q3": {
+            "best_amp": 0.0424081975308642,
+            "angle": 6.265338570427849,
+            "threshold": 0.005333836793206523,
+            "fidelity": 92.97500000000001,
+            "confusion_matrix": "./arrays.npz#results.q3.confusion_matrix",
+            "rus_threshold": -0.0003980639702485713
+        },
+        "q4": {
+            "best_amp": 0.05284555555555556,
+            "angle": 0.03798252401831714,
+            "threshold": 0.014171262495712622,
+            "fidelity": 81.35,
+            "confusion_matrix": "./arrays.npz#results.q4.confusion_matrix",
+            "rus_threshold": 0.009551005629101801
+        },
+        "q5": {
+            "best_amp": 0.07920200000000001,
+            "angle": 0.15322940239134963,
+            "threshold": 0.025191599567016602,
+            "fidelity": 91.07499999999999,
+            "confusion_matrix": "./arrays.npz#results.q5.confusion_matrix",
+            "rus_threshold": 0.020031544354841366
+        }
+    },
+    "figs": {},
+    "figure_assignment_fid": "./figure_assignment_fid.png",
+    "figure_IQ_blobs": "./figure_IQ_blobs.png",
+    "figure_fidelities": "./figure_fidelities.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_runs": 2000,
+        "reset_type_thermal_or_active": "thermal",
+        "flux_point_joint_or_independent": "joint",
+        "start_amp": 0.5,
+        "end_amp": 1.99,
+        "num_amps": 10,
+        "outliers_threshold": 0.98,
+        "plot_raw": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

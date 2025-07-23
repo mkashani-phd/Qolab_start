@@ -1,0 +1,161 @@
+{
+    "created_at": "2025-03-13T16:12:07+01:00",
+    "metadata": {
+        "description": null,
+        "run_start": "2025-03-13T16:11:48.323+01:00",
+        "run_end": "2025-03-13T16:12:07.878+01:00",
+        "name": "22_Z_gate_error_amplification",
+        "data_path": "2025-03-13/#356_22_Z_gate_error_amplification_161207"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": [
+                    "q4"
+                ],
+                "num_averages": 50,
+                "operation_x180_or_any_90": "z90",
+                "min_amp_factor": 0.9,
+                "max_amp_factor": 1.1,
+                "amp_factor_step": 0.005,
+                "max_number_rabi_pulses_per_sweep": 50,
+                "flux_point_joint_or_independent": "independent",
+                "reset_type_thermal_or_active": "thermal",
+                "state_discrimination": true,
+                "update_x90": true,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": [
+                            "q4"
+                        ],
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 50,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "operation_x180_or_any_90": {
+                        "default": "z90",
+                        "enum": [
+                            "z180",
+                            "z90",
+                            "-z90"
+                        ],
+                        "title": "Operation X180 Or Any 90",
+                        "type": "string"
+                    },
+                    "min_amp_factor": {
+                        "default": 0.9,
+                        "title": "Min Amp Factor",
+                        "type": "number"
+                    },
+                    "max_amp_factor": {
+                        "default": 1.1,
+                        "title": "Max Amp Factor",
+                        "type": "number"
+                    },
+                    "amp_factor_step": {
+                        "default": 0.005,
+                        "title": "Amp Factor Step",
+                        "type": "number"
+                    },
+                    "max_number_rabi_pulses_per_sweep": {
+                        "default": 50,
+                        "title": "Max Number Rabi Pulses Per Sweep",
+                        "type": "integer"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "independent",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "thermal",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "state_discrimination": {
+                        "default": true,
+                        "title": "State Discrimination",
+                        "type": "boolean"
+                    },
+                    "update_x90": {
+                        "default": true,
+                        "title": "Update X90",
+                        "type": "boolean"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {
+            "q4": "successful"
+        }
+    },
+    "id": 356,
+    "parents": [
+        355
+    ]
+}

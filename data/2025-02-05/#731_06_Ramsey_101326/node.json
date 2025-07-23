@@ -1,0 +1,210 @@
+{
+    "created_at": "2025-02-05T10:13:26+01:00",
+    "metadata": {
+        "name": "06_Ramsey",
+        "data_path": "2025-02-05/#731_06_Ramsey_101326"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": [
+                    "q4",
+                    "q5"
+                ],
+                "num_averages": 100,
+                "frequency_detuning_in_mhz": 1.0,
+                "min_wait_time_in_ns": 16,
+                "max_wait_time_in_ns": 20000,
+                "num_time_points": 500,
+                "log_or_linear_sweep": "linear",
+                "flux_point_joint_or_independent": "joint",
+                "use_state_discrimination": false,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "frequency_detuning_in_mhz": {
+                        "default": 1.0,
+                        "title": "Frequency Detuning In Mhz",
+                        "type": "number"
+                    },
+                    "min_wait_time_in_ns": {
+                        "default": 16,
+                        "title": "Min Wait Time In Ns",
+                        "type": "integer"
+                    },
+                    "max_wait_time_in_ns": {
+                        "default": 3000,
+                        "title": "Max Wait Time In Ns",
+                        "type": "integer"
+                    },
+                    "num_time_points": {
+                        "default": 500,
+                        "title": "Num Time Points",
+                        "type": "integer"
+                    },
+                    "log_or_linear_sweep": {
+                        "default": "log",
+                        "enum": [
+                            "log",
+                            "linear"
+                        ],
+                        "title": "Log Or Linear Sweep",
+                        "type": "string"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "use_state_discrimination": {
+                        "default": false,
+                        "title": "Use State Discrimination",
+                        "type": "boolean"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": true,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 731,
+    "parents": [
+        730
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": -238998944.55739287,
+            "old": -238999904.5737816
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/T2ramsey",
+            "value": 1.2965488233937468e-05,
+            "old": 1.0142083732279552e-05
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": 182630051.15092543,
+            "old": 182629919.89743644
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/T2ramsey",
+            "value": 4.6006823050919126e-05,
+            "old": 3.39578823520445e-05
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": -238998944.55739287,
+            "old": -238998944.55739287
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/T2ramsey",
+            "value": 1.2965488233937468e-05,
+            "old": 1.2965488233937468e-05
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": 182630051.15092543,
+            "old": 182630051.15092543
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/T2ramsey",
+            "value": 4.6006823050919126e-05,
+            "old": 4.6006823050919126e-05
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": -238998944.55739287,
+            "old": -238998944.55739287
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/T2ramsey",
+            "value": 1.2965488233937468e-05,
+            "old": 1.2965488233937468e-05
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": 182630051.15092543,
+            "old": 182630051.15092543
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/T2ramsey",
+            "value": 4.6006823050919126e-05,
+            "old": 4.6006823050919126e-05
+        }
+    ]
+}

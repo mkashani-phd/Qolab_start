@@ -1,0 +1,58 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q1": {
+            "resonator_frequency": "./arrays.npz#fit_results.q1.resonator_frequency",
+            "min_offset": 0.30607101152016764,
+            "offset": -0.13784036526696153,
+            "dv_phi0": 0.8878227535742583,
+            "m_pH": 0.11646468800638993
+        },
+        "q2": {
+            "resonator_frequency": "./arrays.npz#fit_results.q2.resonator_frequency",
+            "min_offset": -0.10143725138287674,
+            "offset": 0.5113948209454243,
+            "dv_phi0": 1.2256641446566021,
+            "m_pH": 0.08436242542525374
+        },
+        "q4": {
+            "resonator_frequency": "./arrays.npz#fit_results.q4.resonator_frequency",
+            "min_offset": -0.2557656178509973,
+            "offset": 0.18356408917835332,
+            "dv_phi0": 0.8786594140587012,
+            "m_pH": 0.11767927179244002
+        },
+        "q5": {
+            "resonator_frequency": "./arrays.npz#fit_results.q5.resonator_frequency",
+            "min_offset": -0.17854774947071322,
+            "offset": 0.3007260497300406,
+            "dv_phi0": 0.9585475984015076,
+            "m_pH": 0.10787153415483157
+        },
+        "q6": {
+            "resonator_frequency": "./arrays.npz#fit_results.q6.resonator_frequency",
+            "min_offset": 0.11751866136934447,
+            "offset": -0.3226235763941913,
+            "dv_phi0": 0.8802844755270716,
+            "m_pH": 0.11746202832679639
+        }
+    },
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 10,
+        "min_flux_offset_in_v": -0.5,
+        "max_flux_offset_in_v": 0.5,
+        "num_flux_points": 201,
+        "frequency_span_in_mhz": 10.0,
+        "frequency_step_in_mhz": 0.1,
+        "flux_point_joint_or_independent": "joint",
+        "input_line_impedance_in_ohm": 50.0,
+        "line_attenuation_in_db": 0.0,
+        "update_flux_min": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null
+    }
+}

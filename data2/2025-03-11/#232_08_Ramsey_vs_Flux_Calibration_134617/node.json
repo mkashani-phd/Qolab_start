@@ -1,0 +1,347 @@
+{
+    "created_at": "2025-03-11T13:46:17+01:00",
+    "metadata": {
+        "name": "08_Ramsey_vs_Flux_Calibration",
+        "data_path": "2025-03-11/#232_08_Ramsey_vs_Flux_Calibration_134617"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 100,
+                "frequency_detuning_in_mhz": 4.0,
+                "min_wait_time_in_ns": 16,
+                "max_wait_time_in_ns": 2000,
+                "wait_time_step_in_ns": 20,
+                "flux_span": 0.04,
+                "flux_step": 0.002,
+                "flux_point_joint_or_independent": "joint",
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "frequency_detuning_in_mhz": {
+                        "default": 4.0,
+                        "title": "Frequency Detuning In Mhz",
+                        "type": "number"
+                    },
+                    "min_wait_time_in_ns": {
+                        "default": 16,
+                        "title": "Min Wait Time In Ns",
+                        "type": "integer"
+                    },
+                    "max_wait_time_in_ns": {
+                        "default": 2000,
+                        "title": "Max Wait Time In Ns",
+                        "type": "integer"
+                    },
+                    "wait_time_step_in_ns": {
+                        "default": 20,
+                        "title": "Wait Time Step In Ns",
+                        "type": "integer"
+                    },
+                    "flux_span": {
+                        "default": 0.04,
+                        "title": "Flux Span",
+                        "type": "number"
+                    },
+                    "flux_step": {
+                        "default": 0.002,
+                        "title": "Flux Step",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": true,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 232,
+    "parents": [
+        231
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -256206398.1280919,
+            "old": -256375224.69849965
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.36656444186298565,
+            "old": 0.36668856981805453
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/freq_vs_flux_01_quad_term",
+            "value": -6376430406.2363205,
+            "old": -6467120490.129334
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": 118922470.4515394,
+            "old": 118868045.01000729
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": -0.007073668820379142,
+            "old": -0.0070892749235813065
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/freq_vs_flux_01_quad_term",
+            "value": -7559680012.048715,
+            "old": -7469686844.8371935
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -72041163.94008404,
+            "old": -72056623.3127197
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.24287117699968383,
+            "old": 0.24270003996321132
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/freq_vs_flux_01_quad_term",
+            "value": -9114980477.31603,
+            "old": -9840531332.101744
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/xy/intermediate_frequency",
+            "value": -75034826.07425402,
+            "old": -75040602.64245893
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.33443864993026223,
+            "old": -0.3337369805207184
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/freq_vs_flux_01_quad_term",
+            "value": -16862872319.653845,
+            "old": -19692852490.081116
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -256206398.1280919,
+            "old": -256206398.1280919
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.36656444186298565,
+            "old": 0.36656444186298565
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/freq_vs_flux_01_quad_term",
+            "value": -6376430406.2363205,
+            "old": -6376430406.2363205
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": 118922470.4515394,
+            "old": 118922470.4515394
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": -0.007073668820379142,
+            "old": -0.007073668820379142
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/freq_vs_flux_01_quad_term",
+            "value": -7559680012.048715,
+            "old": -7559680012.048715
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -72041163.94008404,
+            "old": -72041163.94008404
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.24287117699968383,
+            "old": 0.24287117699968383
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/freq_vs_flux_01_quad_term",
+            "value": -9114980477.31603,
+            "old": -9114980477.31603
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/xy/intermediate_frequency",
+            "value": -75034826.07425402,
+            "old": -75034826.07425402
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.33443864993026223,
+            "old": -0.33443864993026223
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/freq_vs_flux_01_quad_term",
+            "value": -16862872319.653845,
+            "old": -16862872319.653845
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -256206398.1280919,
+            "old": -256206398.1280919
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.36656444186298565,
+            "old": 0.36656444186298565
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/freq_vs_flux_01_quad_term",
+            "value": -6376430406.2363205,
+            "old": -6376430406.2363205
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": 118922470.4515394,
+            "old": 118922470.4515394
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": -0.007073668820379142,
+            "old": -0.007073668820379142
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/freq_vs_flux_01_quad_term",
+            "value": -7559680012.048715,
+            "old": -7559680012.048715
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -72041163.94008404,
+            "old": -72041163.94008404
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.24287117699968383,
+            "old": 0.24287117699968383
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/freq_vs_flux_01_quad_term",
+            "value": -9114980477.31603,
+            "old": -9114980477.31603
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/xy/intermediate_frequency",
+            "value": -75034826.07425402,
+            "old": -75034826.07425402
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.33443864993026223,
+            "old": -0.33443864993026223
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/freq_vs_flux_01_quad_term",
+            "value": -16862872319.653845,
+            "old": -16862872319.653845
+        }
+    ]
+}

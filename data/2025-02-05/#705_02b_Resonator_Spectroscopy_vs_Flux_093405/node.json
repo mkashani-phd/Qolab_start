@@ -1,0 +1,857 @@
+{
+    "created_at": "2025-02-05T09:34:05+01:00",
+    "metadata": {
+        "name": "02b_Resonator_Spectroscopy_vs_Flux",
+        "data_path": "2025-02-05/#705_02b_Resonator_Spectroscopy_vs_Flux_093405"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 10,
+                "min_flux_offset_in_v": -0.5,
+                "max_flux_offset_in_v": 0.5,
+                "num_flux_points": 201,
+                "frequency_span_in_mhz": 10.0,
+                "frequency_step_in_mhz": 0.1,
+                "flux_point_joint_or_independent": "joint",
+                "input_line_impedance_in_ohm": 50.0,
+                "line_attenuation_in_db": 0.0,
+                "update_flux_min": false,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 10,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "min_flux_offset_in_v": {
+                        "default": -0.5,
+                        "title": "Min Flux Offset In V",
+                        "type": "number"
+                    },
+                    "max_flux_offset_in_v": {
+                        "default": 0.5,
+                        "title": "Max Flux Offset In V",
+                        "type": "number"
+                    },
+                    "num_flux_points": {
+                        "default": 201,
+                        "title": "Num Flux Points",
+                        "type": "integer"
+                    },
+                    "frequency_span_in_mhz": {
+                        "default": 10,
+                        "title": "Frequency Span In Mhz",
+                        "type": "number"
+                    },
+                    "frequency_step_in_mhz": {
+                        "default": 0.1,
+                        "title": "Frequency Step In Mhz",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "input_line_impedance_in_ohm": {
+                        "default": 50,
+                        "title": "Input Line Impedance In Ohm",
+                        "type": "number"
+                    },
+                    "line_attenuation_in_db": {
+                        "default": 0,
+                        "title": "Line Attenuation In Db",
+                        "type": "number"
+                    },
+                    "update_flux_min": {
+                        "default": false,
+                        "title": "Update Flux Min",
+                        "type": "boolean"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 705,
+    "parents": [
+        704
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q1/z/joint_offset",
+            "value": -0.13784036526696153,
+            "old": -0.14753251172879192
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/intermediate_frequency",
+            "value": -276771384.0,
+            "old": -276771384.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_voltage",
+            "value": 0.8878227535742583,
+            "old": 0.8879052851076246
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_current",
+            "value": 44.391137678712916,
+            "old": 44.39526425538123
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.5113948209454243,
+            "old": 0.45
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197169245.0,
+            "old": -197169245.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_voltage",
+            "value": 1.2256641446566021,
+            "old": 1.2213669893443817
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_current",
+            "value": 61.28320723283011,
+            "old": 61.068349467219086
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": 0.18356408917835332,
+            "old": 0.17522694417137838
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/intermediate_frequency",
+            "value": -14304354.0,
+            "old": -14304354.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_voltage",
+            "value": 0.8786594140587012,
+            "old": 0.8683391169874448
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_current",
+            "value": 43.93297070293506,
+            "old": 43.41695584937224
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.3007260497300406,
+            "old": 0.30213102137154385
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 87028882.0,
+            "old": 86928882.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_voltage",
+            "value": 0.9585475984015076,
+            "old": 0.9552305294132514
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_current",
+            "value": 47.92737992007538,
+            "old": 47.76152647066257
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.3226235763941913,
+            "old": -0.3280756091572692
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187267399.0,
+            "old": 187267399.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_voltage",
+            "value": 0.8802844755270716,
+            "old": 0.8791639494653044
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_current",
+            "value": 44.014223776353575,
+            "old": 43.95819747326522
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/z/joint_offset",
+            "value": -0.13784036526696153,
+            "old": -0.13784036526696153
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/intermediate_frequency",
+            "value": -276771384.0,
+            "old": -276771384.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_voltage",
+            "value": 0.8878227535742583,
+            "old": 0.8878227535742583
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_current",
+            "value": 44.391137678712916,
+            "old": 44.391137678712916
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.5113948209454243,
+            "old": 0.5113948209454243
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197169245.0,
+            "old": -197169245.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_voltage",
+            "value": 1.2256641446566021,
+            "old": 1.2256641446566021
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_current",
+            "value": 61.28320723283011,
+            "old": 61.28320723283011
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": 0.18356408917835332,
+            "old": 0.18356408917835332
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/intermediate_frequency",
+            "value": -14304354.0,
+            "old": -14304354.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_voltage",
+            "value": 0.8786594140587012,
+            "old": 0.8786594140587012
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_current",
+            "value": 43.93297070293506,
+            "old": 43.93297070293506
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.3007260497300406,
+            "old": 0.3007260497300406
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 87028882.0,
+            "old": 87028882.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_voltage",
+            "value": 0.9585475984015076,
+            "old": 0.9585475984015076
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_current",
+            "value": 47.92737992007538,
+            "old": 47.92737992007538
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.3226235763941913,
+            "old": -0.3226235763941913
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187267399.0,
+            "old": 187267399.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_voltage",
+            "value": 0.8802844755270716,
+            "old": 0.8802844755270716
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_current",
+            "value": 44.014223776353575,
+            "old": 44.014223776353575
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/z/joint_offset",
+            "value": -0.13784036526696153,
+            "old": -0.13784036526696153
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/intermediate_frequency",
+            "value": -276771384.0,
+            "old": -276771384.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_voltage",
+            "value": 0.8878227535742583,
+            "old": 0.8878227535742583
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_current",
+            "value": 44.391137678712916,
+            "old": 44.391137678712916
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.5113948209454243,
+            "old": 0.5113948209454243
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197169245.0,
+            "old": -197169245.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_voltage",
+            "value": 1.2256641446566021,
+            "old": 1.2256641446566021
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_current",
+            "value": 61.28320723283011,
+            "old": 61.28320723283011
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": 0.18356408917835332,
+            "old": 0.18356408917835332
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/intermediate_frequency",
+            "value": -14304354.0,
+            "old": -14304354.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_voltage",
+            "value": 0.8786594140587012,
+            "old": 0.8786594140587012
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_current",
+            "value": 43.93297070293506,
+            "old": 43.93297070293506
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.3007260497300406,
+            "old": 0.3007260497300406
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 87028882.0,
+            "old": 87028882.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_voltage",
+            "value": 0.9585475984015076,
+            "old": 0.9585475984015076
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_current",
+            "value": 47.92737992007538,
+            "old": 47.92737992007538
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.3226235763941913,
+            "old": -0.3226235763941913
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187267399.0,
+            "old": 187267399.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_voltage",
+            "value": 0.8802844755270716,
+            "old": 0.8802844755270716
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_current",
+            "value": 44.014223776353575,
+            "old": 44.014223776353575
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/z/joint_offset",
+            "value": -0.13784036526696153,
+            "old": -0.13784036526696153
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/intermediate_frequency",
+            "value": -276771384.0,
+            "old": -276771384.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_voltage",
+            "value": 0.8878227535742583,
+            "old": 0.8878227535742583
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_current",
+            "value": 44.391137678712916,
+            "old": 44.391137678712916
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.5113948209454243,
+            "old": 0.5113948209454243
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197169245.0,
+            "old": -197169245.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_voltage",
+            "value": 1.2256641446566021,
+            "old": 1.2256641446566021
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_current",
+            "value": 61.28320723283011,
+            "old": 61.28320723283011
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": 0.18356408917835332,
+            "old": 0.18356408917835332
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/intermediate_frequency",
+            "value": -14304354.0,
+            "old": -14304354.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_voltage",
+            "value": 0.8786594140587012,
+            "old": 0.8786594140587012
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_current",
+            "value": 43.93297070293506,
+            "old": 43.93297070293506
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.3007260497300406,
+            "old": 0.3007260497300406
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 87028882.0,
+            "old": 87028882.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_voltage",
+            "value": 0.9585475984015076,
+            "old": 0.9585475984015076
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_current",
+            "value": 47.92737992007538,
+            "old": 47.92737992007538
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.3226235763941913,
+            "old": -0.3226235763941913
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187267399.0,
+            "old": 187267399.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_voltage",
+            "value": 0.8802844755270716,
+            "old": 0.8802844755270716
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_current",
+            "value": 44.014223776353575,
+            "old": 44.014223776353575
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/z/joint_offset",
+            "value": -0.13784036526696153,
+            "old": -0.13784036526696153
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/intermediate_frequency",
+            "value": -276771384.0,
+            "old": -276771384.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_voltage",
+            "value": 0.8878227535742583,
+            "old": 0.8878227535742583
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_current",
+            "value": 44.391137678712916,
+            "old": 44.391137678712916
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.5113948209454243,
+            "old": 0.5113948209454243
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197169245.0,
+            "old": -197169245.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_voltage",
+            "value": 1.2256641446566021,
+            "old": 1.2256641446566021
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_current",
+            "value": 61.28320723283011,
+            "old": 61.28320723283011
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": 0.18356408917835332,
+            "old": 0.18356408917835332
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/intermediate_frequency",
+            "value": -14304354.0,
+            "old": -14304354.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_voltage",
+            "value": 0.8786594140587012,
+            "old": 0.8786594140587012
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_current",
+            "value": 43.93297070293506,
+            "old": 43.93297070293506
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.3007260497300406,
+            "old": 0.3007260497300406
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 87028882.0,
+            "old": 87028882.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_voltage",
+            "value": 0.9585475984015076,
+            "old": 0.9585475984015076
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_current",
+            "value": 47.92737992007538,
+            "old": 47.92737992007538
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.3226235763941913,
+            "old": -0.3226235763941913
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187267399.0,
+            "old": 187267399.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_voltage",
+            "value": 0.8802844755270716,
+            "old": 0.8802844755270716
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_current",
+            "value": 44.014223776353575,
+            "old": 44.014223776353575
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/z/joint_offset",
+            "value": -0.13784036526696153,
+            "old": -0.13784036526696153
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/resonator/intermediate_frequency",
+            "value": -276771384.0,
+            "old": -276771384.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_voltage",
+            "value": 0.8878227535742583,
+            "old": 0.8878227535742583
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q1/phi0_current",
+            "value": 44.391137678712916,
+            "old": 44.391137678712916
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/z/joint_offset",
+            "value": 0.5113948209454243,
+            "old": 0.5113948209454243
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197169245.0,
+            "old": -197169245.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_voltage",
+            "value": 1.2256641446566021,
+            "old": 1.2256641446566021
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/phi0_current",
+            "value": 61.28320723283011,
+            "old": 61.28320723283011
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/z/joint_offset",
+            "value": 0.18356408917835332,
+            "old": 0.18356408917835332
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/resonator/intermediate_frequency",
+            "value": -14304354.0,
+            "old": -14304354.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_voltage",
+            "value": 0.8786594140587012,
+            "old": 0.8786594140587012
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/phi0_current",
+            "value": 43.93297070293506,
+            "old": 43.93297070293506
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/z/joint_offset",
+            "value": 0.3007260497300406,
+            "old": 0.3007260497300406
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 87028882.0,
+            "old": 87028882.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_voltage",
+            "value": 0.9585475984015076,
+            "old": 0.9585475984015076
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/phi0_current",
+            "value": 47.92737992007538,
+            "old": 47.92737992007538
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/z/joint_offset",
+            "value": -0.3226235763941913,
+            "old": -0.3226235763941913
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187267399.0,
+            "old": 187267399.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_voltage",
+            "value": 0.8802844755270716,
+            "old": 0.8802844755270716
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/phi0_current",
+            "value": 44.014223776353575,
+            "old": 44.014223776353575
+        }
+    ]
+}

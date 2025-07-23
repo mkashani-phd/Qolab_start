@@ -1,0 +1,14 @@
+{
+    "ds": "./ds.h5",
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 200,
+        "zeros_before_after_pulse": 10,
+        "z_pulse_amplitude": 0.3,
+        "flux_point_joint_or_independent": "joint",
+        "reset_type_thermal_or_active": "thermal",
+        "simulate": false,
+        "timeout": 100
+    }
+}

@@ -1,0 +1,145 @@
+{
+    "created_at": "2025-03-13T09:21:31+01:00",
+    "metadata": {
+        "description": null,
+        "run_start": "2025-03-13T09:21:08.542+01:00",
+        "run_end": "2025-03-13T09:21:31.955+01:00",
+        "name": "02b_Resonator_Spectroscopy_vs_Flux",
+        "data_path": "2025-03-13/#296_02b_Resonator_Spectroscopy_vs_Flux_092131"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 10,
+                "min_flux_offset_in_v": -0.5,
+                "max_flux_offset_in_v": 0.5,
+                "num_flux_points": 201,
+                "frequency_span_in_mhz": 10.0,
+                "frequency_step_in_mhz": 0.1,
+                "flux_point_joint_or_independent": "joint",
+                "input_line_impedance_in_ohm": 50.0,
+                "line_attenuation_in_db": 0.0,
+                "update_flux_min": false,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 10,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "min_flux_offset_in_v": {
+                        "default": -0.5,
+                        "title": "Min Flux Offset In V",
+                        "type": "number"
+                    },
+                    "max_flux_offset_in_v": {
+                        "default": 0.5,
+                        "title": "Max Flux Offset In V",
+                        "type": "number"
+                    },
+                    "num_flux_points": {
+                        "default": 201,
+                        "title": "Num Flux Points",
+                        "type": "integer"
+                    },
+                    "frequency_span_in_mhz": {
+                        "default": 10,
+                        "title": "Frequency Span In Mhz",
+                        "type": "number"
+                    },
+                    "frequency_step_in_mhz": {
+                        "default": 0.1,
+                        "title": "Frequency Step In Mhz",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "input_line_impedance_in_ohm": {
+                        "default": 50,
+                        "title": "Input Line Impedance In Ohm",
+                        "type": "number"
+                    },
+                    "line_attenuation_in_db": {
+                        "default": 0,
+                        "title": "Line Attenuation In Db",
+                        "type": "number"
+                    },
+                    "update_flux_min": {
+                        "default": false,
+                        "title": "Update Flux Min",
+                        "type": "boolean"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {
+            "q2": "successful",
+            "q4": "successful",
+            "q5": "successful",
+            "q6": "successful"
+        }
+    },
+    "id": 296,
+    "parents": [
+        295
+    ]
+}

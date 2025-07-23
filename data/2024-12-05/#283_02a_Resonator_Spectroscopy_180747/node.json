@@ -1,0 +1,115 @@
+{
+    "created_at": "2024-12-05T18:07:47-06:00",
+    "metadata": {
+        "name": "02a_Resonator_Spectroscopy",
+        "data_path": "2024-12-05/#283_02a_Resonator_Spectroscopy_180747"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 100,
+                "frequency_span_in_mhz": 30.0,
+                "frequency_step_in_mhz": 0.1,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "frequency_span_in_mhz": {
+                        "default": 30.0,
+                        "title": "Frequency Span In Mhz",
+                        "type": "number"
+                    },
+                    "frequency_step_in_mhz": {
+                        "default": 0.1,
+                        "title": "Frequency Step In Mhz",
+                        "type": "number"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": true,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 283,
+    "parents": [
+        282
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q2/resonator/intermediate_frequency",
+            "value": -197548844.0,
+            "old": -197548844.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/resonator/intermediate_frequency",
+            "value": 187182206.0,
+            "old": 188482206.0
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/resonator/intermediate_frequency",
+            "value": 86028882.0,
+            "old": 86028882.0
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q1": {
+            "flux_offset": -0.000700745723575362,
+            "freq_offset": 259501.29064908717,
+            "quad_term": -32604267077.249077
+        },
+        "q2": {
+            "flux_offset": 0.0002706594927303882,
+            "freq_offset": 1512.3425015406683,
+            "quad_term": -13844350171.207663
+        },
+        "q4": {
+            "flux_offset": 0.002187536548620823,
+            "freq_offset": -37278.33539553499,
+            "quad_term": -17239020190.50307
+        },
+        "q5": {
+            "flux_offset": 0.00011609083622235343,
+            "freq_offset": 989.2070747124963,
+            "quad_term": -16030863978.68181
+        },
+        "q6": {
+            "flux_offset": 0.0001304836876392788,
+            "freq_offset": -13199.747575389221,
+            "quad_term": -15947149654.067966
+        }
+    },
+    "figure_raw": "./figure_raw.png",
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 100,
+        "frequency_detuning_in_mhz": 4.0,
+        "min_wait_time_in_ns": 16,
+        "max_wait_time_in_ns": 2000,
+        "wait_time_step_in_ns": 20,
+        "flux_span": 0.04,
+        "flux_step": 0.002,
+        "flux_point_joint_or_independent": "joint",
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

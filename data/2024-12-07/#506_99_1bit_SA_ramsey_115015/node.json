@@ -1,0 +1,74 @@
+{
+    "created_at": "2024-12-07T11:50:15+01:00",
+    "metadata": {
+        "name": "99_1bit_SA_ramsey",
+        "data_path": "2024-12-07/#506_99_1bit_SA_ramsey_115015"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 200,
+                "dc_offset": 0.015,
+                "flux_point_joint_or_independent": "joint",
+                "simulate": false,
+                "timeout": 100
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 200,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "dc_offset": {
+                        "default": 0.015,
+                        "title": "Dc Offset",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 506,
+    "parents": [
+        505
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "created_at": "2024-12-06T17:37:34-05:00",
+    "metadata": {
+        "name": "23a_Z_crosstalk_pulsed_amp",
+        "data_path": "2024-12-06/#496_23a_Z_crosstalk_pulsed_amp_173734"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "duration_ns": 44,
+                "timeout": 100,
+                "target_qubit_frequency_in_ghz": 0.2,
+                "num_averages": 100,
+                "amplitude_step": 0.01,
+                "max_amplitude": 0.4,
+                "flux_point_joint_or_independent": "joint",
+                "reset_type_thermal_or_active": "thermal",
+                "simulate": false,
+                "load_data_id": null
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "duration_ns": {
+                        "default": 44,
+                        "title": "Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "target_qubit_frequency_in_ghz": {
+                        "default": 0.2,
+                        "title": "Target Qubit Frequency In Ghz",
+                        "type": "number"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "amplitude_step": {
+                        "default": 0.01,
+                        "title": "Amplitude Step",
+                        "type": "number"
+                    },
+                    "max_amplitude": {
+                        "default": 0.4,
+                        "title": "Max Amplitude",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "thermal",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 496,
+    "parents": [
+        495
+    ]
+}

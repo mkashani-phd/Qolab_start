@@ -1,0 +1,33 @@
+{
+    "ds": "./ds.h5",
+    "figure": "./figure.png",
+    "fit_results": {
+        "q1": {
+            "full_scale_power_dbm": null,
+            "amplitude": 0.4,
+            "RO_frequency": 5918628616.0
+        }
+    },
+    "initial_parameters": {
+        "qubits": [
+            "q1"
+        ],
+        "num_averages": 100,
+        "frequency_span_in_mhz": 15.0,
+        "frequency_step_in_mhz": 0.1,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "max_power_dbm": -10,
+        "min_power_dbm": -50,
+        "num_power_points": 100,
+        "max_amp": 0.1,
+        "flux_point_joint_or_independent": "joint",
+        "ro_line_attenuation_dB": 0.0,
+        "derivative_crossing_threshold_in_hz_per_dbm": -50000,
+        "derivative_smoothing_window_num_points": 30,
+        "moving_average_filter_window_num_points": 30,
+        "multiplexed": false,
+        "load_data_id": null
+    }
+}

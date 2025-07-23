@@ -1,0 +1,153 @@
+{
+    "created_at": "2025-02-18T16:10:14+01:00",
+    "metadata": {
+        "name": "11a_Qubit_Spectroscopy_E_to_F",
+        "data_path": "2025-02-18/#63_11a_Qubit_Spectroscopy_E_to_F_161014"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": [
+                    "q2"
+                ],
+                "num_averages": 200,
+                "operation": "saturation",
+                "operation_amplitude_factor": 1.0,
+                "operation_len_in_ns": 1000,
+                "frequency_span_in_mhz": 300.0,
+                "frequency_step_in_mhz": 0.5,
+                "flux_point_joint_or_independent": "joint",
+                "simulate": false,
+                "timeout": 100,
+                "multiplexed": false,
+                "load_data_id": null
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 200,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "operation": {
+                        "default": "saturation",
+                        "title": "Operation",
+                        "type": "string"
+                    },
+                    "operation_amplitude_factor": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 0.1,
+                        "title": "Operation Amplitude Factor"
+                    },
+                    "operation_len_in_ns": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 1000,
+                        "title": "Operation Len In Ns"
+                    },
+                    "frequency_span_in_mhz": {
+                        "default": 50,
+                        "title": "Frequency Span In Mhz",
+                        "type": "number"
+                    },
+                    "frequency_step_in_mhz": {
+                        "default": 0.5,
+                        "title": "Frequency Step In Mhz",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 63,
+    "parents": [
+        62
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q2/anharmonicity",
+            "value": 267000000,
+            "old": 200000000
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/anharmonicity",
+            "value": 267000000,
+            "old": 267000000
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/anharmonicity",
+            "value": 267000000,
+            "old": 267000000
+        }
+    ]
+}

@@ -1,0 +1,125 @@
+{
+    "created_at": "2024-12-06T09:46:16+01:00",
+    "metadata": {
+        "name": "14_XY_Z_delay",
+        "data_path": "2024-12-06/#378_14_XY_Z_delay_094616"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 200,
+                "zeros_before_after_pulse": 36,
+                "z_pulse_amplitude": 0.1,
+                "flux_point_joint_or_independent": "joint",
+                "reset_type_thermal_or_active": "thermal",
+                "simulate": false,
+                "timeout": 100
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 200,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "zeros_before_after_pulse": {
+                        "default": 36,
+                        "title": "Zeros Before After Pulse",
+                        "type": "integer"
+                    },
+                    "z_pulse_amplitude": {
+                        "default": 0.1,
+                        "title": "Z Pulse Amplitude",
+                        "type": "number"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "thermal",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 378,
+    "parents": [
+        377
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/ports/analog_outputs/con1/2/1/delay",
+            "value": 114,
+            "old": 173
+        },
+        {
+            "op": "replace",
+            "path": "/ports/analog_outputs/con1/2/4/delay",
+            "value": 106,
+            "old": 173
+        },
+        {
+            "op": "replace",
+            "path": "/ports/analog_outputs/con1/2/5/delay",
+            "value": 111,
+            "old": 173
+        },
+        {
+            "op": "replace",
+            "path": "/ports/analog_outputs/con1/2/1/delay",
+            "value": 114,
+            "old": 114
+        },
+        {
+            "op": "replace",
+            "path": "/ports/analog_outputs/con1/2/4/delay",
+            "value": 106,
+            "old": 106
+        },
+        {
+            "op": "replace",
+            "path": "/ports/analog_outputs/con1/2/5/delay",
+            "value": 111,
+            "old": 111
+        }
+    ]
+}

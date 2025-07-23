@@ -1,0 +1,18 @@
+{
+    "ds": "./ds.h5",
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": [
+            "q4"
+        ],
+        "num_averages": 30000,
+        "amplitude_factor": 0.2,
+        "cryoscope_len": 160,
+        "reset_type_active_or_thermal": "active",
+        "flux_point_joint_or_independent": "independent",
+        "simulate": false,
+        "timeout": 100,
+        "reset_filters": false,
+        "load_data_id": null
+    }
+}

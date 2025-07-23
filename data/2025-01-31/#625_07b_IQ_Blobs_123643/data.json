@@ -1,0 +1,55 @@
+{
+    "ds": "./ds.h5",
+    "figs": {},
+    "results": {
+        "q1": {
+            "angle": 0.04239562330905322,
+            "threshold": -0.0002214860065200761,
+            "fidelity": 63.7,
+            "confusion_matrix": "./arrays.npz#results.q1.confusion_matrix",
+            "rus_threshold": -0.00033940632175788574
+        },
+        "q2": {
+            "angle": 0.011027078161207626,
+            "threshold": -0.00025679436983582415,
+            "fidelity": 75.22500000000001,
+            "confusion_matrix": "./arrays.npz#results.q2.confusion_matrix",
+            "rus_threshold": -0.0004023063928538719
+        },
+        "q4": {
+            "angle": 0.010628237620926129,
+            "threshold": 0.0009149913064343732,
+            "fidelity": 87.375,
+            "confusion_matrix": "./arrays.npz#results.q4.confusion_matrix",
+            "rus_threshold": 0.0004501697581553546
+        },
+        "q5": {
+            "angle": 0.012891651095134904,
+            "threshold": -0.0008382392932209113,
+            "fidelity": 81.67500000000001,
+            "confusion_matrix": "./arrays.npz#results.q5.confusion_matrix",
+            "rus_threshold": -0.0013384934055658635
+        },
+        "q6": {
+            "angle": 0.002435296425989719,
+            "threshold": 0.00012398063141368535,
+            "fidelity": 95.7,
+            "confusion_matrix": "./arrays.npz#results.q6.confusion_matrix",
+            "rus_threshold": -0.00024419316183167607
+        }
+    },
+    "figure_IQ_blobs": "./figure_IQ_blobs.png",
+    "figure_fidelity": "./figure_fidelity.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_runs": 2000,
+        "reset_type_thermal_or_active": "thermal",
+        "flux_point_joint_or_independent": "joint",
+        "operation_name": "readout",
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q4": {
+            "flux_offset": -0.000599960418975235,
+            "freq_offset": -287155.4991343962,
+            "quad_term": -8075887014.474918
+        }
+    },
+    "figure_raw": "./figure_raw.png",
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": [
+            "q4"
+        ],
+        "num_averages": 100,
+        "frequency_detuning_in_mhz": 4.0,
+        "min_wait_time_in_ns": 16,
+        "max_wait_time_in_ns": 2000,
+        "wait_time_step_in_ns": 20,
+        "flux_span": 0.02,
+        "flux_step": 0.002,
+        "flux_point_joint_or_independent": "independent",
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

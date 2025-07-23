@@ -1,0 +1,183 @@
+{
+    "created_at": "2025-03-11T14:35:58+01:00",
+    "metadata": {
+        "name": "06_Ramsey",
+        "data_path": "2025-03-11/#274_06_Ramsey_143558"
+    },
+    "data": {
+        "quam": "./quam_state.json",
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 100,
+                "frequency_detuning_in_mhz": 1.0,
+                "min_wait_time_in_ns": 16,
+                "max_wait_time_in_ns": 1000,
+                "num_time_points": 100,
+                "log_or_linear_sweep": "linear",
+                "flux_point_joint_or_independent": "independent",
+                "use_state_discrimination": true,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "frequency_detuning_in_mhz": {
+                        "default": 0.5,
+                        "title": "Frequency Detuning In Mhz",
+                        "type": "number"
+                    },
+                    "min_wait_time_in_ns": {
+                        "default": 16,
+                        "title": "Min Wait Time In Ns",
+                        "type": "integer"
+                    },
+                    "max_wait_time_in_ns": {
+                        "default": 10000,
+                        "title": "Max Wait Time In Ns",
+                        "type": "integer"
+                    },
+                    "num_time_points": {
+                        "default": 500,
+                        "title": "Num Time Points",
+                        "type": "integer"
+                    },
+                    "log_or_linear_sweep": {
+                        "default": "linear",
+                        "enum": [
+                            "log",
+                            "linear"
+                        ],
+                        "title": "Log Or Linear Sweep",
+                        "type": "string"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "joint",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "use_state_discrimination": {
+                        "default": false,
+                        "title": "Use State Discrimination",
+                        "type": "boolean"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        }
+    },
+    "id": 274,
+    "parents": [
+        273
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/qubits/q2/xy/intermediate_frequency",
+            "value": -256406496.1440368,
+            "old": -256491460.60842735
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q2/T2ramsey",
+            "value": 1.1018946517046405e-06,
+            "old": 4.4616693498664026e-06
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/xy/intermediate_frequency",
+            "value": 118842757.86097197,
+            "old": 118766217.46318626
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q4/T2ramsey",
+            "value": -1.6890367806035922e-05,
+            "old": 5.283450108088664e-06
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/xy/intermediate_frequency",
+            "value": -72039899.9963533,
+            "old": -72126228.55122645
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q5/T2ramsey",
+            "value": 7.544964666347258e-06,
+            "old": 2.3165180701353557e-06
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/xy/intermediate_frequency",
+            "value": -75038851.93290225,
+            "old": -74952046.79217778
+        },
+        {
+            "op": "replace",
+            "path": "/qubits/q6/T2ramsey",
+            "value": 3.237265427837163e-06,
+            "old": 4.110327306005506e-06
+        }
+    ]
+}

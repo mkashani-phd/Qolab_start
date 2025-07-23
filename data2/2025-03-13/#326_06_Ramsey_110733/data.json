@@ -1,0 +1,42 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q2": {
+            "freq_offset": -498008.76020330295,
+            "decay": "./arrays.npz#fit_results.q2.decay",
+            "decay_error": "./arrays.npz#fit_results.q2.decay_error"
+        },
+        "q4": {
+            "freq_offset": 7660.0517902441225,
+            "decay": "./arrays.npz#fit_results.q4.decay",
+            "decay_error": "./arrays.npz#fit_results.q4.decay_error"
+        },
+        "q5": {
+            "freq_offset": 77061.4750863376,
+            "decay": "./arrays.npz#fit_results.q5.decay",
+            "decay_error": "./arrays.npz#fit_results.q5.decay_error"
+        },
+        "q6": {
+            "freq_offset": -112307.73176980241,
+            "decay": "./arrays.npz#fit_results.q6.decay",
+            "decay_error": "./arrays.npz#fit_results.q6.decay_error"
+        }
+    },
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 100,
+        "frequency_detuning_in_mhz": 0.3,
+        "min_wait_time_in_ns": 16,
+        "max_wait_time_in_ns": 10000,
+        "num_time_points": 100,
+        "log_or_linear_sweep": "linear",
+        "flux_point_joint_or_independent": "independent",
+        "use_state_discrimination": true,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}
