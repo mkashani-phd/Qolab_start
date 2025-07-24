@@ -1,0 +1,3 @@
+# All overrides are defined in pyproject.toml under [tool.uv.override-dependencies]
+# This file is here for visibility only — do not edit.
+quam @ git+https://github.com/qua-platform/quam.git@11391d518036c149eeadee649ba1386f44177b1f
