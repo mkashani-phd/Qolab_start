@@ -1,6 +1,8 @@
 [project]
 name = "qolab-start-internal"
 version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "a2wsgi==1.10.10",
@@ -143,5 +145,5 @@ quam = { git = "https://github.com/qua-platform/quam.git", rev = "11391d518036c1
 quam-libs = { path = "packages/quam_libs" }
 
 [metadata]
-environment_name = "QOP 3.4.1"
-QOP_version = "3.4.1"
+environment_name = "QOP 3.2.4"
+QOP_version = "3.2.4"

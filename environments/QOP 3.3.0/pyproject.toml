@@ -143,5 +143,5 @@ quam = { git = "https://github.com/qua-platform/quam.git", rev = "11391d518036c1
 quam-libs = { path = "packages/quam_libs" }
 
 [metadata]
-environment_name = "QOP 3.4.1"
-QOP_version = "3.4.1"
+environment_name = "QOP 3.3.0"
+QOP_version = "3.3.0"
