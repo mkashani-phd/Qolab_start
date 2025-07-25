@@ -14,3 +14,20 @@
     # uv pip compile ../uv.lock -o ./legacy/pip.lock
 # If net new,
     #TBD
+    #Copy metadata?
+
+
+        # Initializing pyproject.toml
+            # If no, exit with code 2
+            # If yes, check for legacy, check for requirements.txt
+                # If either is missing, exit with code 2
+                # If not
+                    # uv init --bare
+                    # uv add -r ./<env>/legacy/requirements.txt
+                    # prompt for QOP version, add to pyproject.toml as
+                        # [metadata]
+                        # QOP_version = "<version>"
+                    # prompt for overrides, prompt for constraints, add to pyproject.toml as
+                        # [tool.uv]
+                        # override-dependencies = ["<override1>","<override2>"]
+                        # constraint-dependencies = ["<constraint1>","<constraint2>"]
