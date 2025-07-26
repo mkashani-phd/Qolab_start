@@ -23,6 +23,7 @@ dependencies = [
     "cycler==0.12.1",
     "datadog-api-client==2.38.0",
     "datamodel-code-generator==0.26.5",
+    "deepdiff==8.5.0",
     "dependency-injector==4.48.1",
     "deprecation==2.1.0",
     "dill==0.4.0",
