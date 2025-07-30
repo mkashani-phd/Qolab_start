@@ -1682,7 +1682,7 @@ requires-dist = [
     { name = "cycler", specifier = "==0.12.1" },
     { name = "datadog-api-client", specifier = "==2.38.0" },
     { name = "datamodel-code-generator", specifier = "==0.26.5" },
-    { name = "deepdiff", specifier = "==8.5.0" },
+    { name = "deepdiff", specifier = ">=8.5.0" },
     { name = "dependency-injector", specifier = "==4.48.1" },
     { name = "deprecation", specifier = "==2.1.0" },
     { name = "dill", specifier = "==0.4.0" },

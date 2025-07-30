@@ -43,15 +43,21 @@ def checkEnvFiles(envpath):
 
 
 
-def compareEnvConfig(env1,env2=None,verbose=False):
+def compareEnvConfig(env1=None,env2=None,verbose=False):
     # Initialize files
     pydiff = []
     uvdiff = {}
-    if Path('./'+env1).is_dir():
-        envpath1 = str(Path('./'+env1).resolve())
+    if env1 is None:
+        envpath1 = str(thispath.parent)
+        with open (envpath1+'/pyproject.toml','rb') as f:
+            env1name = tomllib.load(f)['metadata']['environment_name']
     else:
-        print(f"{Fore.RED}Path Error while comparing {env1} and {env2}: Could not find Environment {Fore.BLUE}" + env1 + "\n")
-        return "incomplete", []
+        if Path('./'+env1).is_dir():
+            envpath1 = str(Path('./'+env1).resolve())
+            env1name = env1
+        else:
+            print(f"{Fore.RED}Path Error while comparing {env1} and {env2}: Could not find Environment {Fore.BLUE}" + env1 + "\n")
+            return "incomplete", []
     if env2 is None:
         envpath2 = str(thispath.parent)
         with open (envpath2+'/pyproject.toml','rb') as f:
@@ -67,9 +73,11 @@ def compareEnvConfig(env1,env2=None,verbose=False):
     # Output formatting
     def strip_ansi(s):
         return re.sub(r'\x1b\[[0-9;]*m', '', s)
-    if env2 == None: activeenv = " (active)"
-    else: activeenv = ""
-    envDiffLine = f"{Fore.RESET}=" * 20 + f" Env Diff: {Fore.RED}{env1}{Fore.RESET} --> {Fore.BLUE}{env2name}{activeenv} {Fore.RESET}" + f"{Fore.RESET}=" * 20
+    if env1 == None: activeenv1 = " (active)"
+    else: activeenv1 = ""
+    if env2 == None: activeenv2 = " (active)"
+    else: activeenv2 = ""
+    envDiffLine = f"{Fore.RESET}=" * 20 + f" Env Diff: {Fore.RED}{env1name}{activeenv1}{Fore.RESET} --> {Fore.BLUE}{env2name}{activeenv2} {Fore.RESET}" + f"{Fore.RESET}=" * 20
     blankLine = f"{Fore.RESET}=" * len(strip_ansi(envDiffLine))
     if verbose: print(blankLine)
     if verbose: print(envDiffLine)
@@ -124,6 +132,7 @@ def compareEnvConfig(env1,env2=None,verbose=False):
                                     f"    {Fore.GREEN}{p[0]}: {Fore.RED}{p[1].t1}{Fore.YELLOW} --> {Fore.BLUE}{p[1].t2}")
                                 pydiff.append(p)
                 if key == 'package':
+                    printedPackages = False
                     pkg1 = {p['name']: p for p in lock1.get("package", [])}
                     pkg2 = {p['name']: p for p in lock2.get("package", [])}
                     pkgkey1 = set(pkg1.keys())
@@ -137,18 +146,21 @@ def compareEnvConfig(env1,env2=None,verbose=False):
                         uvdiff[f"removed_{key}"] = []
                     for name in sorted(added):
                         uvdiff[f"added_{key}"].append(pkg2[name])
-                        if verbose: print(f"  {Fore.MAGENTA}{key}:")
+                        if verbose and not printedPackages: print(f"  {Fore.MAGENTA}{key}:")
+                        printedPackages = True
                         if verbose: print(f"{Fore.BLUE}   (+) added {name} == {pkg2[name]['version']}")
                     for name in sorted(removed):
                         uvdiff[f"removed_{key}"].append(pkg1[name])
-                        if verbose and len(added) == 0: print(f"  {Fore.MAGENTA}{key}:")
+                        if verbose and not printedPackages: print(f"  {Fore.MAGENTA}{key}:")
+                        printedPackages = True
                         if verbose: print(f"{Fore.RED}   (-) removed {name} == {pkg1[name]['version']}")
                     for name in sorted(shared):
                         d1 = pkg1[name]
                         d2 = pkg2[name]
                         mydiff = DeepDiff(d1, d2, view='tree', ignore_order=True)
                         if len(mydiff) != 0:
-                            if verbose and len(added) == 0 and len(removed) == 0: print(f"  {Fore.MAGENTA}{key}:")
+                            if verbose and not printedPackages: print(f"  {Fore.MAGENTA}{key}:")
+                            printedPackages = True
                             if f"changed_{key}" not in uvdiff.keys(): uvdiff[f"changed_{key}"] = []
                             items = []
                             for diffkey in mydiff.keys():
@@ -162,7 +174,7 @@ def compareEnvConfig(env1,env2=None,verbose=False):
                                         items.append(itemchange)
                             if verbose: print(f"{Fore.YELLOW}   (~) {name}: changed {", ".join(str(x) for x in items)}")
 
-    envDiffLine = f"{Fore.RESET}=" * 20 + f" End Env Diff: {Fore.RED}{env1}{Fore.RESET} --> {Fore.BLUE}{env2name}{activeenv} {Fore.RESET}" + f"{Fore.RESET}=" * 20
+    envDiffLine = f"{Fore.RESET}=" * 20 + f" End Env Diff: {Fore.RED}{env1name}{activeenv1}{Fore.RESET} --> {Fore.BLUE}{env2name}{activeenv2} {Fore.RESET}" + f"{Fore.RESET}=" * 20
     blankLine = f"{Fore.RESET}=" * len(strip_ansi(envDiffLine))
     if verbose: print(blankLine)
     if verbose: print(envDiffLine)
@@ -205,3 +217,28 @@ def saveEnv(currentpath,savedpath):
         except:
             print(f"{Fore.RED}Error: Successfully saved existing config, but failed to clean up prior saved version.")
             print(f"{Fore.RED}Error: Old config saved as trsh-saved-pyproject.toml, trsh-saved-uv.lock")
+
+def getEnvList():
+    edited = ''
+    changestatus, pychanges, uvchanges = compareEnvConfig(getEnvName())
+    if changestatus == "complete":
+        if len(pychanges) != 0 or len(uvchanges) != 0: edited = ' (edited)'
+    elif changestatus == "incomplete":
+        print(f"{Fore.RED}Error: Incomplete while attempting to compare environments")
+        sys.exit(1)
+    else:
+        print(f"{Fore.RED}Error: An unhandled error has occurred while comparing environments, exiting")
+        sys.exit(1)
+
+    # Get current environment name
+    print(f"{Fore.MAGENTA}Current Environment:")
+    print(f"{Fore.BLUE}0 - {Fore.GREEN}{getEnvName()}{edited}\n")
+
+    # Get environment folders, present choices to user
+    dirs = [d.name for d in thispath.iterdir() if d.is_dir() and d.name != '__pycache__']
+    if len(dirs) == 0:
+        return print(f"{Fore.RED}Warning: Did not find any environment folders at " + str(Path(thispath).resolve()))
+    print(f"{Fore.MAGENTA}Found environment folders at " + str(Path(thispath).resolve()))
+    for i, d in enumerate(dirs): print(f"{Fore.BLUE}{i + 1} - {Fore.GREEN}{d}")
+
+    return dirs

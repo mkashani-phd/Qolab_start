@@ -23,7 +23,7 @@ dependencies = [
     "cycler==0.12.1",
     "datadog-api-client==2.38.0",
     "datamodel-code-generator==0.26.5",
-    "deepdiff==8.5.0",
+    "deepdiff>=8.5.0",
     "dependency-injector==4.48.1",
     "deprecation==2.1.0",
     "dill==0.4.0",
@@ -146,5 +146,5 @@ quam = { git = "https://github.com/qua-platform/quam.git", rev = "11391d518036c1
 quam-libs = { path = "packages/quam_libs" }
 
 [metadata]
-environment_name = "QOP 3.3.0"
-QOP_version = "3.3.0"
+environment_name = "QOP 3.2.4"
+QOP_version = "3.2.4"

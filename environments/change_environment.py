@@ -3,39 +3,23 @@ import sys
 from colorama import init, Fore, Style
 import shutil, os
 import subprocess
-from env_utils import setPath, getEnvName, compareEnvConfig, checkEnvFiles, saveEnv
+from env_utils import setPath, getEnvName, compareEnvConfig, checkEnvFiles, saveEnv, getEnvList
 
 init(autoreset=True)
 
 def main():
 
-    edited = ''
-    changestatus, pychanges, uvchanges = compareEnvConfig(getEnvName())
-    if changestatus == "complete":
-        if len(pychanges) != 0 or len(uvchanges) != 0: edited = ' (edited)'
-    elif changestatus == "incomplete":
-        print(f"{Fore.RED}Error: Incomplete while attempting to compare environments")
-        sys.exit(1)
-    else:
-        print(f"{Fore.RED}Error: An unhandled error has occurred while comparing environments, exiting")
-        sys.exit(1)
+    # Get list of current + all environments
+    dirs = getEnvList()
 
-    # Get current environment name
-    print(f"{Fore.MAGENTA}Current Environment:")
-    print(f"{Fore.GREEN}{getEnvName()}{edited}\n")
-
-    # Get environment folders, present choices to user
-    dirs = [d.name for d in thispath.iterdir() if d.is_dir() and d.name != '__pycache__']
-    if len(dirs)==0:
-        return print(f"{Fore.RED}Warning: Did not find any environment folders at "+str(Path(thispath).resolve()))
-    print(f"{Fore.MAGENTA}Found environment folders at " + str(Path(thispath).resolve()))
-    for i, d in enumerate(dirs): print(f"{Fore.BLUE}{i + 1} - {Fore.GREEN}{d}")
     try:
         print("\n# You can quit at any time with exit/quit")
         choice = input(f"{Fore.CYAN}Select environment {Fore.YELLOW}(1-" + str(len(dirs)) + f"): {Fore.GREEN}")
         if choice == 'quit' or choice == 'exit':
             print(f"{Fore.YELLOW}Quitting...")
             sys.exit(0)
+        if int(choice) < 1:
+            raise Exception
         newenv = str(dirs[int(choice)-1])
     except:
         print(f"{Fore.RED}Invalid selection: Expected one of: {Fore.BLUE}" + (
@@ -62,7 +46,7 @@ def main():
 
     # Check for changes between current active environment and saved active environment
     action = None
-    changestatus, pychangelist, uvchangelist = compareEnvConfig(savedenv)
+    changestatus, pychangelist, uvchangelist = compareEnvConfig(env1=savedenv,env2=None)
     if changestatus == 'complete':
         pychanges = [c for c in pychangelist if c[0] not in {'metadata.QOP_version', 'metadata.environment_name'}]
     elif changestatus == 'incomplete':
@@ -72,15 +56,46 @@ def main():
         print(f"{Fore.RED}Error: An unhandled error has occurred while comparing environments, exiting")
         sys.exit(1)
     if len(pychanges) != 0:
-        compareEnvConfig(savedenv,verbose=True)
+        compareEnvConfig(env1=savedenv,env2=None,verbose=True)
         print(f"{Fore.RESET}# You can quit at any time with exit/quit")
         print(f"{Fore.CYAN}The active environment {savedenv} contains differences from the saved version of {currentenv} (shown above).")
         while action not in ['save','discard']:
             action = input(
                 f"{Fore.CYAN}Would you like to save these changes, or discard? {Fore.YELLOW}(save, discard) ")
             if action == 'quit' or action == 'exit':
-                print(f"{Fore.YELLOW}Quitting...")
+                print(f"{Fore.YELLOW}Quitting, no action taken...")
                 sys.exit(0)
+
+    if action == 'save':
+        changestatus, pychangelist, uvchangelist = compareEnvConfig(env1=None,env2=newenv)
+    if action == 'discard':
+        changestatus, pychangelist, uvchangelist = compareEnvConfig(env1=savedenv, env2=newenv)
+    if changestatus == 'complete':
+        pychanges = [c for c in pychangelist if c[0] not in {'metadata.QOP_version', 'metadata.environment_name'}]
+    elif changestatus == 'incomplete':
+        print(f"{Fore.RED}Error: Incomplete while attempting to compare environments")
+        sys.exit(1)
+    else:
+        print(f"{Fore.RED}Error: An unhandled error has occurred while comparing environments, exiting")
+        sys.exit(1)
+    if len(pychanges) != 0:
+        if action == 'save':
+            compareEnvConfig(env1=None,env2=newenv, verbose=True)
+        if action == 'discard':
+            compareEnvConfig(env1=savedenv, env2=newenv, verbose=True)
+        print(f"{Fore.RESET}# You can quit at any time with exit/quit")
+        print(
+            f"{Fore.CYAN}The new environment {newenv} contains differences from the active environment {currentenv} (shown above).")
+        continueChange = ''
+        while continueChange not in ['y', 'yes', 'n', 'no']:
+            action = input(
+                f"{Fore.CYAN}Are you sure you'd like to continue? {Fore.YELLOW}(y/n) ")
+            if action in ['exit', 'quit', 'n', 'no']:
+                print(f"{Fore.YELLOW}Quitting, no action taken...")
+                sys.exit(0)
+            if action in ['y','yes']:
+                break
+
 
     # Execute package change
     print("")
