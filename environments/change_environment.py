@@ -2,101 +2,30 @@ from pathlib import Path
 import sys
 from colorama import init, Fore, Style
 import shutil, os
-import tomllib
-from deepdiff import DeepDiff
 import subprocess
+from env_utils import setPath, getEnvName, compareEnvConfig, checkEnvFiles, saveEnv
 
 init(autoreset=True)
-
-def checkEnvFiles(envpath):
-    missing = []
-    if not Path(envpath).is_dir():
-        missing.append('directory')
-        print(f"{Fore.RED}Missing: Could not find directory {Fore.BLUE}" + str(envpath))
-    if Path(envpath + '/pyproject.toml').is_file():
-        with open(Path(envpath + '/pyproject.toml').resolve(),'rb') as f:
-            toml = tomllib.load(f)
-            try:
-                tomlname = toml["metadata"]["environment_name"]
-            except:
-                return print(f"{Fore.RED}pyproject.toml: Could not identify environment name, exiting")
-                sys.exit(1)
-            print(f"{Fore.BLUE}Environment: {Fore.GREEN}" + str(tomlname))
-            print(f"{Fore.BLUE}Found pyproject.toml at {Fore.GREEN}" + str(Path(envpath + '/pyproject.toml').resolve()))
-    else:
-        missing.append('pyproject.toml')
-        print(f"{Fore.RED}Missing: Could not find pyproject.toml at {Fore.BLUE}" + str(
-            Path(envpath + '/pyproject.toml').resolve()))
-    if Path(envpath + '/uv.lock').is_file():
-        print(f"{Fore.BLUE}Found uv.lock at {Fore.GREEN}" + str(Path(envpath + '/uv.lock').resolve()))
-    else:
-        missing.append('uv.lock')
-        print(f"{Fore.RED}Missing: Could not find uv.lock at {Fore.BLUE}" + str(Path(envpath + '/uv.lock').resolve()))
-    print("")
-    return missing
-
-
-
-
-
-def compareEnvConfig(env1,env2=None):
-    diff = []
-    if Path('./'+env1).is_dir():
-        envpath1 = str(Path('./'+env1).resolve())
-    else:
-        return print(f"{Fore.RED}Path Error while comparing {env1} and {env2}: Could not find Environment {Fore.BLUE}"+env1+"\n")
-    if env2 is None:
-        envpath2 = str(thispath.parent)
-    else:
-        if Path('./'+env2).is_dir():
-            envpath2 = str(Path('./'+env2).resolve())
-        else:
-            return print(f"{Fore.RED}Path Error while comparing {env1} and {env2}: Could not find Environment {Fore.BLUE}"+env2+"\n")
-    with open(envpath1+"/pyproject.toml",'rb') as f1, open(envpath2+"/pyproject.toml",'rb') as f2:
-        identical = f1.read() == f2.read()
-        if not identical:
-            diff.append("pyproject.toml")
-            f1.seek(0)
-            f2.seek(0)
-            toml1 = tomllib.load(f1)
-            toml2 = tomllib.load(f2)
-            dDiff = DeepDiff(toml1, toml2, view='tree')
-            paths = []
-            for change_type in dDiff:
-                for item in dDiff[change_type]:
-                    if hasattr(item, "path"):
-                        paths.append(".".join(str(x) for x in item.path(output_format='list')))
-            for p in sorted(paths):
-                diff.append(p)
-    with open(envpath1+"/uv.lock") as f1, open(envpath2+"/uv.lock") as f2:
-        identical = f1.read() == f2.read()
-        if not identical: diff.append("uv.lock")
-    return diff
-
-
-
-
-def getEnvName(filepath=None):
-    if filepath is None:
-        filepath = str(Path(str(thispath.parent)+'/pyproject.toml').resolve())
-    with open(filepath,'rb') as f:
-        return tomllib.load(f)['metadata']['environment_name']
-
-
-
 
 def main():
 
     edited = ''
-    activechanges = compareEnvConfig(getEnvName())
-    if len(activechanges) != 0: edited = ' (edited)'
+    changestatus, pychanges, uvchanges = compareEnvConfig(getEnvName())
+    if changestatus == "complete":
+        if len(pychanges) != 0 or len(uvchanges) != 0: edited = ' (edited)'
+    elif changestatus == "incomplete":
+        print(f"{Fore.RED}Error: Incomplete while attempting to compare environments")
+        sys.exit(1)
+    else:
+        print(f"{Fore.RED}Error: An unhandled error has occurred while comparing environments, exiting")
+        sys.exit(1)
 
     # Get current environment name
     print(f"{Fore.MAGENTA}Current Environment:")
     print(f"{Fore.GREEN}{getEnvName()}{edited}\n")
 
     # Get environment folders, present choices to user
-    dirs = [d.name for d in thispath.iterdir() if d.is_dir()]
+    dirs = [d.name for d in thispath.iterdir() if d.is_dir() and d.name != '__pycache__']
     if len(dirs)==0:
         return print(f"{Fore.RED}Warning: Did not find any environment folders at "+str(Path(thispath).resolve()))
     print(f"{Fore.MAGENTA}Found environment folders at " + str(Path(thispath).resolve()))
@@ -133,10 +62,19 @@ def main():
 
     # Check for changes between current active environment and saved active environment
     action = None
-    changes = [c for c in compareEnvConfig(savedenv) if c not in {'pyproject.toml','metadata.QOP_version','metadata.environment_name'}]
-    if len(changes) != 0:
-        print("# You can quit at any time with exit/quit")
-        print(f"{Fore.CYAN}The active environment {savedenv} contains differences from the saved version of {currentenv}.")
+    changestatus, pychangelist, uvchangelist = compareEnvConfig(savedenv)
+    if changestatus == 'complete':
+        pychanges = [c for c in pychangelist if c[0] not in {'metadata.QOP_version', 'metadata.environment_name'}]
+    elif changestatus == 'incomplete':
+        print(f"{Fore.RED}Error: Incomplete while attempting to compare environments")
+        sys.exit(1)
+    else:
+        print(f"{Fore.RED}Error: An unhandled error has occurred while comparing environments, exiting")
+        sys.exit(1)
+    if len(pychanges) != 0:
+        compareEnvConfig(savedenv,verbose=True)
+        print(f"{Fore.RESET}# You can quit at any time with exit/quit")
+        print(f"{Fore.CYAN}The active environment {savedenv} contains differences from the saved version of {currentenv} (shown above).")
         while action not in ['save','discard']:
             action = input(
                 f"{Fore.CYAN}Would you like to save these changes, or discard? {Fore.YELLOW}(save, discard) ")
@@ -147,30 +85,7 @@ def main():
     # Execute package change
     print("")
     if action == 'save':
-        # Shelf old saved config, copy over current config
-        try:
-            os.rename(savedpath+'/pyproject.toml',savedpath+'/trsh-saved-pyproject.toml')
-            os.rename(savedpath+'/uv.lock',savedpath+'/trsh-saved-uv.lock')
-            shutil.copy(currentpath+'/pyproject.toml',savedpath+'/pyproject.toml')
-            shutil.copy(currentpath+'/uv.lock',savedpath+'/uv.lock')
-        except:
-            # Back out by restoring old saved config
-            try:
-                print(f"{Fore.RED}Error: An error has occurred while saving existing config, safely backing out of change.")
-                os.rename(currentpath + '/trsh-saved-pyproject.toml', currentpath + '/pyproject.toml')
-                os.rename(currentpath + '/trsh-saved-uv.lock', currentpath + '/uv.lock')
-                print(f"{Fore.RED}Backed out successfully.")
-                sys.exit(1)
-            except:
-                print(f"{Fore.RED}ERROR: An unhandled error has occurred, unable to back out safely.")
-                sys.exit(1)
-        # Clean up old saved config after successful save of current
-        try:
-            os.remove(savedpath + '/trsh-saved-pyproject.toml')
-            os.remove(savedpath + '/trsh-saved-uv.lock')
-        except:
-            print(f"{Fore.RED}Error: Successfully saved existing config, but failed to clean up prior saved version.")
-            print(f"{Fore.RED}Error: Old config saved as trsh-saved-pyproject.toml, trsh-saved-uv.lock")
+        saveEnv(currentpath,savedpath)
     # Shelf current config, copy over new config
     try:
         os.rename(currentpath+'/pyproject.toml',currentpath+'/trsh-current-pyproject.toml')
@@ -205,12 +120,13 @@ def main():
     endmsg = f"Successfully{savemsg} loaded {newenv}!"
     endmsg = "+"+"~" * 6 + " " + endmsg + " " + "~" * 6+"+"
     line = "+"+"~" * (len(endmsg)-2)+"+"
-    print(f"{Fore.GREEN}{line}")
-    print(f"{Fore.GREEN}{endmsg}")
-    print(f"{Fore.GREEN}{line}")
+    print(f"{Fore.LIGHTGREEN_EX}{line}")
+    print(f"{Fore.LIGHTGREEN_EX}{endmsg}")
+    print(f"{Fore.LIGHTGREEN_EX}{line}")
     sys.exit(0)
 
 thispath = Path(__file__).parent.resolve()
+setPath(thispath)
 
 if __name__ == "__main__":
     main()
