@@ -1,3 +1,6 @@
+
+# DH - Does not work but maybe try to fix so we can keep
+
 """
         AC STARK-SHIFT CALIBRATION WITH DRAG PULSES (GOOGLE METHOD)
 The sequence consists in applying an increasing number of x180 and -x180 pulses successively for different DRAG

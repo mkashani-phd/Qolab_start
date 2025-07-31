@@ -1,3 +1,6 @@
+
+# PBB & DH - Check which TOF actually works
+
 """
         TIME OF FLIGHT
 This sequence involves sending a readout pulse and capturing the raw ADC traces.

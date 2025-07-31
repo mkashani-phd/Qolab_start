@@ -1,5 +1,7 @@
 # %%
 
+# PBB - Is cloud client smart enough to only close qms for that user? If not, how to prevent users from closing other users qms?
+
 """
 A simple program to close all other open QMs.
 """
