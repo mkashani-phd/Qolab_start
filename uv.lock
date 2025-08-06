@@ -1732,7 +1732,7 @@ wheels = [
 
 [[package]]
 name = "qm-qua"
-version = "1.2.1"
+version = "1.2.3a1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "betterproto" },
@@ -1751,9 +1751,9 @@ dependencies = [
     { name = "tinydb" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/23/d7/bb6d2f9d2046f08adacffe086c3fc7ca1d9e179566fec1784368b7a2b1e0/qm_qua-1.2.1.tar.gz", hash = "sha256:9a6af3cbab527bd95948c78a640d84d4ec8487ab1e146afd9e38f0ce9f939701", size = 263391, upload-time = "2024-11-20T12:38:42.401Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/64/b9/c43fb67dc9778d8d1c06e0a12f1c851ac7fe07fca974edc2c9db32e0a264/qm_qua-1.2.3a1.tar.gz", hash = "sha256:b51f782d3382ad9ad3b54346fca827c9f2ec7ba11999beb5f436f12bf2b92987", size = 279768, upload-time = "2025-05-11T06:54:04.538Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f9/c1/6abbd02e880c4c19e16a67bc8076c86396c60a6545d9c51a26241dcae9e5/qm_qua-1.2.1-py3-none-any.whl", hash = "sha256:3315379d16929468b058adbe489f6ac3979d1a5fcae102d4fc498bb7ac2feded", size = 312703, upload-time = "2024-11-20T12:38:40.443Z" },
+    { url = "https://files.pythonhosted.org/packages/1c/12/476ff86ef72ef4d55ba1cb108939a429d1391161632e799a4a9511d59cd6/qm_qua-1.2.3a1-py3-none-any.whl", hash = "sha256:317dfff1131dcb7c56f64b1dd10a93eccaca6258d8865095babeff51047581ad", size = 332850, upload-time = "2025-05-11T06:54:02.665Z" },
 ]
 
 [[package]]
@@ -1918,7 +1918,7 @@ requires-dist = [
     { name = "cycler", specifier = "==0.12.1" },
     { name = "datadog-api-client", specifier = "==2.38.0" },
     { name = "datamodel-code-generator", specifier = "==0.26.5" },
-    { name = "deepdiff", specifier = "==8.5.0" },
+    { name = "deepdiff", specifier = ">=8.5.0" },
     { name = "dependency-injector", specifier = "==4.48.1" },
     { name = "deprecation", specifier = "==2.1.0" },
     { name = "dill", specifier = "==0.4.0" },
@@ -1993,7 +1993,7 @@ requires-dist = [
     { name = "qiskit-ibm-experiment", specifier = "==0.4.8" },
     { name = "qiskit-ibm-runtime", specifier = "==0.40.1" },
     { name = "qm-octave", specifier = "==2.1.3" },
-    { name = "qm-qua", specifier = "==1.2.1" },
+    { name = "qm-qua", specifier = "==1.2.3a1" },
     { name = "qualang-tools", specifier = "==0.19.5" },
     { name = "qualibrate", specifier = "==0.2.2" },
     { name = "qualibrate-app", specifier = "==0.3.5" },
@@ -2177,7 +2177,7 @@ dependencies = [
 requires-dist = [
     { name = "lmfit" },
     { name = "qiskit-experiments" },
-    { name = "qm-qua", specifier = "==1.2.1" },
+    { name = "qm-qua", specifier = ">=1.2.1" },
     { name = "qualang-tools", specifier = ">=0.18.0" },
     { name = "qualibrate" },
     { name = "quam", git = "https://github.com/qua-platform/quam.git" },

@@ -23,7 +23,7 @@ dependencies = [
     "cycler==0.12.1",
     "datadog-api-client==2.38.0",
     "datamodel-code-generator==0.26.5",
-    "deepdiff==8.5.0",
+    "deepdiff>=8.5.0",
     "dependency-injector==4.48.1",
     "deprecation==2.1.0",
     "dill==0.4.0",
@@ -98,7 +98,7 @@ dependencies = [
     "qiskit-ibm-experiment==0.4.8",
     "qiskit-ibm-runtime==0.40.1",
     "qm-octave==2.1.3",
-    "qm-qua==1.2.1",
+    "qm-qua==1.2.3a1",
     "qualang-tools==0.19.5",
     "qualibrate==0.2.2",
     "qualibrate-app==0.3.5",
@@ -152,5 +152,5 @@ quam-libs = { path = "local_packages/quam_libs" }
 iqcc-cloud-client = { path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.5.5-py3-none-any.whl" }
 
 [metadata]
-environment_name = "QOP 3.3.0"
-QOP_version = "3.3.0"
+environment_name = "QOP 3.2.4"
+QOP_version = "3.2.4"
