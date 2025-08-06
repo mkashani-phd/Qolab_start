@@ -88,12 +88,12 @@ def main():
             f"{Fore.CYAN}The new environment {newenv} contains differences from the active environment {currentenv} (shown above).")
         continueChange = ''
         while continueChange not in ['y', 'yes', 'n', 'no']:
-            action = input(
+            continueChange = input(
                 f"{Fore.CYAN}Are you sure you'd like to continue? {Fore.YELLOW}(y/n) ")
-            if action in ['exit', 'quit', 'n', 'no']:
+            if continueChange in ['exit', 'quit', 'n', 'no']:
                 print(f"{Fore.YELLOW}Quitting, no action taken...")
                 sys.exit(0)
-            if action in ['y','yes']:
+            if continueChange in ['y','yes']:
                 break
 
 
