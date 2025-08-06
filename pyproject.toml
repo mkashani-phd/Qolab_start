@@ -23,7 +23,7 @@ dependencies = [
     "cycler==0.12.1",
     "datadog-api-client==2.38.0",
     "datamodel-code-generator==0.26.5",
-    "deepdiff>=8.5.0",
+    "deepdiff==8.5.0",
     "dependency-injector==4.48.1",
     "deprecation==2.1.0",
     "dill==0.4.0",
@@ -51,6 +51,7 @@ dependencies = [
     "ibm-platform-services==0.66.2",
     "idna==3.10",
     "inflect==5.6.2",
+    "iqcc-cloud-client",
     "isort==5.13.2",
     "jinja2==3.1.6",
     "joblib==1.5.1",
@@ -147,8 +148,9 @@ constraint-dependencies = []
 
 [tool.uv.sources]
 quam = { git = "https://github.com/qua-platform/quam.git", rev = "11391d518036c149eeadee649ba1386f44177b1f" }
-quam-libs = { path = "packages/quam_libs" }
+quam-libs = { path = "local_packages/quam_libs" }
+iqcc-cloud-client = { path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.5.5-py3-none-any.whl" }
 
 [metadata]
-environment_name = "QOP 3.2.4"
-QOP_version = "3.2.4"
+environment_name = "QOP 3.3.0"
+QOP_version = "3.3.0"
