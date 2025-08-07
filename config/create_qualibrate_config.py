@@ -30,7 +30,7 @@ parameters = {
     "project": "QPU_project",
     "storage_location": str(current_dir.parent.absolute() / "data"),
     "calibration_library_folder": str(current_dir.parent.absolute() / "code" / "calibration_graph"),
-    "quam_state_path": str(current_dir / "config" / "quam_state"),
+    "quam_state_path": str(current_dir / "quam_state"),
 }
 
 # Display default values
