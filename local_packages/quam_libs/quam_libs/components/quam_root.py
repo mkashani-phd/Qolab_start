@@ -1,6 +1,10 @@
 import os
+import sys
 import warnings
 from pathlib import Path
+import tomllib
+
+from prompt_toolkit.shortcuts import yes_no_dialog
 from quam.core import QuamRoot, quam_dataclass
 from quam.components.octave import Octave
 from quam.components.ports import (
@@ -21,6 +25,8 @@ from qualang_tools.results.data_handler import DataHandler
 
 from dataclasses import field
 from typing import List, Dict, ClassVar, Any, Optional, Sequence, Union
+
+import git
 
 __all__ = ["QuAM", "FEMQuAM", "OPXPlusQuAM"]
 
@@ -58,9 +64,42 @@ class QuAM(QuamRoot):
     @classmethod
     def load(cls, *args, **kwargs) -> "QuAM":
         if not args:
+            setquamstatepath = ''
+            git_repo = git.Repo(os.getcwd(), search_parent_directories=True)
+            git_root = git_repo.git.rev_parse("--show-toplevel")
+            with open(os.path.expanduser('~/.qualibrate/config.toml'),'rb') as f:
+                qualibrateconfig = tomllib.load(f)
+            qualibrateconfigquamstatepath = qualibrateconfig['quam']['state_path']
+            repoquamstatepath = git_root + "/config/quam_state"
             if "QUAM_STATE_PATH" in os.environ:
-                args = (os.environ["QUAM_STATE_PATH"],)
+                currentquamstatepath = os.environ["QUAM_STATE_PATH"]
+                print(f"Current quam state path: {currentquamstatepath}")
+                if currentquamstatepath == qualibrateconfigquamstatepath: #config path
+                    args = (os.environ["QUAM_STATE_PATH"],)
+                else:
+                    while setquamstatepath not in ['keep','change','exit','quit']:
+                        setquamstatepath = input(f"Detected 'QUAM_STATE_PATH' environment variable as {currentquamstatepath}, but qualibrate config lists it as{git_root}. "
+                                                 f"Would you like to keep the existing config, change to match qualibrate config, or exit?")
+                        if setquamstatepath == 'keep':
+                            args = (os.environ["QUAM_STATE_PATH"],)
+                        elif setquamstatepath == 'change':
+                            os.environ["QUAM_STATE_PATH"] = 'h' #config path
+                        else:
+                            raise ValueError(
+                                "User exited before choosing an environment path to proceed with."
+                                "Please provide a path or set the 'QUAM_STATE_PATH' environment variable. "
+                                "See the README for instructions."
+                            )
             else:
+                while setquamstatepath not in ['yes','y','no','n']:
+                    setquamstatepath = input(f"No 'QUAM_STATE_PATH' environment variable detected. "
+                                         f"Would you like to set it to match qualibrate config?"
+                                         f"\nSelect y/yes to confirm, or n/no to exit."
+                                         f"\nQualibrate config path: {git_root}")
+                    if setquamstatepath in ['yes','y']:
+                        os.environ["QUAM_STATE_PATH"] = 'h'#config path
+                    elif setquamstatepath in ['no','n']:
+                        sys.exit(1)
                 raise ValueError(
                     "No path argument provided to load the QuAM state. "
                     "Please provide a path or set the 'QUAM_STATE_PATH' environment variable. "
