@@ -18,6 +18,7 @@ from quam.components.ports import (
     OPXPlusPortsContainer,
 )
 from .transmon import Transmon
+from .ocs_transmon import OCSTransmon
 from .transmon_pair import TransmonPair
 
 from qm import QuantumMachinesManager, QuantumMachine
@@ -32,11 +33,11 @@ __all__ = ["QuAM", "FEMQuAM", "OPXPlusQuAM"]
 
 from ..cloud_interface import CloudQuantumMachinesManager
 
-from quam.serialisation import JSONSerialiser
 
 @quam_dataclass
 class QuAM(QuamRoot):
     """Example QuAM root component."""
+    device_name: str = ''
 
     octaves: Dict[str, Octave] = field(default_factory=dict)
 
@@ -50,16 +51,6 @@ class QuAM(QuamRoot):
 
     _data_handler: ClassVar[DataHandler] = None
     qmm: ClassVar[Optional[QuantumMachinesManager]] = None
-
-    @classmethod
-    def get_serialiser(cls) -> JSONSerialiser:
-        """Get the serialiser for the QuamRoot class, which is the JSONSerialiser.
-
-        This method can be overridden by subclasses to provide a custom serialiser.
-        """
-        return JSONSerialiser(
-            content_mapping={"wiring": "wiring.json", "network": "wiring.json"}
-        )
 
     @classmethod
     def load(cls, *args, **kwargs) -> "QuAM":
@@ -91,11 +82,11 @@ class QuAM(QuamRoot):
         return super().load(*args, **kwargs)
 
     def save(
-        self,
-        path: Union[Path, str] = None,
-        content_mapping: Dict[Union[Path, str], Sequence[str]] = None,
-        include_defaults: bool = False,
-        ignore: Sequence[str] = None,
+            self,
+            path: Union[Path, str] = None,
+            content_mapping: Dict[Union[Path, str], Sequence[str]] = None,
+            include_defaults: bool = False,
+            ignore: Sequence[str] = None,
     ):
         if path is None and "QUAM_STATE_PATH" in os.environ:
             path = os.environ["QUAM_STATE_PATH"]
@@ -164,34 +155,33 @@ class QuAM(QuamRoot):
         """Apply the offsets that bring all the active qubits to the zero bias point."""
         for q in self.active_qubits:
             q.z.to_zero()
-        
-        
-    def set_all_fluxes(self, flux_point : str, target : Union[Transmon, TransmonPair]):
+
+    def set_all_fluxes(self, flux_point: str, target: Union[Transmon, TransmonPair]):
         if flux_point == "independent":
             assert isinstance(target, Transmon), "Independent flux point is only supported for individual transmons"
         elif flux_point == "pairwise":
             assert isinstance(target, TransmonPair), "Pairwise flux point is only supported for transmon pairs"
-        
+
         if flux_point == "joint":
             self.apply_all_flux_to_joint_idle()
             if isinstance(target, TransmonPair):
-                target_bias =target.mutual_flux_bias
+                target_bias = target.mutual_flux_bias
             else:
                 target_bias = target.z.joint_offset
         else:
             self.apply_all_flux_to_min()
-        
+
         if flux_point == "independent":
             target.z.to_independent_idle()
             target_bias = target.z.independent_offset
-            
+
         elif flux_point == "pairwise":
             target.to_mutual_idle()
             target_bias = target.mutual_flux_bias
-        
+
         target.z.settle()
         target.align()
-        return target_bias      
+        return target_bias
 
     def connect(self) -> QuantumMachinesManager:
         """Open a Quantum Machine Manager with the credentials ("host" and "cluster_name") as defined in the network file.

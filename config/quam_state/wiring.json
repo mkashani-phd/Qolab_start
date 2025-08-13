@@ -96,10 +96,10 @@
         }
     },
     "network": {
-        "host": "192.168.88.248",
+        "host": "127.0.0.1",
         "port": 9510,
         "cluster_name": "Cluster_1",
-        "cloud": false,
+        "cloud": true,
         "quantum_computer_backend": "qc_qolab"
     }
 }
