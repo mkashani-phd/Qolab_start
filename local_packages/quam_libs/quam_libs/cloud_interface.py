@@ -30,6 +30,9 @@ class CloudQuantumMachine:
         else:
             return None
 
+    def get_jobs(self,status=None):
+        return self.get_running_job()
+
     def close(self):
         pass
 

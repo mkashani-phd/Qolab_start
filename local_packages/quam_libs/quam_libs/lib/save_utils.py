@@ -1,7 +1,4 @@
 from qualibrate_app.config import get_config_path, get_settings
-from qualibrate_config.resolvers import get_qualibrate_config_path, get_qualibrate_config
-from qualibrate.config.resolvers import get_quam_state_path
-from qualibrate.storage.local_storage_manager import LocalStorageManager
 from quam_libs.components import QuAM
 import os
 from pathlib import Path
@@ -30,15 +27,17 @@ def fetch_results_as_xarray(handles, qubits, measurement_axis):
     Returns:
     - ds (xarray.Dataset): An xarray dataset containing the fetched measurement results.
     """
-
     stream_handles = handles.keys()
     meas_vars = list(set([extract_string(handle) for handle in stream_handles if extract_string(handle) is not None]))
+
     values = [
         [handles.get(f"{meas_var}{i + 1}").fetch_all() for i, qubit in enumerate(qubits)] for meas_var in meas_vars
     ]
+
     measurement_axis["qubit"] = [qubit.name for qubit in qubits]
     measurement_axis = {key: measurement_axis[key] for key in reversed(measurement_axis.keys())}
 
+    # need values[i][0] for Rabi to run.
     ds = xr.Dataset(
         {f"{meas_var}": ([key for key in measurement_axis.keys()], values[i]) for i, meas_var in enumerate(meas_vars)},
         coords=measurement_axis,
@@ -118,15 +117,3 @@ def load_dataset(serial_number, target_filename = "ds", parameters = None):
     else:
         print(f"No .nc file found in folder: {base_folder}")
         return None
-
-def get_node_id() -> int:
-    
-    q_config_path = get_qualibrate_config_path()
-    qs = get_qualibrate_config(q_config_path)
-    state_path = get_quam_state_path(qs)
-    storage_manager = LocalStorageManager(
-                root_data_folder=qs.storage.location,
-                active_machine_path=state_path,
-            )
-    
-    return storage_manager.data_handler.generate_node_contents()['id']

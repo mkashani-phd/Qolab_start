@@ -1,6 +1,8 @@
 from quam.components import SingleChannel
 from quam.components.ports import LFFEMAnalogOutputPort
 from quam.core import quam_dataclass
+from dataclasses import field
+from typing import Dict, Any
 
 
 __all__ = ["FluxLine"]
@@ -22,7 +24,8 @@ class FluxLine(SingleChannel):
     joint_offset: float = 0.0
     min_offset: float = 0.0
     arbitrary_offset: float = 0.0
-    settle_time: float = 16.
+    settle_time: float = 1000.
+    step_response_model_parameters : Dict[str, Any] = field(default_factory=dict)
 
     def settle(self):
         """Wait for the flux bias to settle"""

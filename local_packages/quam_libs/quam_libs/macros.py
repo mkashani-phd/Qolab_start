@@ -6,7 +6,7 @@ import warnings
 from qm.qua import *
 from quam_libs.components import QuAM
 from quam_libs.components import Transmon
-from qm.qua.type_hints import QuaScalar
+# from qm.qua.type_hints import QuaScalar
 
 __all__ = [
     "qua_declaration",
@@ -93,26 +93,34 @@ def node_save(
     quam.save(content_mapping={"wiring.json": {"wiring", "network"}})
 
 
-def readout_state(qubit, state, pulse_name: str = "readout", threshold: float = None, save_qua_var: StreamType = None):
-    I = declare(fixed)
-    Q = declare(fixed)
-    if threshold is None:
-        threshold = qubit.resonator.operations[pulse_name].threshold
-    qubit.resonator.measure(pulse_name, qua_vars=(I, Q))
-    assign(state, Cast.to_int(I > threshold))
-    wait(qubit.resonator.depletion_time // 4, qubit.resonator.name)
+def readout_state(qubit, state, pulse_name: str = "readout", threshold: float = None, save_qua_var: StreamType = None, simulate=False):
+    if not simulate:
+        I = declare(fixed)
+        Q = declare(fixed)
+        if threshold is None:
+            threshold = qubit.resonator.operations[pulse_name].threshold
+        qubit.resonator.measure(pulse_name, qua_vars=(I, Q))
+        assign(state, Cast.to_int(I > threshold))
+        wait(qubit.resonator.depletion_time // 4, qubit.resonator.name)
+    else:
+        measure(pulse_name, qubit.resonator.name)
+        wait(qubit.resonator.depletion_time // 4, qubit.resonator.name)
 
 
 def readout_state_gef(
-    qubit: Transmon, state: QuaScalar[int], pulse_name: str = "readout", save_qua_var: StreamType = None
+    qubit: Transmon, state, pulse_name: str = "readout", save_qua_var: StreamType = None
 ):
     I = declare(fixed)
     Q = declare(fixed)
     diff = declare(fixed, size=3)
-
-    qubit.resonator.update_frequency(qubit.resonator.intermediate_frequency + qubit.resonator.GEF_frequency_shift)
-    qubit.resonator.measure(pulse_name, qua_vars=(I, Q))
-    qubit.resonator.update_frequency(qubit.resonator.intermediate_frequency)
+    if pulse_name == "readout":
+        qubit.resonator.update_frequency(qubit.resonator.intermediate_frequency + qubit.resonator.GEF_frequency_shift)
+        qubit.resonator.measure(pulse_name, qua_vars=(I, Q))
+        qubit.resonator.update_frequency(qubit.resonator.intermediate_frequency)
+    elif pulse_name == "readout_arbitrary":
+        qubit.resonator.update_frequency(qubit.arbitrary_intermediate_frequency_readout + qubit.resonator.GEF_frequency_shift)
+        qubit.resonator.measure(pulse_name, qua_vars=(I, Q))
+        qubit.resonator.update_frequency(qubit.arbitrary_intermediate_frequency_readout)
 
     gef_centers = [qubit.resonator.gef_centers[0], qubit.resonator.gef_centers[1], qubit.resonator.gef_centers[2]]
     for p in range(3):
@@ -194,7 +202,7 @@ def active_reset(
     attempts = declare(int, value=1)
     assign(attempts, 1)
     align(qubit.xy.name, qubit.resonator.name)
-    qubit.resonator.measure("readout", qua_vars=(I, Q))
+    qubit.resonator.measure(readout_pulse_name, qua_vars=(I, Q))
     assign(state, I > pulse.threshold)
     wait(qubit.resonator.depletion_time // 4, qubit.resonator.name)
     align(qubit.xy.name, qubit.resonator.name)
@@ -202,7 +210,7 @@ def active_reset(
     align(qubit.xy.name, qubit.resonator.name)
     with while_((I > pulse.rus_exit_threshold) & (attempts < max_attempts)):
         align(qubit.xy.name, qubit.resonator.name)
-        qubit.resonator.measure("readout", qua_vars=(I, Q))
+        qubit.resonator.measure(readout_pulse_name, qua_vars=(I, Q))
         assign(state, I > pulse.threshold)
         wait(qubit.resonator.depletion_time // 4, qubit.resonator.name)
         align(qubit.xy.name, qubit.resonator.name)

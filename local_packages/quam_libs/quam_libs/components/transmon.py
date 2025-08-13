@@ -30,6 +30,7 @@ class Transmon(QuamComponent):
         thermalization_time_factor (int): thermalization time in units of T1.
         anharmonicity (int, float): the transmon anharmonicity in Hz.
         freq_vs_flux_01_quad_term (float):
+        freq_vs_flux_01_quart_term (float):
         arbitrary_intermediate_frequency (float):
         sigma_time_factor:
         phi0_current (float):
@@ -49,12 +50,13 @@ class Transmon(QuamComponent):
     f_12: float = None
     anharmonicity: int = 150e6
     freq_vs_flux_01_quad_term: float = 0.0
+    freq_vs_flux_01_quart_term: float = 0.0
     arbitrary_intermediate_frequency: float = 0.0
 
     T1: float = 10e-6
     T2ramsey: float = None
     T2echo: float = None
-    thermalization_time_factor: int = 5
+    thermalization_time_factor: int = 8
     sigma_time_factor: int = 5
     phi0_current: float = 0.0
     phi0_voltage: float = 0.0
