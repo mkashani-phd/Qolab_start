@@ -65,7 +65,7 @@ class QuAM(QuamRoot):
             if "QUAM_STATE_PATH" in os.environ:
                 currentquamstatepath = os.environ["QUAM_STATE_PATH"]
                 args = (os.environ["QUAM_STATE_PATH"],)
-                if currentquamstatepath != qualibrateconfigquamstatepath:
+                if str(Path(currentquamstatepath).resolve().as_posix()) != str(Path(qualibrateconfigquamstatepath).resolve().as_posix()):
                     print(f"\033[91mCurrent QUAM_STATE_PATH environment variable: {currentquamstatepath}\n"
                           f"Qualibrate config quam_state_path value: {qualibrateconfigquamstatepath}\n"
                           f"Did you recently switch repos?\033[0m", file=sys.stderr)
@@ -74,7 +74,7 @@ class QuAM(QuamRoot):
                 os.environ["QUAM_STATE_PATH"] = qualibrateconfigquamstatepath
                 currentquamstatepath = os.environ["QUAM_STATE_PATH"]
                 args = (os.environ["QUAM_STATE_PATH"],)
-            if currentquamstatepath != repoquamstatepath:
+            if str(Path(currentquamstatepath).resolve().as_posix()) != str(Path(repoquamstatepath).resolve().as_posix()):
                 print(f"\033[91mQualibrate config quam_state_path value: {currentquamstatepath}\n"
                       f"Current repository quam_state folder: {repoquamstatepath}\n"
                       f"Did you recently switch repos?\033[0m", file=sys.stderr)
