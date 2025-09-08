@@ -12,11 +12,9 @@ from iqcc_cloud_client import IQCC_Cloud
 # The QUA program #
 ###################
 with program() as hello_qua:
-    a = declare(fixed)
-    with infinite_loop_():
-        with for_(a, 0, a < 1.1, a + 0.05):
-            play("pi" * amp(a), "qubit")
-        wait(25, "qubit")
+    a = declare(fixed,value=0)
+    play("pi" * amp(a), "qubit")
+    wait(25, "qubit")
 
 #####################################
 #  Open Communication with the QOP  #
@@ -38,8 +36,6 @@ with program() as hello_qua:
 #     job.get_simulated_samples().con1.plot()
 # else:
 qc = IQCC_Cloud(
-    quantum_computer_backend="qc_qolab",
-    api_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicXVhbnR1bV9tYWNoaW5lcyIsInFwdSI6eyJxY19xb2xhYiI6eyJmcm9tIjoxNzMzMzQ2MDAwLjAsInRvIjoxNzMzNTY5MjAwLjB9fSwiZXhwaXJlcyI6MTczMzU2OTIwMC4wfQ.euxYU1sVI9QT3Un5P-cmncyp2iS42oPcyl3UPLQt0To"
-) # token
+    quantum_computer_backend="qolab") # token
 
 run_data = qc.execute(hello_qua, config, True) # 60 seconds by default

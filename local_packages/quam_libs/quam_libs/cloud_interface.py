@@ -16,7 +16,8 @@ class CloudQuantumMachinesManager:
 class CloudQuantumMachine:
     def __init__(self, config: dict):
         self._qc = IQCC_Cloud(
-            quantum_computer_backend="qc_qolab")
+            quantum_computer_backend="qolab"
+            )
         self._config = config
 
     def execute(self, program):

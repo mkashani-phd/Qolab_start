@@ -22,7 +22,7 @@ save_dir = Path().absolute() / "QM" / "INSTALLATION" / "data"
 # OPX configuration #
 #####################
 con = "con1"
-lf_fem = 2
+lf_fem = 5
 mw_fem = 1
 
 # Set octave_config to None if no octave are present
@@ -142,7 +142,7 @@ resonator_power = 1  # power in dBm at waveform amp = 1
 readout_len = 5000
 readout_amp = 0.6
 
-time_of_flight = 24
+time_of_flight = 28
 depletion_time = 2 * u.us
 
 
