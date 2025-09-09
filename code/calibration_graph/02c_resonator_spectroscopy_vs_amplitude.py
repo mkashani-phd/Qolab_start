@@ -45,18 +45,17 @@ import numpy as np
 class Parameters(NodeParameters):
 
     qubits: Optional[List[str]] = None
-    num_averages: int = 100
-    frequency_span_in_mhz: float = 15
-    frequency_step_in_mhz: float = 0.1
+    num_averages: int = 10
+    frequency_span_in_mhz: float = 10
+    frequency_step_in_mhz: float = 0.05
     simulate: bool = False
     simulation_duration_ns: int = 2500
     timeout: int = 100
-    max_power_dbm: int = -30
-    min_power_dbm: int = -50
-    num_power_points: int = 100
-    max_amp: float = 0.1
+    max_power_dbm: int = 1
+    min_power_dbm: int = -40
+    num_power_points: int = 50
+    max_amp: float = 0.3
     flux_point_joint_or_independent: Literal["joint", "independent"] = "independent"
-    ro_line_attenuation_dB: float = 0
     derivative_crossing_threshold_in_hz_per_dbm: int = int(-50e3)
     derivative_smoothing_window_num_points: int = 30
     moving_average_filter_window_num_points: int = 30
@@ -144,6 +143,7 @@ with program() as multi_res_spec_vs_amp:
                     rr.measure("readout", qua_vars=(I[i], Q[i]), amplitude_scale=a)
                     # wait for the resonator to relax
                     rr.wait(machine.depletion_time * u.ns)
+                    rr.wait(10_000)
                     # save data
                     save(I[i], I_st[i])
                     save(Q[i], Q_st[i])
@@ -196,7 +196,7 @@ if not node.parameters.simulate:
             node.parameters.min_power_dbm,
             node.parameters.max_power_dbm,
             node.parameters.num_power_points
-        ) - node.parameters.ro_line_attenuation_dB
+        )
         ds = fetch_results_as_xarray(job.result_handles, qubits, {"power_dbm": power_dbm, "freq": dfs})
         # Convert IQ data into volts
         ds = convert_IQ_to_V(ds, qubits)
@@ -207,7 +207,7 @@ if not node.parameters.simulate:
         RF_freq = np.array([dfs + q.resonator.RF_frequency for q in qubits])
         ds = ds.assign_coords({"freq_full": (["qubit", "freq"], RF_freq)})
         ds.freq_full.attrs["long_name"] = "Frequency"
-        ds.freq_full.attrs["units"] = "GHz"
+        ds.freq_full.attrs["units"] = "Hz"
         ds.power_dbm.attrs["long_name"] = "Power"
         ds.power_dbm.attrs["units"] = "dBm"
 
@@ -286,7 +286,7 @@ if not node.parameters.simulate:
                 linestyle="--",
             )
 
-    grid.fig.suptitle("Resonator spectroscopy VS. power at base")
+    grid.fig.suptitle("Resonator spectroscopy VS. Readout Power")
     plt.tight_layout()
     plt.show()
     node.results["figure"] = grid.fig
@@ -305,11 +305,12 @@ if not node.parameters.simulate:
                 if not np.isnan(rr_optimal_power_dbm[q.name]):
                     power_settings = q.resonator.set_output_power(
                         power_in_dbm=rr_optimal_power_dbm[q.name].item(),
-                        max_amplitude=0.1
+                        max_amplitude=node.parameters.max_amp
                     )
+                    fit_results[q.name] = power_settings
                 if not np.isnan(rr_optimal_frequencies[q.name]):
                     q.resonator.intermediate_frequency += rr_optimal_frequencies[q.name]
-        fit_results[q.name] = power_settings
+        
         fit_results[q.name]["RO_frequency"] = q.resonator.RF_frequency
     node.results["fit_results"] = fit_results
 

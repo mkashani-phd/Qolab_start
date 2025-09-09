@@ -134,12 +134,11 @@ class ReadoutResonatorMW(InOutMWChannel, ReadoutResonatorBase):
             operation (Optional[str]): The operation for which the power setting is applied.
 
         """
-        allowed_full_scale_power_in_dbm_values = np.arange(-41, 11, 3)
+        allowed_full_scale_power_in_dbm_values = np.arange(-11, 17, 3)
 
         if full_scale_power_dbm is not None:
-            if full_scale_power_dbm < -20 or full_scale_power_dbm not in allowed_full_scale_power_in_dbm_values:
-                raise ValueError(f"Expected full_scale_power_dbm to be > -20 in QOP3.2.0, or "
-                                 f"in range [-41, 10] in steps of 3 dB, got {full_scale_power_dbm}.")
+            if full_scale_power_dbm not in allowed_full_scale_power_in_dbm_values:
+                raise ValueError(f"Expected full_scale_power_dbm to be in range [-11, 16] in steps of 3 dB, got {full_scale_power_dbm}.")
 
             if power_in_dbm > full_scale_power_dbm:
                 raise ValueError(f"Can't fix full_scale_power_dbm to {full_scale_power_dbm} dBm since it is "
@@ -147,18 +146,20 @@ class ReadoutResonatorMW(InOutMWChannel, ReadoutResonatorBase):
 
             self.opx_output.full_scale_power_dbm = full_scale_power_dbm
 
-        if power_in_dbm > 10:
-            raise ValueError(f"Expected `power_in_dbm` to be <10 dBm, got {power_in_dbm}")
+        if power_in_dbm > 16:
+            raise ValueError(f"Expected `power_in_dbm` to be <16 dBm, got {power_in_dbm}")
 
+        count = 0
         while self.calculate_voltage_scaling_factor(
             fixed_power_dBm=self.opx_output.full_scale_power_dbm,
             target_power_dBm=power_in_dbm,
-        ) > max_amplitude:
+        ) > max_amplitude and count<len(allowed_full_scale_power_in_dbm_values):
             self.opx_output.full_scale_power_dbm = self.opx_output.full_scale_power_dbm + 3
-
+            # print(f"[DEBUG] 2 self.opx_output.full_scale_power_dbm = {self.opx_output.full_scale_power_dbm}")
+            count += 1
+        
         if self.opx_output.full_scale_power_dbm not in allowed_full_scale_power_in_dbm_values:
-            raise ValueError(f"Expected full_scale_power_dbm to be in range [-41, 10] "
-                             f"in steps of 3 dB, got {full_scale_power_dbm}.")
+            raise ValueError(f"Expected full_scale_power_dbm to be in range [-11, 16] in steps of 3 dB, got {self.opx_output.full_scale_power_dbm}.")
 
         self.operations[operation].amplitude = self.calculate_voltage_scaling_factor(
             fixed_power_dBm=self.opx_output.full_scale_power_dbm,
@@ -166,7 +167,7 @@ class ReadoutResonatorMW(InOutMWChannel, ReadoutResonatorBase):
         )
 
         return {
-            "full_scale_power_dbm": full_scale_power_dbm,
+            "full_scale_power_dbm": self.opx_output.full_scale_power_dbm,
             "amplitude": self.operations[operation].amplitude
         }
 

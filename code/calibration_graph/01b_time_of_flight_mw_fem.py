@@ -35,9 +35,9 @@ class Parameters(NodeParameters):
 
     qubits: Optional[List[str]] = None
     num_averages: int = 100
-    time_of_flight_in_ns: Optional[int] = 24
+    time_of_flight_in_ns: Optional[int] = 28
     intermediate_frequency_in_mhz: Optional[float] = 50
-    readout_amplitude_in_dBm: Optional[float] = -3
+    readout_amplitude_in_dBm: Optional[float] = 1
     readout_length_in_ns: Optional[int] = None
     simulate: bool = False
     simulation_duration_ns: int = 2500
@@ -68,7 +68,7 @@ for q in qubits:
     with tracked_updates(resonator, auto_revert=False, dont_assign_to_none=True) as resonator:
         resonator.time_of_flight = node.parameters.time_of_flight_in_ns
         resonator.operations["readout"].length = node.parameters.readout_length_in_ns
-        resonator.set_output_power(node.parameters.readout_amplitude_in_dBm, operation="readout")
+        resonator.set_output_power(power_in_dbm=node.parameters.readout_amplitude_in_dBm, operation="readout")
         if node.parameters.intermediate_frequency_in_mhz is not None:
             resonator.intermediate_frequency = node.parameters.intermediate_frequency_in_mhz * u.MHz
         tracked_resonators.append(resonator)
@@ -87,7 +87,7 @@ with program() as raw_trace_prog:
     for i, rr in enumerate(resonators):
         with for_(n, 0, n < node.parameters.num_averages, n + 1):
             # Reset the phase of the digital oscillator associated to the resonator element. Needed to average the cosine signal.
-            reset_phase(rr.name)
+            reset_if_phase(rr.name)
             # Measure the resonator (send a readout pulse and record the raw ADC trace)
             rr.measure("readout", stream=adc_st[i])
             # Wait for the resonator to deplete
