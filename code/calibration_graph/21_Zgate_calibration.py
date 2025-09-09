@@ -38,13 +38,13 @@ import qiskit_experiments.curve_analysis as ca
 
 # %% {Node_parameters}
 class Parameters(NodeParameters):
-    qubits: Optional[List[str]] = None
+    qubits: Optional[List[str]] = ['q2']
     num_averages: int = 100
     ref_frequnecy_MHz: float = 0.0
     num_points: int = 100
     flux_point_joint_or_independent: Literal['joint', 'independent'] = "independent"
     simulate: bool = False
-    reset_type: Literal['active', 'thermal'] = "active"
+    reset_type: Literal['active', 'thermal'] = "thermal"
     timeout: int = 100
     load_data_id: Optional[int] = None
     multiplexed: bool = False
@@ -146,6 +146,7 @@ reset_type = node.parameters.reset_type
 
 # %%
 with program() as ramsey:
+    # reset_global_phase() 
     I, I_st, Q, Q_st, _, n_st = qua_declaration(num_qubits=num_qubits)
 
     state = [declare(int) for _ in range(num_qubits)]
@@ -331,6 +332,7 @@ if not node.parameters.simulate:
         # ax.legend()
     grid.fig.suptitle('Ramsey: Data and Fitted Curves')
     plt.tight_layout()
+    plt.show()
     node.results['figure_fitted'] = grid.fig
     # node.results['figure_fitted'] = []
 
@@ -339,14 +341,17 @@ if not node.parameters.simulate:
     if node.parameters.load_data_id is None:
         with node.record_state_updates():
             for qubit in qubits:
-                qubit.z.operations['z0'] = SquarePulse(
-                    length=qubit.xy.operations['x180'].length,
-                    amplitude=np.sqrt(-1e6*fit_data[qubit.name]['Z_id']/qubit.freq_vs_flux_01_quad_term)
-                )
-                qubit.z.operations['z90'] = SquarePulse(length=qubit.xy.operations['x180'].length, amplitude=np.sqrt(-1e6*fit_data[qubit.name]['Z_90']/qubit.freq_vs_flux_01_quad_term))
-                qubit.z.operations['z180'] = SquarePulse(length=qubit.xy.operations['x180'].length, amplitude=np.sqrt(-1e6*fit_data[qubit.name]['Z_180']/qubit.freq_vs_flux_01_quad_term))
-                qubit.z.operations['-z90'] = SquarePulse(length=qubit.xy.operations['x180'].length, amplitude=np.sqrt(-1e6*fit_data[qubit.name]['Z_270']/qubit.freq_vs_flux_01_quad_term))
-                print(f"{qubit.name}  Z180: {np.sqrt(-1e6*fit_data[qubit.name]['Z_180']/qubit.freq_vs_flux_01_quad_term)}")
+                qubit.z.operations['z0'].amplitude = np.sqrt(-1e6*fit_data[qubit.name]['Z_id']/qubit.freq_vs_flux_01_quad_term)
+                qubit.z.operations['z0'].length = qubit.xy.operations['x180'].length
+
+                qubit.z.operations['z90'].amplitude = np.sqrt(-1e6*fit_data[qubit.name]['Z_90']/qubit.freq_vs_flux_01_quad_term)
+                qubit.z.operations['z90'].length = qubit.xy.operations['x180'].length
+
+                qubit.z.operations['z180'].amplitude = np.sqrt(-1e6*fit_data[qubit.name]['Z_180']/qubit.freq_vs_flux_01_quad_term)
+                qubit.z.operations['z180'].length = qubit.xy.operations['x180'].length
+
+                qubit.z.operations['-z90'].amplitude = np.sqrt(-1e6*fit_data[qubit.name]['Z_270']/qubit.freq_vs_flux_01_quad_term)
+                qubit.z.operations['-z90'].length = qubit.xy.operations['x180'].length  # %%
     # %%
 
     node.results['initial_parameters'] = node.parameters.model_dump()
