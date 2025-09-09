@@ -7,7 +7,7 @@ import warnings
 from qualang_tools.multi_user import qm_session
 from qualang_tools.results import fetching_tool, progress_counter
 from qualibrate import QualibrationNode, NodeParameters
-from typing import Optional, Literal
+from typing import Optional, Literal, List
 
 from scipy.optimize import curve_fit
 
@@ -15,11 +15,11 @@ from quam_libs.trackable_object import tracked_updates
 
 
 class Parameters(NodeParameters):
-    qubits: Optional[str] = ["q5"]
+    qubits: Optional[List[str]] = ["q2"]
     num_averages: int = 50
     zeros_before_after_pulse: int = 50  # Beginning/End of the flux pulse (before we put zeros to see the rising time)
-    z_pulse_amplitude: float = 0.1  # defines how much you want to detune the qubit in frequency
-    flux_point_joint_or_independent: Literal['joint', 'independent'] = "joint"
+    z_pulse_amplitude: float = 0.05  # defines how much you want to detune the qubit in frequency
+    flux_point_joint_or_independent: Literal['joint', 'independent'] = "independent"
     reset_type_thermal_or_active: Literal['thermal', 'active'] = "thermal"
     simulate: bool = False
     timeout: int = 100
@@ -172,10 +172,12 @@ with program() as xy_z_delay_calibration:
                     qubit.align()
 
                     if init_state == "x180":
-                        qubit.xy.play("x180")
+                        qubit.xy.play("x180") 
                     elif init_state == "I":
-                        qubit.xy.wait(qubit.xy.operations['x180'].length)
-
+                        # qubit.xy.wait(qubit.xy.operations['x180'].length)
+                        qubit.xy.play("x180",amplitude_scale=0)
+                    qubit.align()
+                    wait(25)
                     with switch_(segment):
 
                         for j in range(0, number_of_segments):
@@ -232,79 +234,87 @@ ds.relative_time.attrs['units'] = 'nS'
 node.results = {}
 node.results['ds'] = ds
 
-# # %%
-# # Define a smooth model for each line
-# def smooth_model(x, a, b, c, d):
-#     return a / (1 + np.exp(-b * (x - c))) + d
+# %%
+# Define a smooth model for each line
+def smooth_model(x, a, b, c, d):
+    return a / (1 + np.exp(-b * (x - c))) + d
 
 
-# # Define the first derivative of the sigmoid
-# def sigmoid_derivative(x, a, b, c, d):
-#     exp_term = np.exp(-b * (x - c))
-#     return (a * b * exp_term) / ((1 + exp_term) ** 2)
+# Define the first derivative of the sigmoid
+def sigmoid_derivative(x, a, b, c, d):
+    exp_term = np.exp(-b * (x - c))
+    return (a * b * exp_term) / ((1 + exp_term) ** 2)
 
 
-# # Find the left boundary of the transition region
-# def find_transition_boundary(params, x_range, threshold=0.0001):
-#     a, b, c, d = params
-#     for x in x_range:
-#         if sigmoid_derivative(x, a, b, c, d) > threshold:
-#             return x
-#     return None  # If no boundary is found in the range
+# Find the left boundary of the transition region
+def find_transition_boundary(params, x_range, threshold=0.0001):
+    a, b, c, d = params
+    for x in x_range:
+        if sigmoid_derivative(x, a, b, c, d) > threshold:
+            return x
+    return None  # If no boundary is found in the range
 
-# grid = QubitGrid(ds, [q.grid_location for q in qubits])
+grid = QubitGrid(ds, [q.grid_location for q in qubits])
 
-# # %%
-# flux_delays = []
-# for ax, qubit in grid_iter(grid):
-#     x = ds.relative_time
-#     qubit = qubit['qubit']
-#     y1 = ds.state.sel(qubit=qubit).sel(sequence=0)
-#     y2 = ds.state.sel(qubit=qubit).sel(sequence=1)
+# %%
+flux_delays = []
+for ax, qubit in grid_iter(grid):
+    x = ds.relative_time
+    qubit = qubit['qubit']
+    y1 = ds.state.sel(qubit=qubit).sel(sequence=0)
+    y2 = ds.state.sel(qubit=qubit).sel(sequence=1)
 
-#     ax.plot(x, y1, label=r"$|0\rangle$", color="b", linewidth=2)
-#     ax.plot(x, y2, label=r"$|1\rangle$", color="r", linewidth=2)
+    ax.plot(x, y1, label=r"$|0\rangle$", color="b", linewidth=2)
+    ax.plot(x, y2, label=r"$|1\rangle$", color="r", linewidth=2)
+    plt.legend()
+    plt.ylabel('state')
+    plt.xlabel('relative time')
+    plt.show()
+    # node.results['figure1'] = plt.gcf()
 
-#     plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(8, 6))
 
-#     try:
-#         # Fit both lines to the smooth model
-#         bounds = ([0, -np.inf, -np.inf, 0], [np.inf, np.inf, np.inf, 1])  # d between 0 and 1
-#         params1, _ = curve_fit(smooth_model, x, y1, p0=[1, 1, 5, 0], bounds=bounds, maxfev=10000)
-#         params2, _ = curve_fit(smooth_model, x, y2, p0=[1, -1, 5, 0], bounds=bounds, maxfev=10000)
+    try:
+        # Fit both lines to the smooth model
+        bounds = ([0, -np.inf, -np.inf, 0], [np.inf, np.inf, np.inf, 1])  # d between 0 and 1
+        params1, _ = curve_fit(smooth_model, x, y1, p0=[1, 1, 5, 0], bounds=bounds, maxfev=10000)
+        params2, _ = curve_fit(smooth_model, x, y2, p0=[1, -1, 5, 0], bounds=bounds, maxfev=10000)
 
-#         # Extended x-range for boundary search
-#         extended_x = np.linspace(x.min() - len(x), x.max() + len(x), 1000)
+        # Extended x-range for boundary search
+        extended_x = np.linspace(x.min() - len(x), x.max() + len(x), 1000)
 
-#         crossing_point = find_transition_boundary(params2, extended_x, threshold=0.01)
-#         flux_delay = crossing_point - machine.qubits[qubit].xy.operations['x180'].length // 2
-#         flux_delays.append(flux_delay)
+        crossing_point = find_transition_boundary(params2, extended_x, threshold=0.01)
+        flux_delay = crossing_point - machine.qubits[qubit].xy.operations['x180'].length // 2
+        flux_delays.append(flux_delay)
 
-#         ax.plot(extended_x, smooth_model(extended_x, *params1), color="blue", linestyle="--")
-#         ax.plot(extended_x, smooth_model(extended_x, *params2), color="red", linestyle="--")
+        ax.plot(extended_x, smooth_model(extended_x, *params1), color="blue", linestyle="--")
+        ax.plot(extended_x, smooth_model(extended_x, *params2), color="red", linestyle="--")
 
-#         if flux_delay is not None:
-#             ax.axvline(crossing_point, color="black", linestyle="--", alpha=0.5)
-#             ax.axvline(flux_delay, color="green", linestyle="-", alpha=0.5, label="Delay")
+        if flux_delay is not None:
+            ax.axvline(crossing_point, color="black", linestyle="--", alpha=0.5)
+            ax.axvline(flux_delay, color="green", linestyle="-", alpha=0.5, label="Delay")
 
-#         ax.set_xlabel("Relative Time")
-#         ax.set_ylabel("State")
-#         ax.set_title(f"{qubit}")
+        ax.set_xlabel("Relative Time")
+        ax.set_ylabel("State")
+        ax.set_title(f"{qubit}")
 
-#         margin = 2
-#         ax.set_xlim(flux_delay - margin, max(x) + margin)
-#         ax.legend()
+        margin = 2
+        ax.set_xlim(flux_delay - margin, max(x) + margin)
+        ax.legend()
 
-#     except Exception as e:
-#         warnings.warn(f"Fitting for qubit {qubit} failed with error: {e}")
-#         flux_delays.append(None)
+    except Exception as e:
+        warnings.warn(f"Fitting for qubit {qubit} failed with error: {e}")
+        flux_delays.append(None)
 
-# grid.fig.suptitle('XY Z Delay Fitting')
-# plt.tight_layout()
-# plt.show()
+plt.legend()
+plt.ylabel('state')
+plt.xlabel('relative time')
+grid.fig.suptitle('XY Z Delay Fitting')
+plt.tight_layout()
+plt.show()
 
 
-# node.results['figure'] = grid.fig
+node.results['figure'] = grid.fig
 # %%
 
 ds.state.plot(hue = "sequence")
