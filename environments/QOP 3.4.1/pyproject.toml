@@ -1,5 +1,5 @@
 [project]
-name = "qolab-start-internal"
+name = "qolab-start"
 version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"

@@ -2095,7 +2095,7 @@ wheels = [
 ]
 
 [[package]]
-name = "qolab-start-internal"
+name = "qolab-start"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
