@@ -841,6 +841,15 @@ wheels = [
 ]
 
 [[package]]
+name = "iniconfig"
+version = "2.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f2/97/ebf4da567aa6827c909642694d71c9fcf53e5b504f2d96afea02718862f3/iniconfig-2.1.0.tar.gz", hash = "sha256:3abbd2e30b36733fee78f9c7f7308f2d0050e88f0087fd25c2645f63c773e1c7", size = 4793, upload-time = "2025-03-19T20:09:59.721Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2c/e1/e6716421ea10d38022b952c159d5161ca1193197fb744506875fbb87ea7b/iniconfig-2.1.0-py3-none-any.whl", hash = "sha256:9deba5723312380e77435581c6bf4935c94cbfab9b1ed33ef8d238ea168eb760", size = 6050, upload-time = "2025-03-19T20:10:01.071Z" },
+]
+
+[[package]]
 name = "ipykernel"
 version = "6.30.1"
 source = { registry = "https://pypi.org/simple" }
@@ -903,8 +912,8 @@ wheels = [
 
 [[package]]
 name = "iqcc-cloud-client"
-version = "0.11.0"
-source = { path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.11.0-py3-none-any.whl" }
+version = "0.12.0"
+source = { path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.12.0-py3-none-any.whl" }
 dependencies = [
     { name = "arrow" },
     { name = "cryptography" },
@@ -923,7 +932,7 @@ dependencies = [
     { name = "typer" },
 ]
 wheels = [
-    { filename = "iqcc_cloud_client-0.11.0-py3-none-any.whl", hash = "sha256:3e894132958c2e7d6b041608b3a5a12ebaabe65c5798beaeab9cd1f1dd9f482a" },
+    { filename = "iqcc_cloud_client-0.12.0-py3-none-any.whl", hash = "sha256:b4d76bab5652713bb3b2866df03d9013f3e87de4eb7509218fdbefad406f2367" },
 ]
 
 [package.metadata]
@@ -1532,6 +1541,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pluggy"
+version = "1.6.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f9/e2/3e91f31a7d2b083fe6ef3fa267035b518369d9511ffab804f839851d2779/pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3", size = 69412, upload-time = "2025-05-15T12:30:07.975Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746", size = 20538, upload-time = "2025-05-15T12:30:06.134Z" },
+]
+
+[[package]]
 name = "prompt-toolkit"
 version = "3.0.51"
 source = { registry = "https://pypi.org/simple" }
@@ -1770,6 +1788,22 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/6b/f8/53f1fc851dab776a183ffc9f29ebde244fbb467f5237f3ea809519fc4b2e/pyspnego-0.11.2.tar.gz", hash = "sha256:994388d308fb06e4498365ce78d222bf4f3570b6df4ec95738431f61510c971b", size = 225954, upload-time = "2024-11-11T20:44:27.382Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/57/ea/b3c1438839d8724beff7b31ec42b9d041265dc9ca27ccb54477d442bfbcf/pyspnego-0.11.2-py3-none-any.whl", hash = "sha256:74abc1fb51e59360eb5c5c9086e5962174f1072c7a50cf6da0bda9a4bcfdfbd4", size = 130529, upload-time = "2024-11-11T20:44:25.321Z" },
+]
+
+[[package]]
+name = "pytest"
+version = "8.4.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "iniconfig" },
+    { name = "packaging" },
+    { name = "pluggy" },
+    { name = "pygments" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a3/5c/00a0e072241553e1a7496d638deababa67c5058571567b92a7eaa258397c/pytest-8.4.2.tar.gz", hash = "sha256:86c0d0b93306b961d58d62a4db4879f27fe25513d4b969df351abdddb3c30e01", size = 1519618, upload-time = "2025-09-04T14:34:22.711Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a8/a4/20da314d277121d6534b3a980b29035dcd51e6744bd79075a6ce8fa4eb8d/pytest-8.4.2-py3-none-any.whl", hash = "sha256:872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79", size = 365750, upload-time = "2025-09-04T14:34:20.226Z" },
 ]
 
 [[package]]
@@ -2147,6 +2181,7 @@ dependencies = [
     { name = "pyjwt" },
     { name = "pyparsing" },
     { name = "pyspnego" },
+    { name = "pytest" },
     { name = "python-dateutil" },
     { name = "python-dotenv" },
     { name = "python-json-logger" },
@@ -2254,7 +2289,7 @@ requires-dist = [
     { name = "ibm-platform-services", specifier = "==0.66.2" },
     { name = "idna", specifier = "==3.10" },
     { name = "inflect", specifier = "==5.6.2" },
-    { name = "iqcc-cloud-client", path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.11.0-py3-none-any.whl" },
+    { name = "iqcc-cloud-client", path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.12.0-py3-none-any.whl" },
     { name = "isort", specifier = "==5.13.2" },
     { name = "jinja2", specifier = "==3.1.6" },
     { name = "joblib", specifier = "==1.5.1" },
@@ -2289,6 +2324,7 @@ requires-dist = [
     { name = "pyjwt", specifier = "==2.10.1" },
     { name = "pyparsing", specifier = "==3.2.3" },
     { name = "pyspnego", specifier = "==0.11.2" },
+    { name = "pytest", specifier = ">=8.4.2" },
     { name = "python-dateutil", specifier = "==2.9.0.post0" },
     { name = "python-dotenv", specifier = "==1.1.1" },
     { name = "python-json-logger", specifier = "==3.3.0" },
@@ -2310,7 +2346,7 @@ requires-dist = [
     { name = "qualibrate-core", specifier = "==0.3.2" },
     { name = "qualibrate-runner", specifier = "==0.3.3" },
     { name = "quam", git = "https://github.com/qua-platform/quam.git?rev=11391d518036c149eeadee649ba1386f44177b1f" },
-    { name = "quam-libs", directory = "local_packages/quam_libs" },
+    { name = "quam-libs", editable = "local_packages/quam_libs" },
     { name = "requests", specifier = "==2.32.4" },
     { name = "requests-ntlm", specifier = "==1.3.0" },
     { name = "requests-oauthlib", specifier = "==2.0.0" },
@@ -2471,7 +2507,7 @@ dependencies = [
 [[package]]
 name = "quam-libs"
 version = "0.1.0"
-source = { directory = "local_packages/quam_libs" }
+source = { editable = "local_packages/quam_libs" }
 dependencies = [
     { name = "gitpython" },
     { name = "lmfit" },

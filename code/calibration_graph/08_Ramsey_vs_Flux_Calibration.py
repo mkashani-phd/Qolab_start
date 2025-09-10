@@ -44,9 +44,9 @@ class Parameters(NodeParameters):
     frequency_detuning_in_mhz: float = 4.0
     min_wait_time_in_ns: int = 16
     max_wait_time_in_ns: int = 2000
-    wait_time_step_in_ns: int = 20
-    flux_span: float = 0.04
-    flux_step: float = 0.002
+    wait_time_step_in_ns: int = 8
+    flux_span: float = 0.4
+    flux_step: float = 0.02
     flux_point_joint_or_independent: Literal["joint", "independent"] = "independent"
     simulate: bool = False
     simulation_duration_ns: int = 2500

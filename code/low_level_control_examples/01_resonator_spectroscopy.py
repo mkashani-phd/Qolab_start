@@ -71,10 +71,7 @@ with program() as resonator_spec:
 #######################
 # Simulate or execute #
 #######################
-qc = IQCC_Cloud(
-    quantum_computer_backend="qc_qolab",
-    api_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicXVhbnR1bV9tYWNoaW5lcyIsInFwdSI6eyJxY19xb2xhYiI6eyJmcm9tIjoxNzMzMzQ2MDAwLjAsInRvIjoxNzMzNTY5MjAwLjB9fSwiZXhwaXJlcyI6MTczMzU2OTIwMC4wfQ.euxYU1sVI9QT3Un5P-cmncyp2iS42oPcyl3UPLQt0To"
-) # token
+qc = IQCC_Cloud(quantum_computer_backend="qolab")
 
 run_data = qc.execute(resonator_spec, config, True) # 60 seconds by default
 
