@@ -1877,7 +1877,7 @@
                     "opx_output": "#/ports/mw_outputs/con1/1/1"
                 },
                 "xy": {
-                    "opx_output": "#/ports/mw_outputs/con1/1/3"
+                    "opx_output": "#/ports/mw_outputs/con1/1/2"
                 },
                 "z": {
                     "opx_output": "#/ports/analog_outputs/con1/5/1"

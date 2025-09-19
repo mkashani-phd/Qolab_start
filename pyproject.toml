@@ -61,7 +61,7 @@ dependencies = [
     "kiwisolver==1.4.8",
     "lmfit==1.3.3",
     "markupsafe==3.0.2",
-    "marshmallow==3.26.1",
+    "marshmallow==3.23.3",
     "marshmallow-polyfield==5.11",
     "matplotlib==3.10.3",
     "multidict==6.5.1",
@@ -99,8 +99,8 @@ dependencies = [
     "qiskit-experiments==0.11.0",
     "qiskit-ibm-experiment==0.4.8",
     "qiskit-ibm-runtime==0.40.1",
-    "qm-octave==2.1.3",
-    "qm-qua==1.2.3a1",
+    "qm-octave==2.1.6",
+    "qm-qua==1.2.3",
     "qm-saas>=1.1.5",
     "qualang-tools==0.19.4",
     "qualibrate==0.2.2",
@@ -147,11 +147,11 @@ windows = [
 ]
 
 [tool.uv]
-override-dependencies = ["quam @ git+https://github.com/qua-platform/quam.git@11391d518036c149eeadee649ba1386f44177b1f"]
+override-dependencies = []
 constraint-dependencies = []
 
 [tool.uv.sources]
-quam = { git = "https://github.com/qua-platform/quam.git", rev = "11391d518036c149eeadee649ba1386f44177b1f" }
+quam = { git = "https://github.com/qua-platform/quam.git" }
 quam-libs = { path = "local_packages/quam_libs", editable = true }
 iqcc-cloud-client = { path = "local_packages/iqcc_cloud_client/iqcc_cloud_client-0.12.0-py3-none-any.whl" }
 
