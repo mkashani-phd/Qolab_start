@@ -57,7 +57,12 @@ class Parameters(NodeParameters):
     timeout: int = 100
     load_data_id: Optional[int] = None
 
-node = QualibrationNode(name="02b_Resonator_Spectroscopy_vs_Flux", parameters=Parameters())
+description="""Typical Runtime w/Default Params:
+10-15s for all qubits
+6-8s per qubit
+"""
+
+node = QualibrationNode(name="02b_Resonator_Spectroscopy_vs_Flux", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}

@@ -48,8 +48,12 @@ class Parameters(NodeParameters):
     load_data_id: Optional[int] = None
     multiplexed: bool = False
 
+description="""Typical Runtime w/Default Params:
+10-15s for all qubits
+6-8s per qubit
+"""
 
-node = QualibrationNode(name="02a_Resonator_Spectroscopy", parameters=Parameters())
+node = QualibrationNode(name="02a_Resonator_Spectroscopy", description=description, parameters=Parameters())
 assert not (
     node.parameters.simulate and node.parameters.load_data_id is not None
 ), "If simulate is True, load_data_id must be None, and vice versa."

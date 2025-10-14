@@ -43,8 +43,12 @@ class Parameters(NodeParameters):
     simulation_duration_ns: int = 2500
     timeout: int = 100
 
+description="""Typical Runtime w/Default Params:
+9-11s for all qubits
+6-8s per qubit
+"""
 
-node = QualibrationNode(name="01b_Time_of_Flight_MW_FEM", parameters=Parameters())
+node = QualibrationNode(name="01b_Time_of_Flight_MW_FEM", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}

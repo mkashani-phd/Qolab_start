@@ -48,7 +48,12 @@ class Parameters(NodeParameters):
     load_data_id: Optional[int] = None
     multiplexed: bool = False
 
-node = QualibrationNode(name="07a_Readout_Frequency_Optimization", parameters=Parameters())
+description = """Typical Runtime w/Default Params:
+50-60s for all qubits
+10-15s per qubit
+"""
+
+node = QualibrationNode(name="07a_Readout_Frequency_Optimization", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}

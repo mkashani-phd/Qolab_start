@@ -55,8 +55,12 @@ class Parameters(NodeParameters):
     load_data_id: Optional[int] = None
     multiplexed: bool = False
 
+description = """Typical Runtime w/Default Params:
+30-35s for all qubits
+8-10s per qubit
+"""
 
-node = QualibrationNode(name="07b_IQ_Blobs", parameters=Parameters())
+node = QualibrationNode(name="07b_IQ_Blobs", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}

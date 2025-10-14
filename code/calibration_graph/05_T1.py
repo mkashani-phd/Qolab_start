@@ -35,11 +35,11 @@ import numpy as np
 # %% {Node_parameters}
 class Parameters(NodeParameters):
     qubits: Optional[List[str]] = None
-    num_averages: int = 20
+    num_averages: int = 500
     min_wait_time_in_ns: int = 16
-    max_wait_time_in_ns: int = 300000
-    wait_time_step_in_ns: int = 1000
-    flux_point_joint_or_independent_or_arbitrary: Literal["joint", "independent", "arbitrary"] = "joint"
+    max_wait_time_in_ns: int = 400000
+    wait_time_step_in_ns: int = 5000
+    flux_point_joint_or_independent_or_arbitrary: Literal["joint", "independent", "arbitrary"] = "independent"
     reset_type: Literal["active", "thermal"] = "active"
     use_state_discrimination: bool = True
     simulate: bool = False
@@ -48,8 +48,12 @@ class Parameters(NodeParameters):
     load_data_id: Optional[int] = None
     multiplexed: bool = False
 
-node = QualibrationNode(name="05_T1", parameters=Parameters())
+description = """Typical Runtime w/Default Params:
+60-75s for all qubits
+30-40s per qubit
+"""
 
+node = QualibrationNode(name="05_T1", description=description, parameters=Parameters())
 
 # %% {Initialize_QuAM_and_QOP}
 # Class containing tools to help handle units and conversions.

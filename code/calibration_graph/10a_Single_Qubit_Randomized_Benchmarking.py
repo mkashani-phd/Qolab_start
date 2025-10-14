@@ -50,14 +50,19 @@ class Parameters(NodeParameters):
     delta_clifford: int = 50
     seed: int = 345324
     flux_point_joint_or_independent: Literal["joint", "independent"] = "independent"
-    reset_type_thermal_or_active: Literal["thermal", "active"] = "therma"
+    reset_type_thermal_or_active: Literal["thermal", "active"] = "active"
     simulate: bool = False
     simulation_duration_ns: int = 2500
     timeout: int = 100
     load_data_id: Optional[int] = None
     multiplexed: bool = False
 
-node = QualibrationNode(name="10a_Single_Qubit_Randomized_Benchmarking", parameters=Parameters())
+description = """Typical Runtime w/Default Params:
+40-50s for all qubits
+8-10s per qubit
+"""
+
+node = QualibrationNode(name="10a_Single_Qubit_Randomized_Benchmarking", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}

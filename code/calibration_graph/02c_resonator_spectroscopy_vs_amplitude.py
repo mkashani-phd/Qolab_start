@@ -62,7 +62,12 @@ class Parameters(NodeParameters):
     multiplexed: bool = False
     load_data_id: Optional[int] = None
 
-node = QualibrationNode(name="02c_Resonator_Spectroscopy_vs_Amplitude", parameters=Parameters())
+description = """Typical Runtime w/Default Params:
+35-45s for all qubits
+10-15s per qubit
+"""
+
+node = QualibrationNode(name="02c_Resonator_Spectroscopy_vs_Amplitude", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}
