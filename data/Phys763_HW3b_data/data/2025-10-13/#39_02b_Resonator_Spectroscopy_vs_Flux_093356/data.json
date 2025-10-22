@@ -1,0 +1,65 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q1": {
+            "resonator_frequency": "./arrays.npz#fit_results.q1.resonator_frequency",
+            "min_offset": -0.10515420862383343,
+            "offset": 0.10810364206890435,
+            "dv_phi0": 0.42651570138547557,
+            "m_pH": 0.24242952759797545
+        },
+        "q2": {
+            "resonator_frequency": "./arrays.npz#fit_results.q2.resonator_frequency",
+            "min_offset": -0.19838010733714495,
+            "offset": 0.2517118308189462,
+            "dv_phi0": 0.9001838763121823,
+            "m_pH": 0.11486542107774995
+        },
+        "q3": {
+            "resonator_frequency": "./arrays.npz#fit_results.q3.resonator_frequency",
+            "min_offset": -0.5,
+            "offset": 0.15709315522016695,
+            "dv_phi0": 360.84901931875646,
+            "m_pH": 0.0002865464348363975
+        },
+        "q4": {
+            "resonator_frequency": "./arrays.npz#fit_results.q4.resonator_frequency",
+            "min_offset": NaN,
+            "offset": NaN,
+            "dv_phi0": Infinity,
+            "m_pH": 0.0
+        },
+        "q5": {
+            "resonator_frequency": "./arrays.npz#fit_results.q5.resonator_frequency",
+            "min_offset": -0.2633526508738379,
+            "offset": 0.09980491919110258,
+            "dv_phi0": 0.726315140129881,
+            "m_pH": 0.14236244611603419
+        },
+        "q6": {
+            "resonator_frequency": "./arrays.npz#fit_results.q6.resonator_frequency",
+            "min_offset": -0.2529489939003919,
+            "offset": 0.1720135162737712,
+            "dv_phi0": 0.8499250203483262,
+            "m_pH": 0.12165779042205795
+        }
+    },
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 10,
+        "min_flux_offset_in_v": -0.5,
+        "max_flux_offset_in_v": 0.5,
+        "num_flux_points": 101,
+        "frequency_span_in_mhz": 4.0,
+        "frequency_step_in_mhz": 0.1,
+        "flux_point_joint_or_independent": "independent",
+        "input_line_impedance_in_ohm": 50.0,
+        "line_attenuation_in_db": 0.0,
+        "update_flux_min": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null
+    }
+}

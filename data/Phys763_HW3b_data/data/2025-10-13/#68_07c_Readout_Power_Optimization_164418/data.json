@@ -1,0 +1,73 @@
+{
+    "ds": "./ds.h5",
+    "results": {
+        "q1": {
+            "best_amp": 0.09627160164609055,
+            "angle": 0.7019950021243608,
+            "threshold": 4.643171825448165e-05,
+            "fidelity": 51.925,
+            "confusion_matrix": "./arrays.npz#results.q1.confusion_matrix",
+            "rus_threshold": 3.2604373956018185e-05
+        },
+        "q2": {
+            "best_amp": 0.12825480932784636,
+            "angle": 5.932072619717313,
+            "threshold": 0.000162332630738532,
+            "fidelity": 95.675,
+            "confusion_matrix": "./arrays.npz#results.q2.confusion_matrix",
+            "rus_threshold": 0.00010951549330189694
+        },
+        "q3": {
+            "best_amp": 0.1282548093278464,
+            "angle": 6.145216327035584,
+            "threshold": 7.373592433931348e-05,
+            "fidelity": 94.17500000000001,
+            "confusion_matrix": "./arrays.npz#results.q3.confusion_matrix",
+            "rus_threshold": -8.384925023616251e-06
+        },
+        "q4": {
+            "best_amp": 0.20421606348879753,
+            "angle": 6.205294187486118,
+            "threshold": 0.00018017378791141504,
+            "fidelity": 90.525,
+            "confusion_matrix": "./arrays.npz#results.q4.confusion_matrix",
+            "rus_threshold": 8.046265694958275e-05
+        },
+        "q5": {
+            "best_amp": 0.249879699682203,
+            "angle": 0.10182401296894472,
+            "threshold": 4.0728701497580124e-05,
+            "fidelity": 91.10000000000001,
+            "confusion_matrix": "./arrays.npz#results.q5.confusion_matrix",
+            "rus_threshold": -7.166716266113885e-05
+        },
+        "q6": {
+            "best_amp": 0.22407615747599452,
+            "angle": 6.177129060768234,
+            "threshold": 0.0002489530531233898,
+            "fidelity": 97.125,
+            "confusion_matrix": "./arrays.npz#results.q6.confusion_matrix",
+            "rus_threshold": 0.00013946794580635953
+        }
+    },
+    "figs": {},
+    "figure_assignment_fid": "./figure_assignment_fid.png",
+    "figure_IQ_blobs": "./figure_IQ_blobs.png",
+    "figure_fidelities": "./figure_fidelities.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_runs": 2000,
+        "reset_type_thermal_or_active": "thermal",
+        "flux_point_joint_or_independent": "independent",
+        "start_amp": 0.5,
+        "end_amp": 1.99,
+        "num_amps": 10,
+        "outliers_threshold": 0.98,
+        "plot_raw": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

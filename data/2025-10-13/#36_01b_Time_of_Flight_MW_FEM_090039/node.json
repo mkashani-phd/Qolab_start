@@ -1,0 +1,172 @@
+{
+    "created_at": "2025-10-13T09:00:39-05:00",
+    "metadata": {
+        "description": null,
+        "run_start": "2025-10-13T08:55:06.120-05:00",
+        "run_end": "2025-10-13T09:00:39.686-05:00",
+        "name": "01b_Time_of_Flight_MW_FEM",
+        "data_path": "2025-10-13/#36_01b_Time_of_Flight_MW_FEM_090039"
+    },
+    "data": {
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 100,
+                "time_of_flight_in_ns": 28,
+                "intermediate_frequency_in_mhz": 50.0,
+                "readout_amplitude_in_dBm": 1.0,
+                "readout_length_in_ns": null,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "time_of_flight_in_ns": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 28,
+                        "title": "Time Of Flight In Ns"
+                    },
+                    "intermediate_frequency_in_mhz": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 50,
+                        "title": "Intermediate Frequency In Mhz"
+                    },
+                    "readout_amplitude_in_dBm": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 1,
+                        "title": "Readout Amplitude In Dbm"
+                    },
+                    "readout_length_in_ns": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Readout Length In Ns"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {
+            "q1.resonator": "successful",
+            "q2.resonator": "successful",
+            "q3.resonator": "successful",
+            "q4.resonator": "successful",
+            "q5.resonator": "successful",
+            "q6.resonator": "successful"
+        },
+        "quam": "./quam_state"
+    },
+    "id": 36,
+    "parents": [
+        35
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q1/resonator/time_of_flight",
+            "value": 412,
+            "old": 408
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q2/resonator/time_of_flight",
+            "value": 412,
+            "old": 408
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q3/resonator/time_of_flight",
+            "value": 412,
+            "old": 408
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q4/resonator/time_of_flight",
+            "value": 412,
+            "old": 408
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q5/resonator/time_of_flight",
+            "value": 412,
+            "old": 408
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q6/resonator/time_of_flight",
+            "value": 412,
+            "old": 408
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q1/resonator/time_of_flight",
+            "value": 412,
+            "old": 412
+        }
+    ]
+}
