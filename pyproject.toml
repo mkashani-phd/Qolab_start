@@ -68,6 +68,7 @@ dependencies = [
     "mypy-extensions==1.1.0",
     "networkx==3.2.1",
     "numpy==1.26.4",
+    "torch==2.2.0",
     "oauthlib==3.3.1",
     "packaging==25.0",
     "pandas==2.3.0",
