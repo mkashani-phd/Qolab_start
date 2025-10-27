@@ -472,7 +472,7 @@
                         "__class__": "quam.components.pulses.SquarePulse"
                     }
                 },
-                "intermediate_frequency": -334590217.0,
+                "intermediate_frequency": -334316201.0,
                 "core": "q1",
                 "opx_input": "#/wiring/qubits/q1/rr/opx_input",
                 "time_of_flight": 412,
@@ -670,7 +670,7 @@
                         "__class__": "quam.components.pulses.SquarePulse"
                     }
                 },
-                "intermediate_frequency": -249283273.0,
+                "intermediate_frequency": -249144233.0,
                 "core": "q2",
                 "opx_input": "#/wiring/qubits/q2/rr/opx_input",
                 "time_of_flight": 412,
@@ -1189,7 +1189,7 @@
                         "__class__": "quam.components.pulses.SquarePulse"
                     }
                 },
-                "intermediate_frequency": -163384822.0,
+                "intermediate_frequency": -162921754.0,
                 "core": "q3",
                 "opx_input": "#/wiring/qubits/q3/rr/opx_input",
                 "time_of_flight": 412,
@@ -1391,7 +1391,7 @@
                         "__class__": "quam.components.pulses.SquarePulse"
                     }
                 },
-                "intermediate_frequency": -43098029.0,
+                "intermediate_frequency": -42878147.0,
                 "core": "q4",
                 "opx_input": "#/wiring/qubits/q4/rr/opx_input",
                 "time_of_flight": 412,
@@ -1591,7 +1591,7 @@
                         "__class__": "quam.components.pulses.SquarePulse"
                     }
                 },
-                "intermediate_frequency": 52601794.0,
+                "intermediate_frequency": 52711285.0,
                 "core": "q5",
                 "opx_input": "#/wiring/qubits/q5/rr/opx_input",
                 "time_of_flight": 412,
@@ -1847,7 +1847,7 @@
                         "__class__": "quam.components.pulses.SquarePulse"
                     }
                 },
-                "intermediate_frequency": 153019539.0,
+                "intermediate_frequency": 153424688.0,
                 "core": "q6",
                 "opx_input": "#/wiring/qubits/q6/rr/opx_input",
                 "time_of_flight": 412,
