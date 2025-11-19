@@ -1,0 +1,118 @@
+{
+    "created_at": "2025-11-13T04:18:14-06:00",
+    "metadata": {
+        "description": null,
+        "run_start": "2025-11-13T04:17:59.139-06:00",
+        "run_end": "2025-11-13T04:18:14.452-06:00",
+        "name": "21_Zgate_calibration",
+        "data_path": "2025-11-13/#98_21_Zgate_calibration_041814"
+    },
+    "data": {
+        "parameters": {
+            "model": {
+                "qubits": [
+                    "q3"
+                ],
+                "num_averages": 100,
+                "ref_frequnecy_MHz": 0.0,
+                "num_points": 100,
+                "flux_point_joint_or_independent": "independent",
+                "simulate": false,
+                "reset_type": "thermal",
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": [
+                            "q2"
+                        ],
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 100,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "ref_frequnecy_MHz": {
+                        "default": 0.0,
+                        "title": "Ref Frequnecy Mhz",
+                        "type": "number"
+                    },
+                    "num_points": {
+                        "default": 100,
+                        "title": "Num Points",
+                        "type": "integer"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "independent",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "reset_type": {
+                        "default": "thermal",
+                        "enum": [
+                            "active",
+                            "thermal"
+                        ],
+                        "title": "Reset Type",
+                        "type": "string"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {},
+        "quam": "./quam_state"
+    },
+    "id": 98,
+    "parents": [
+        97
+    ]
+}

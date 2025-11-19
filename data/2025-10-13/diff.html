@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body style="color:white; background-color:black">
+<pre>
+<span style="font-weight:bold;">diff --git a/.DS_Store b/.DS_Store</span>
+<span style="font-weight:bold;">index 40f95e2..8ce18fe 100644</span>
+Binary files a/.DS_Store and b/.DS_Store differ
+<span style="font-weight:bold;">diff --git a/code/.DS_Store b/code/.DS_Store</span>
+<span style="font-weight:bold;">index 629362f..c6ad94a 100644</span>
+Binary files a/code/.DS_Store and b/code/.DS_Store differ
+<span style="font-weight:bold;">diff --git a/code/Phys763_HW3b.ipynb b/code/Phys763_HW3b.ipynb</span>
+<span style="font-weight:bold;">index ecf98cb..083108f 100644</span>
+<span style="font-weight:bold;">--- a/code/Phys763_HW3b.ipynb</span>
+<span style="font-weight:bold;">+++ b/code/Phys763_HW3b.ipynb</span>
+<span style="color:aqua;">@@ -749,6 +749,440 @@</span>
+     &quot;# Qubit comparison\n&quot;,
+     &quot;based on the t1 time the the dataset 70 overall was better tuned. Moreover, in the dataset 70 the qubit 6 is performing better.&quot;
+    ]
+<span style="color:lime;">+</span><span style="color:lime;">  },</span>
+<span style="color:lime;">+</span><span style="color:lime;">  {</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;cell_type&quot;: &quot;markdown&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;id&quot;: &quot;2dbd7115&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;metadata&quot;: {},</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;source&quot;: [</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;# Qeustion 4 \n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;Between the experiments run on 2025/10/13\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;and 2025/10/14, there was a large change in performance. This can be attributed to\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;the tune-up of the qubits between 10-13 and 10-14. All of the attributes that go into\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;this are in the state.json file. Compare the\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;data/2025-10-13/#58 05 T1 160134/quam state/state.json and\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;data/2025-10-14/#70 05 T1 091936/quam state/state.json files. What are the\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;most significant changes between the two? How, in terms of Hamiltonians, resonators,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;input/output theory, IQ Blobs, or any other concept we have learned, would that have\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;had an impact?\n&quot;</span>
+<span style="color:lime;">+</span><span style="color:lime;">   ]</span>
+<span style="color:lime;">+</span><span style="color:lime;">  },</span>
+<span style="color:lime;">+</span><span style="color:lime;">  {</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;cell_type&quot;: &quot;code&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;execution_count&quot;: 54,</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;id&quot;: &quot;a333a78c&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;metadata&quot;: {},</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;outputs&quot;: [</span>
+<span style="color:lime;">+</span><span style="color:lime;">    {</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;name&quot;: &quot;stdout&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;output_type&quot;: &quot;stream&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;text&quot;: [</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;12c12\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.36459424044599925,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.7752139560459118,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;21c21\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.4126119264510133,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.3876069780229559,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;156c156\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;independent_offset\&quot;: 0.22010615775258122,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;independent_offset\&quot;: 0.2210468213533309,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;455,458c455,458\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.513\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.487]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.492\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.508]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.5105\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.4895]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.4955\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.5045]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;463,466c463,466\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.0965935802469136,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;threshold\&quot;: -8.349144692330762e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;rus_exit_threshold\&quot;: -7.34090901829912e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;integration_weights_angle\&quot;: -9.322162529622773,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.08311111111111112,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;threshold\&quot;: -6.563634823941557e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;rus_exit_threshold\&quot;: -5.8679638278296466e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;integration_weights_angle\&quot;: -7.414442507547852,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;475c475\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -333148363.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -332840189.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;488,489c488,489\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_current\&quot;: 35.42454738655802,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_voltage\&quot;: 0.7084909477311604,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_current\&quot;: 35.47420414978698,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_voltage\&quot;: 0.7094840829957396,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;501,502c501,502\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.38523208853708824,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;alpha\&quot;: 0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.39777611171770494,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;alpha\&quot;: -0.20000000000000195,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;503a504\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;detuning\&quot;: -200000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;510,511c511,512\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.1871119526532948,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;alpha\&quot;: 0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.26803350019118777,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;alpha\&quot;: -0.14083098693235294,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;519c520\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.27071383519309966,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;539c540\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.26803350019118777,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;549c550\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.2653531651892759,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;606c607\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.48204734762317947,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.5554653326727821,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;611c612\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -133551141.09374425,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -133572996.00118549,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;645c646\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;independent_offset\&quot;: -0.1825175987705872,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;independent_offset\&quot;: -0.1827178355850459,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;651,654c652,655\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.9635\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                &quot;</span>
+<span style="color:lime;">+</span><span style="color:lime;">     ]</span>
+<span style="color:lime;">+</span><span style="color:lime;">    },</span>
+<span style="color:lime;">+</span><span style="color:lime;">    {</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;data&quot;: {</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;text/plain&quot;: [</span>
+<span style="color:lime;">+</span><span style="color:lime;">       &quot;256&quot;</span>
+<span style="color:lime;">+</span><span style="color:lime;">      ]</span>
+<span style="color:lime;">+</span><span style="color:lime;">     },</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;execution_count&quot;: 54,</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;metadata&quot;: {},</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;output_type&quot;: &quot;execute_result&quot;</span>
+<span style="color:lime;">+</span><span style="color:lime;">    },</span>
+<span style="color:lime;">+</span><span style="color:lime;">    {</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;name&quot;: &quot;stdout&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;output_type&quot;: &quot;stream&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">     &quot;text&quot;: [</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;     \&quot;0.0365]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.0125\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.9875]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.9425\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.0575]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.0155\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.9845]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;659,662c660,663\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.15431728395061728,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;threshold\&quot;: 0.00045808282684152223,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;rus_exit_threshold\&quot;: 0.0002938227259753578,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;integration_weights_angle\&quot;: 0.44406988854694474,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.13462579588477366,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;threshold\&quot;: 0.00016816928812431303,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;rus_exit_threshold\&quot;: 9.786276098748899e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;integration_weights_angle\&quot;: -10.691949911844818,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;671c672\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -249085112.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -249135009.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;674c675\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;time_of_flight\&quot;: 416,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;time_of_flight\&quot;: 408,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;679c680\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -27135854341.73669,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -26896438719.00645,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;684,686c685,687\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_current\&quot;: 34.93260262518741,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_voltage\&quot;: 0.6986520525037482,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;chi\&quot;: -600000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_current\&quot;: 34.94869062240916,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_voltage\&quot;: 0.6989738124481831,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;chi\&quot;: -575000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;698,699c699,700\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.14535816159673073,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;alpha\&quot;: -1.8233999999999975,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.1445977787327842,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;alpha\&quot;: -1.8000000000000034,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;707c708\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.07223477153811021,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.07291664375050343,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;803c804\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.026602895571662694,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.026662323390717207,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;835c836\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -33093437.5251361,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -33057956.824535288,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;869c870\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;independent_offset\&quot;: 0.36079758666697215,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;independent_offset\&quot;: 0.36094253557787487,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1168,1171c1169,1172\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.9555\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.0445]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.0725\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.9275]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.892\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.108]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.0275\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.9725]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1177,1180c1178,1181\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.09659358024691359,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;threshold\&quot;: 0.00013146497775791307,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;rus_exit_threshold\&quot;: -2.7559862477869368e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;integration_weights_angle\&quot;: -3.42019225607244,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.22407615747599452,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;threshold\&quot;: 0.00019427677656421718,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;rus_exit_threshold\&quot;: 0.00011141493553599337,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;integration_weights_angle\&quot;: -10.522110789725222,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1189c1190\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -162913625.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -162816319.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1197c1198\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -23429539689.406776,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -23557150316.318367,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1202,1203c1203,1204\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_current\&quot;: 36.34077973207385,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_voltage\&quot;: 0.7268155946414769,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_current\&quot;: 36.34645920166541,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_voltage\&quot;: 0.7269291840333082,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1217,1218c1218,1219\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.1514680570990137,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;alpha\&quot;: -1.0800000000000027,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.15026948011486774,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;alpha\&quot;: -1.0000000000000027,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1227c1228\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.07607138440563795,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.07596957050251649,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1323c1324\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.031212444486181917,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.045461706659895074,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1328c1329\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -58646719.66295871,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -58817355.87163816,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1362c1363\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;independent_offset\&quot;: 0.10094009497003413,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;independent_offset\&quot;: 0.10094783247244415,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1370,1373c1371,1374\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.9615\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.0385]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.068\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.932]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.976\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.024]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.0575\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.9425]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1378,1381c1379,1382\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.17571171810699596,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;threshold\&quot;: 0.0003421035952686217,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;rus_exit_threshold\&quot;: 0.00012153055800448876,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;integration_weights_angle\&quot;: -0.7298784517460994,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.1327777777777778,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;threshold\&quot;: 0.00024414010248709726,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;rus_exit_threshold\&quot;: 1.367747061573613e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;integration_weights_angle\&quot;: -0.5407451264179599,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1390c1391\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -42912991.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -42906942.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1398c1399\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -18996936621.66549,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -17824826959.10977,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1403,1405c1404,1406\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_current\&quot;: 41.81015618175204,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_voltage\&quot;: 0.8362031236350409,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;chi\&quot;: -250000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_current\&quot;: 41.32255627007389,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_voltage\&quot;: 0.8264511254014778,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;chi\&quot;: -275000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1417c1418\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.14322940876401385,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.09982051000161137,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1427c1428\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.0716259631402369,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.05002753139031111,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1436c1437\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.05052780670421422,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1456c1457\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.04902698076250488,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1466c1467\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.049527256076408,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1523c1524\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.02702015626249105,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.00940662809929637,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1528c1529\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -2712429.7035114123,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -302721049.3611746,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1536c1537\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;length\&quot;: 64000,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;length\&quot;: 100,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1562c1563\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;independent_offset\&quot;: -0.08760168091449198,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;independent_offset\&quot;: -0.08906697066538863,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1569,1572c1570,1573\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.931\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.069]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.0895\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.9105]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.981\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.019]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.051\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.949]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1577,1580c1578,1581\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.1673301560371895,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;threshold\&quot;: 1.631677388052212e-05,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;rus_exit_threshold\&quot;: -0.00022935329252310498,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;integration_weights_angle\&quot;: -10.365659226869472,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.22800935472646505,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;threshold\&quot;: 0.00021738259880569363,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;rus_exit_threshold\&quot;: 0.00011629691848905461,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;integration_weights_angle\&quot;: -17.791697170191462,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1589c1590\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: 52631020.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: 52781020.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1597c1598\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -22316821465.428276,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -21897908962.40599,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1601,1603c1602,1604\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_current\&quot;: 38.885125910160426,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_voltage\&quot;: 0.7777025182032085,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;chi\&quot;: -250000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_current\&quot;: 38.29038530311451,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_voltage\&quot;: 0.7658077060622902,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;chi\&quot;: -200000.0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1615,1616c1616,1617\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.4733407684996025,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;alpha\&quot;: 0,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.49817573736189436,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;alpha\&quot;: -0.7500000000000027,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1625c1626\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.2353994560044307,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.334646739323467,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1635c1636\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.3379932067167017,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1655c1656\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.3379932067167017,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1665c1666\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: \&quot;#../x90_DragCosine/amplitude\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.3379932067167017,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1722c1723\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.9312032891174945,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.5425984497074147,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1754c1755\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;intermediate_frequency\&quot;: -150350327.86749604,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;intermediate_frequency\&quot;: -150356556.82558647,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1788c1789\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                 \&quot;independent_offset\&quot;: 0.16779377694696504,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                 \&quot;independent_offset\&quot;: 0.16779816217845217,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1793,1796c1794,1797\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.972\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.028]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;[0.0115\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                     \&quot;0.9885]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.9495\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.0505]\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;[0.016\&quot;,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                     \&quot;0.984]\&quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1833,1836c1834,1837\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;amplitude\&quot;: 0.19279975308641975,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;threshold\&quot;: 0.0004942477720727164,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;rus_exit_threshold\&quot;: 0.00025540376573989653,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;integration_weights_angle\&quot;: 2.1832899136725197,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;amplitude\&quot;: 0.27335968401783267,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;threshold\&quot;: 0.0003539969134554442,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;rus_exit_threshold\&quot;: 0.0001783111284562315,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;integration_weights_angle\&quot;: -4.086223875631921,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1853c1854\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -17429938482.570053,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;freq_vs_flux_01_quad_term\&quot;: -17440502298.14429,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;1858,1859c1859,1860\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_current\&quot;: 43.04045808062961,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;             \&quot;phi0_voltage\&quot;: 0.8608091616125922,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_current\&quot;: 43.03396045808636,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;             \&quot;phi0_voltage\&quot;: 0.8606792091617272,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;2003c2004\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;delay\&quot;: 250,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;delay\&quot;: 240,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;2073c2074\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&lt;                         \&quot;upconverter_frequency\&quot;: 5100000000,\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;---\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">      &quot;&gt;                         \&quot;upconverter_frequency\&quot;: 5400000000,\n&quot;</span>
+<span style="color:lime;">+</span><span style="color:lime;">     ]</span>
+<span style="color:lime;">+</span><span style="color:lime;">    }</span>
+<span style="color:lime;">+</span><span style="color:lime;">   ],</span>
+<span style="color:lime;">+</span><span style="color:lime;">   &quot;source&quot;: [</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;import os\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;os.system(\&quot;diff ../data/2025-10-13/#58_05_T1_160134/quam_state/state.json ../data/2025-10-14/#70_05_T1_091936/quam_state/state.json \&quot;)\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;# print(os.system(\&quot;cat ../data/2025-10-14/'#58_05_T1_160134'/quam_state/state.json\&quot;))\n&quot;,</span>
+<span style="color:lime;">+</span><span style="color:lime;">    &quot;# print(os.system(\&quot;cd ../data/2025-10-14/#70_05_T1_091936/quam_state/state.json\&quot;))&quot;</span>
+<span style="color:lime;">+</span><span style="color:lime;">   ]</span>
+   }
+  ],
+  &quot;metadata&quot;: {
+</pre>
+</body>
+</html>

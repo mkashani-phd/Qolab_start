@@ -1,0 +1,65 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q1": {
+            "resonator_frequency": "./arrays.npz#fit_results.q1.resonator_frequency",
+            "min_offset": -0.12916505378487853,
+            "offset": 0.22612663082252643,
+            "dv_phi0": 0.7105833692148099,
+            "m_pH": 0.14551424150871464
+        },
+        "q2": {
+            "resonator_frequency": "./arrays.npz#fit_results.q2.resonator_frequency",
+            "min_offset": -0.12552828206129787,
+            "offset": 0.2269980224246204,
+            "dv_phi0": 0.7050526089718365,
+            "m_pH": 0.14665572282724557
+        },
+        "q3": {
+            "resonator_frequency": "./arrays.npz#fit_results.q3.resonator_frequency",
+            "min_offset": NaN,
+            "offset": NaN,
+            "dv_phi0": Infinity,
+            "m_pH": 0.0
+        },
+        "q4": {
+            "resonator_frequency": "./arrays.npz#fit_results.q4.resonator_frequency",
+            "min_offset": NaN,
+            "offset": NaN,
+            "dv_phi0": Infinity,
+            "m_pH": 0.0
+        },
+        "q5": {
+            "resonator_frequency": "./arrays.npz#fit_results.q5.resonator_frequency",
+            "min_offset": 0.5,
+            "offset": -0.15729281525902838,
+            "dv_phi0": 154.11257375910773,
+            "m_pH": 0.0006709381167147581
+        },
+        "q6": {
+            "resonator_frequency": "./arrays.npz#fit_results.q6.resonator_frequency",
+            "min_offset": -0.2517295881527376,
+            "offset": 0.17641914569411837,
+            "dv_phi0": 0.856297467693712,
+            "m_pH": 0.1207524299686298
+        }
+    },
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 10,
+        "min_flux_offset_in_v": -0.5,
+        "max_flux_offset_in_v": 0.5,
+        "num_flux_points": 101,
+        "frequency_span_in_mhz": 4.0,
+        "frequency_step_in_mhz": 0.1,
+        "flux_point_joint_or_independent": "independent",
+        "input_line_impedance_in_ohm": 50.0,
+        "line_attenuation_in_db": 0.0,
+        "update_flux_min": false,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "ds": "./ds.h5",
+    "figs": {},
+    "results": {
+        "q1": {
+            "angle": 3.3522222979721894,
+            "threshold": -0.000592051228947311,
+            "fidelity": 51.675000000000004,
+            "confusion_matrix": "./arrays.npz#results.q1.confusion_matrix",
+            "rus_threshold": -0.0006458384523382271
+        },
+        "q2": {
+            "angle": 5.866000784129321,
+            "threshold": 0.0005800176059109237,
+            "fidelity": 87.625,
+            "confusion_matrix": "./arrays.npz#results.q2.confusion_matrix",
+            "rus_threshold": 0.0003127149981188897
+        },
+        "q3": {
+            "angle": 5.633330246704594,
+            "threshold": -0.00022534767662585954,
+            "fidelity": 51.75000000000001,
+            "confusion_matrix": "./arrays.npz#results.q3.confusion_matrix",
+            "rus_threshold": -0.0001845479012126224
+        },
+        "q4": {
+            "angle": 5.66287872605619,
+            "threshold": 0.0004737825051557088,
+            "fidelity": 91.9,
+            "confusion_matrix": "./arrays.npz#results.q4.confusion_matrix",
+            "rus_threshold": 0.00028935172698608556
+        },
+        "q5": {
+            "angle": 5.117436898421708,
+            "threshold": -0.0007799204371254673,
+            "fidelity": 51.5,
+            "confusion_matrix": "./arrays.npz#results.q5.confusion_matrix",
+            "rus_threshold": -0.0007359059352497294
+        },
+        "q6": {
+            "angle": 5.1189992379427105,
+            "threshold": 0.00033317037180573435,
+            "fidelity": 93.30000000000001,
+            "confusion_matrix": "./arrays.npz#results.q6.confusion_matrix",
+            "rus_threshold": 0.00011052986145768958
+        }
+    },
+    "figure_IQ_blobs": "./figure_IQ_blobs.png",
+    "figure_fidelity": "./figure_fidelity.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_runs": 2000,
+        "reset_type_thermal_or_active": "thermal",
+        "flux_point_joint_or_independent": "independent",
+        "operation_name": "readout",
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}
