@@ -1419,7 +1419,7 @@
                         "length": 40,
                         "digital_marker": "ON",
                         "axis_angle": 0,
-                        "amplitude": 0.08576156598701189,
+                        "amplitude": 0.08557879922137435,
                         "alpha": -0.280000000000002,
                         "anharmonicity": "#/qubits/q4/anharmonicity",
                         "detuning": 50000.0,
