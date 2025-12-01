@@ -1596,8 +1596,8 @@
                 ],
                 "operations": {
                     "readout": {
-                        "length": 1500,
-                        "amplitude": 0.1465186106437642,
+                        "length": 1000,
+                        "amplitude": 0.2465186106437642,
                         "threshold": 0.00034243728801230456,
                         "rus_exit_threshold": 0.000165645588700961,
                         "integration_weights_angle": -4.874553947150556,

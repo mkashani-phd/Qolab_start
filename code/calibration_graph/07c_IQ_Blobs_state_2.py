@@ -126,7 +126,7 @@ with program() as iq_blobs:
                 raise ValueError(f"Unrecognized reset type {reset_type}.")
 
             qubit.align()
-            qubit.resonator.measure("readout_F", qua_vars=(I_g[i], Q_g[i]))
+            qubit.resonator.measure("readout", qua_vars=(I_g[i], Q_g[i]))
             qubit.resonator.wait(qubit.resonator.depletion_time * u.ns)
             # save data
             save(I_g[i], I_g_st[i])
@@ -143,7 +143,7 @@ with program() as iq_blobs:
             qubit.align()
             qubit.xy.play("x180")
             qubit.align()
-            qubit.resonator.measure("readout_F", qua_vars=(I_e[i], Q_e[i]))
+            qubit.resonator.measure("readout", qua_vars=(I_e[i], Q_e[i]))
             qubit.resonator.wait(qubit.resonator.depletion_time * u.ns)
             # save data
             save(I_e[i], I_e_st[i])
@@ -179,7 +179,7 @@ with program() as iq_blobs:
 
 
             # Measure |2>
-            qubit.resonator.measure("readout_F", qua_vars=(I_f[i], Q_f[i]))
+            qubit.resonator.measure("readout", qua_vars=(I_f[i], Q_f[i]))
 
             qubit.resonator.wait(qubit.resonator.depletion_time * u.ns)
 

@@ -1596,8 +1596,8 @@
                 ],
                 "operations": {
                     "readout": {
-                        "length": 1500,
-                        "amplitude": 0.1465186106437642,
+                        "length": 2000,
+                        "amplitude": 0.2465186106437642,
                         "threshold": 0.00034243728801230456,
                         "rus_exit_threshold": 0.000165645588700961,
                         "integration_weights_angle": -4.874553947150556,
@@ -1616,7 +1616,7 @@
                 "opx_output": "#/wiring/qubits/q4/rr/opx_output",
                 "__class__": "quam_libs.components.readout_resonator.ReadoutResonatorMW"
             },
-            "anharmonicity": 145000000,
+            "anharmonicity": 270000000,
             "freq_vs_flux_01_quad_term": -21325320738.125793,
             "freq_vs_flux_01_quart_term": -223817628.83254272,
             "T1": 5.536453195061953e-05,
