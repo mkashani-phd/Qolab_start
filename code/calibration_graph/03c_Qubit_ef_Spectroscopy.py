@@ -71,7 +71,7 @@ description = """Typical Runtime w/Default Params:
 """
 
 
-node = QualibrationNode(name="03c_Qubit_state_2_Spectroscopy", description=description, parameters=Parameters())
+node = QualibrationNode(name="03b_Qubit_ef_Spectroscopy", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}
@@ -285,9 +285,9 @@ if not node.parameters.simulate:
             used_amp = q.xy.operations["saturation"].amplitude * operation_amp
             print(
                 f"Drive frequency for {q.name} is "
-                f"{(result.sel(qubit = q.name).position.values + (2*q.xy.RF_frequency - q.anharmonicity)) / 1e9:.6f} GHz"
+                f"{(result.sel(qubit = q.name).position.values + (q.xy.RF_frequency - q.anharmonicity)) / 1e9:.6f} GHz"
             )
-            fit_results[q.name]["drive_freq"] = result.sel(qubit=q.name).position.values + (2*q.xy.RF_frequency - q.anharmonicity)
+            fit_results[q.name]["drive_freq"] = result.sel(qubit=q.name).position.values + (q.xy.RF_frequency - q.anharmonicity)
             print(f"(shift of {result.sel(qubit = q.name).position.values/1e6:.3f} MHz)")
             factor_cw = float(target_peak_width / result.sel(qubit=q.name).width.values)
             factor_pi = np.pi / (result.sel(qubit=q.name).width.values * Pi_length * 1e-9)

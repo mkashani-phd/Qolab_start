@@ -1,5 +1,5 @@
 """
-        QUBIT SPECTROSCOPY that measures the 1-2 transition frequency
+        QUBIT SPECTROSCOPY
 This sequence involves sending a saturation pulse to the qubit, placing it in a mixed state,
 and then measuring the state of the resonator across various qubit drive intermediate frequencies dfs.
 In order to facilitate the qubit search, the qubit pulse duration and amplitude can be changed manually in the QUA
@@ -27,7 +27,7 @@ from qualibrate import QualibrationNode, NodeParameters
 
 from quam_libs.components import QuAM
 from quam_libs.lib.instrument_limits import instrument_limits
-from quam_libs.macros import qua_declaration, active_reset
+from quam_libs.macros import qua_declaration
 from quam_libs.lib.qua_datasets import convert_IQ_to_V
 from quam_libs.lib.plot_utils import QubitGrid, grid_iter
 from quam_libs.lib.save_utils import fetch_results_as_xarray, load_dataset
@@ -51,7 +51,7 @@ class Parameters(NodeParameters):
     operation: str = "saturation"
     operation_amplitude_factor: Optional[float] = 0.1
     operation_len_in_ns: Optional[int] = None
-    frequency_span_in_mhz: float = 200
+    frequency_span_in_mhz: float = 100
     frequency_step_in_mhz: float = 0.25
     flux_point_joint_or_independent: Literal["joint", "independent"] = "independent"
     target_peak_width: Optional[float] = 2e6
@@ -62,8 +62,6 @@ class Parameters(NodeParameters):
     timeout: int = 100
     load_data_id: Optional[int] = None
     multiplexed: bool = False
-    reset_type: Literal["active", "thermal"] = "active"
-
 
 description = """Typical Runtime w/Default Params:
 35-45s for all qubits
@@ -71,7 +69,7 @@ description = """Typical Runtime w/Default Params:
 """
 
 
-node = QualibrationNode(name="03c_Qubit_state_2_Spectroscopy", description=description, parameters=Parameters())
+node = QualibrationNode(name="03a_Qubit_Spectroscopy", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}
@@ -124,10 +122,6 @@ else:
     arb_flux_bias_offset = {q.name: 0.0 for q in qubits}
     detunings = {q.name: 0.0 for q in qubits}
 
-# Shift the detunings down by the expected anharmonicity to center on the expected frequency of the 1-2 transition.
-for (q,k) in zip(qubits,detunings.keys()):
-    # detunings[k] = detunings[k] - q.anharmonicity  # This works but the "anharmonicity" parameters are not reliable.
-    detunings[k] = detunings[k] - 200e6  # -200 MHz is a decent guess
 
 target_peak_width = node.parameters.target_peak_width
 if target_peak_width is None:
@@ -147,21 +141,6 @@ with program() as qubit_spec:
         with for_(n, 0, n < n_avg, n + 1):
             save(n, n_st)
             with for_(*from_array(df, dfs)):
-
-                # Reset the qubit, then  to the excited state
-                if node.parameters.reset_type == "active":
-                    active_reset(qubit, "readout")
-                else:
-                    qubit.resonator.wait(qubit.thermalization_time * u.ns)
-                    qubit.align()
-                # Now excite the qubit.
-                # N.B. Alternatively, we could have conditionally reset the qubit to '1' in the same way 
-                # we do active reset to '0', but then we wouldn't be sure how much longer the '1' state 
-                # would live. Better to reset and start from a freshly-prepared '1' that will survive the 
-                # longest.
-                qubit.xy.play("x180")
-                qubit.align()
-
                 # Update the qubit frequency
                 qubit.xy.update_frequency(df + qubit.xy.intermediate_frequency + detunings[qubit.name])
                 qubit.align()
@@ -285,9 +264,9 @@ if not node.parameters.simulate:
             used_amp = q.xy.operations["saturation"].amplitude * operation_amp
             print(
                 f"Drive frequency for {q.name} is "
-                f"{(result.sel(qubit = q.name).position.values + (2*q.xy.RF_frequency - q.anharmonicity)) / 1e9:.6f} GHz"
+                f"{(result.sel(qubit = q.name).position.values + q.xy.RF_frequency) / 1e9:.6f} GHz"
             )
-            fit_results[q.name]["drive_freq"] = result.sel(qubit=q.name).position.values + (2*q.xy.RF_frequency - q.anharmonicity)
+            fit_results[q.name]["drive_freq"] = result.sel(qubit=q.name).position.values + q.xy.RF_frequency
             print(f"(shift of {result.sel(qubit = q.name).position.values/1e6:.3f} MHz)")
             factor_cw = float(target_peak_width / result.sel(qubit=q.name).width.values)
             factor_pi = np.pi / (result.sel(qubit=q.name).width.values * Pi_length * 1e-9)

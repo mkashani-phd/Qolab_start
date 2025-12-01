@@ -1,0 +1,37 @@
+{
+    "ds": "./ds.h5",
+    "fit_results": {
+        "q1": {
+            "detuning": -150000.0
+        },
+        "q2": {
+            "detuning": 1480000.0
+        },
+        "q3": {
+            "detuning": 580000.0
+        },
+        "q4": {
+            "detuning": -1330000.0
+        },
+        "q5": {
+            "detuning": 1470000.0
+        }
+    },
+    "figure": "./figure.png",
+    "initial_parameters": {
+        "qubits": null,
+        "num_averages": 20,
+        "operation": "x180",
+        "frequency_span_in_mhz": 3.0,
+        "frequency_step_in_mhz": 0.01,
+        "max_number_pulses_per_sweep": 20,
+        "flux_point_joint_or_independent": "independent",
+        "reset_type_thermal_or_active": "active",
+        "DRAG_setpoint": null,
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

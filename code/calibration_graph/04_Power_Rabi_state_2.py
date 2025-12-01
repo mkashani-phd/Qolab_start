@@ -45,12 +45,13 @@ class Parameters(NodeParameters):
     num_averages: int = 100
     operation_x180_or_any_90: Literal["x180", "x90", "-x90", "y90", "-y90"] = "x180"
     min_amp_factor: float = 0.0
-    max_amp_factor: float = 1.5
+    max_amp_factor: float = 6.5
     amp_factor_step: float = 0.01
     max_number_rabi_pulses_per_sweep: int = 1
     flux_point_joint_or_independent: Literal["joint", "independent"] = "independent"
     reset_type_thermal_or_active: Literal["thermal", "active"] = "active"
     state_discrimination: bool = True
+    state_discrimination_threshold: float = 0.5
     update_x90: bool = False
     simulate: bool = False
     simulation_duration_ns: int = 2500
@@ -125,6 +126,9 @@ with program() as power_rabi:
     count = [declare(int) for _ in range(num_qubits)]  # QUA variable for counting the qubit pulses
     shot = [declare(int) for _ in range(num_qubits)]
 
+    # stream to save the amplitude pre-factor for each qubit
+    # amp_stream = [declare_stream() for _ in range(num_qubits)]
+
     if node.parameters.multiplexed:
         for i , qubit in enumerate(qubits):
             machine.set_all_fluxes(flux_point=flux_point, target=qubit)
@@ -145,21 +149,42 @@ with program() as power_rabi:
                         active_reset(qubit, "readout")
                     else:
                         qubit.wait(machine.thermalization_time * u.ns)
-
-                    qubit.xy.play("x180_DragCosine")  # Ensure qubit is in ground state
+ 
+                    qubit.xy.play("x180")  # Ensure qubit is in |1> state
                     qubit.align()
 
                     # Loop for error amplification (perform many qubit pulses)
+                    qubit.xy.update_frequency
+                    (
+                        qubit.xy.name, 
+                        qubit.xy.intermediate_frequency - qubit.anharmonicity
+                    )
+
                     with for_(count[i], 0, count[i] < npi[i], count[i] + 1):
-                        qubit.xy.play("x182_DragCosine", amplitude_scale=a[i])
+                        qubit.xy.play("EF_x180", amplitude_scale=a[i])
+
+ 
                     qubit.align()
                     qubit.resonator.measure("readout", qua_vars=(I[i], Q[i]))
+                    qubit.xy.update_frequency
+                    (
+                        qubit.xy.name, 
+                        qubit.xy.intermediate_frequency
+                    )
+                    # save the amplitude pre-factor together with the measurement
+                    # save(a[i], I_st[i])
                     if state_discrimination:
-                        assign(state[i], I[i] > qubit.resonator.operations["readout"].threshold)
+                        
+
+                        assign(state[i], I[i] > node.parameters.state_discrimination_threshold/1e3)
+                        save(I[i], I_st[i])
+                        save(Q[i], Q_st[i])
                         save(state[i], state_stream[i])
+
                     else:
                         save(I[i], I_st[i])
                         save(Q[i], Q_st[i])
+                        
         if not node.parameters.multiplexed:
             align()
 
@@ -172,17 +197,17 @@ with program() as power_rabi:
                         f"state{i + 1}"
                     )
                 else:
-                    I_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 2)).average().save(f"I{i + 1}")
-                    Q_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 2)).average().save(f"Q{i + 1}")
+                    I_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 2)).save(f"I{i + 1}")
+                    Q_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 2)).save(f"Q{i + 1}")
 
             elif operation in ["x90", "-x90", "y90", "-y90"]:
                 if state_discrimination:
-                    state_stream[i].boolean_to_int().buffer(len(amps)).buffer(np.ceil(N_pi / 4)).average().save(
+                    state_stream[i].boolean_to_int().buffer(len(amps)).average().buffer(np.ceil(N_pi / 4)).average().save(
                         f"state{i + 1}"
                     )
                 else:
-                    I_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 4)).average().save(f"I{i + 1}")
-                    Q_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 4)).average().save(f"Q{i + 1}")
+                    I_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 4)).save(f"I{i + 1}")
+                    Q_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 4)).save(f"Q{i + 1}")
             else:
                 raise ValueError(f"Unrecognized operation {operation}.")
 
