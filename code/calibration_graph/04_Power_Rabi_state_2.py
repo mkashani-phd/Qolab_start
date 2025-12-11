@@ -161,7 +161,7 @@ with program() as power_rabi:
                     )
 
                     with for_(count[i], 0, count[i] < npi[i], count[i] + 1):
-                        qubit.xy.play("EF_x180", amplitude_scale=a[i])
+                        qubit.xy.play("x180", amplitude_scale=a[i])
 
  
                     qubit.align()
@@ -196,7 +196,7 @@ with program() as power_rabi:
                     state_stream[i].boolean_to_int().buffer(len(amps)).buffer(np.ceil(N_pi / 2)).average().save(
                         f"state{i + 1}"
                     )
-                else:
+                # else:
                     I_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 2)).save(f"I{i + 1}")
                     Q_st[i].buffer(len(amps)).buffer(np.ceil(N_pi / 2)).save(f"Q{i + 1}")
 

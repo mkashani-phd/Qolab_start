@@ -236,6 +236,19 @@ if not node.parameters.simulate:
         node.results["results"][q.name]["rus_threshold"] = float(RUS_threshold)
 
     # %% {Plotting}
+
+    plt.figure(figsize=(7, 6),dpi=300)
+    
+    plt.plot(1e3 *  ds.I_e.sel(qubit='q4'), 1e3 * ds.Q_e.sel(qubit='q4'),".", alpha=0.2, label="Excited", markersize=1)
+    plt.plot(1e3 *  ds.I_g.sel(qubit='q4'), 1e3 * ds.Q_g.sel(qubit='q4'),".", alpha=0.2, label="Ground", markersize=1)
+    plt.show()
+
+
+
+
+
+
+
     grid = QubitGrid(ds, [q.grid_location for q in qubits])
     for ax, qubit in grid_iter(grid):
         n_avg = n_runs // 2
