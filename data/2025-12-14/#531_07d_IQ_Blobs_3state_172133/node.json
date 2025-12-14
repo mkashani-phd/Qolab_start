@@ -1,0 +1,168 @@
+{
+    "created_at": "2025-12-14T17:21:33-06:00",
+    "metadata": {
+        "description": "Typical Runtime w/Default Params:\n30-35s for all qubits\n8-10s per qubit\n",
+        "run_start": "2025-12-14T17:20:20.733-06:00",
+        "run_end": "2025-12-14T17:21:33.537-06:00",
+        "name": "07d_IQ_Blobs_3state",
+        "data_path": "2025-12-14/#531_07d_IQ_Blobs_3state_172133"
+    },
+    "data": {
+        "parameters": {
+            "model": {
+                "qubits": [
+                    "q4"
+                ],
+                "num_runs": 2000,
+                "ef_operation": "EF_x180",
+                "ef_op_amplitude": null,
+                "ef_op_duration_ns": null,
+                "enable_x180_pre": true,
+                "num_EF_op_repeats": 1,
+                "enable_x180_post": false,
+                "reset_type_thermal_or_active": "active",
+                "flux_point_joint_or_independent": "independent",
+                "operation_name": "readout",
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_runs": {
+                        "default": 2000,
+                        "title": "Num Runs",
+                        "type": "integer"
+                    },
+                    "ef_operation": {
+                        "default": "EF_x180",
+                        "title": "Ef Operation",
+                        "type": "string"
+                    },
+                    "ef_op_amplitude": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ef Op Amplitude"
+                    },
+                    "ef_op_duration_ns": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ef Op Duration Ns"
+                    },
+                    "enable_x180_pre": {
+                        "default": true,
+                        "title": "Enable X180 Pre",
+                        "type": "boolean"
+                    },
+                    "num_EF_op_repeats": {
+                        "default": 1,
+                        "title": "Num Ef Op Repeats",
+                        "type": "integer"
+                    },
+                    "enable_x180_post": {
+                        "default": false,
+                        "title": "Enable X180 Post",
+                        "type": "boolean"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "active",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "independent",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "operation_name": {
+                        "default": "readout",
+                        "title": "Operation Name",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {
+            "q4": "successful"
+        },
+        "quam": "./quam_state"
+    },
+    "id": 531,
+    "parents": [
+        530
+    ]
+}
