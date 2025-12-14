@@ -165,7 +165,7 @@ with program() as qubit_spec:
                     qubit.xy.play("x180")
 
                 # Update the qubit frequency
-                qubit.xy.update_frequency(df + qubit.xy.intermediate_frequency + detunings[qubit.name])
+                qubit.xy.update_frequency(df + qubit.xy.intermediate_frequency )
                 qubit.align()
                 duration = operation_len * u.ns if operation_len is not None else (qubit.xy.operations[operation].length + qubit.z.settle_time) * u.ns
                 # Bring the qubit to the desired point during the saturation pulse

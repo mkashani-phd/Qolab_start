@@ -1,0 +1,187 @@
+{
+    "created_at": "2025-12-12T13:21:22-06:00",
+    "metadata": {
+        "description": "Typical Runtime w/Default Params (1 Rabi Pulse/sweep):\n10-15s for all qubits\n7-8s per qubit\nTypical Runtime w/Default Params (16 Rabi Pulses/sweep):\n45-55s for all qubits\n10-15s per qubit\n",
+        "run_start": "2025-12-12T13:20:53.484-06:00",
+        "run_end": "2025-12-12T13:21:22.976-06:00",
+        "name": "04_Power_Rabi_ef",
+        "data_path": "2025-12-12/#493_04_Power_Rabi_ef_132122"
+    },
+    "data": {
+        "parameters": {
+            "model": {
+                "qubits": null,
+                "num_averages": 200,
+                "operation_EF_x180_or_any_90": "EF_x180",
+                "enable_x180_pre": true,
+                "enable_x180_post": true,
+                "min_amp_factor": 0.0,
+                "max_amp_factor": 3.0,
+                "amp_factor_step": 0.01,
+                "max_number_rabi_pulses_per_sweep": 1,
+                "flux_point_joint_or_independent": "independent",
+                "reset_type_thermal_or_active": "active",
+                "state_discrimination": true,
+                "state_discrimination_thresh_1mV": 0.5,
+                "use_IQ_magnitude": false,
+                "update_x90": false,
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_averages": {
+                        "default": 200,
+                        "title": "Num Averages",
+                        "type": "integer"
+                    },
+                    "operation_EF_x180_or_any_90": {
+                        "default": "EF_x180",
+                        "enum": [
+                            "EF_x180",
+                            "EF_x90",
+                            "-EF_x90",
+                            "EF_y90",
+                            "-EF_y90"
+                        ],
+                        "title": "Operation Ef X180 Or Any 90",
+                        "type": "string"
+                    },
+                    "enable_x180_pre": {
+                        "default": true,
+                        "title": "Enable X180 Pre",
+                        "type": "boolean"
+                    },
+                    "enable_x180_post": {
+                        "default": false,
+                        "title": "Enable X180 Post",
+                        "type": "boolean"
+                    },
+                    "min_amp_factor": {
+                        "default": 0.0,
+                        "title": "Min Amp Factor",
+                        "type": "number"
+                    },
+                    "max_amp_factor": {
+                        "default": 3.0,
+                        "title": "Max Amp Factor",
+                        "type": "number"
+                    },
+                    "amp_factor_step": {
+                        "default": 0.01,
+                        "title": "Amp Factor Step",
+                        "type": "number"
+                    },
+                    "max_number_rabi_pulses_per_sweep": {
+                        "default": 1,
+                        "title": "Max Number Rabi Pulses Per Sweep",
+                        "type": "integer"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "independent",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "active",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "state_discrimination": {
+                        "default": false,
+                        "title": "State Discrimination",
+                        "type": "boolean"
+                    },
+                    "state_discrimination_thresh_1mV": {
+                        "default": 0.5,
+                        "title": "State Discrimination Thresh 1Mv",
+                        "type": "number"
+                    },
+                    "use_IQ_magnitude": {
+                        "default": true,
+                        "title": "Use Iq Magnitude",
+                        "type": "boolean"
+                    },
+                    "update_x90": {
+                        "default": false,
+                        "title": "Update X90",
+                        "type": "boolean"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {
+            "q1": "successful",
+            "q2": "successful",
+            "q3": "successful",
+            "q4": "successful",
+            "q5": "successful"
+        },
+        "quam": "./quam_state"
+    },
+    "id": 493,
+    "parents": [
+        492
+    ]
+}

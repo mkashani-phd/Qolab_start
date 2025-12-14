@@ -53,7 +53,7 @@ description = """Typical Runtime w/Default Params:
 10-15s per qubit
 """
 
-node = QualibrationNode(name="07b_state_2_Readout_Frequency_Optimization", description=description, parameters=Parameters())
+node = QualibrationNode(name="07a_Readout_Frequency_Optimization_state_2", description=description, parameters=Parameters())
 
 
 # %% {Initialize_QuAM_and_QOP}
@@ -89,11 +89,15 @@ with program() as ro_freq_opt:
     Q_g = [declare(fixed) for _ in range(num_qubits)]
     I_e = [declare(fixed) for _ in range(num_qubits)]
     Q_e = [declare(fixed) for _ in range(num_qubits)]
+    I_f = [declare(fixed) for _ in range(num_qubits)]
+    Q_f = [declare(fixed) for _ in range(num_qubits)]
     df = [declare(int) for _ in range(num_qubits)]
     I_g_st = [declare_stream() for _ in range(num_qubits)]
     Q_g_st = [declare_stream() for _ in range(num_qubits)]
     I_e_st = [declare_stream() for _ in range(num_qubits)]
     Q_e_st = [declare_stream() for _ in range(num_qubits)]
+    I_f_st = [declare_stream() for _ in range(num_qubits)]
+    Q_f_st = [declare_stream() for _ in range(num_qubits)]
     n_st = declare_stream()
     shot = [declare(int) for _ in range(num_qubits)]
 
@@ -125,16 +129,31 @@ with program() as ro_freq_opt:
                 qubit.xy.play("x180")
                 # Align the elements to measure after playing the qubit pulses.
                 align()
-                qubit.xy.play("EF_x180")  # Ensure qubit is in |f> state
-                align()
                 # Measure the state of the resonators
                 qubit.resonator.measure("readout", qua_vars=(I_e[i], Q_e[i]))
+
+
+                wait(qubit.thermalization_time * u.ns)
+                qubit.xy.play("x180")
+                align()
+
+                qubit.xy.update_frequency(qubit.xy.intermediate_frequency - qubit.anharmonicity)
+                align()
+                qubit.xy.play("EF_x180")
+                align()
+                # Measure the state of the resonators
+                qubit.resonator.measure("readout", qua_vars=(I_f[i], Q_f[i]))
+
+                qubit.xy.update_frequency(qubit.xy.intermediate_frequency)
+
 
                 # Derive the distance between the blobs for |g> and |e>
                 save(I_g[i], I_g_st[i])
                 save(Q_g[i], Q_g_st[i])
                 save(I_e[i], I_e_st[i])
                 save(Q_e[i], Q_e_st[i])
+                save(I_f[i], I_f_st[i])
+                save(Q_f[i], Q_f_st[i])
         # Measure sequentially
         if not node.parameters.multiplexed:
             align()
@@ -146,6 +165,8 @@ with program() as ro_freq_opt:
             Q_g_st[i].buffer(len(dfs)).average().save(f"Q_g{i + 1}")
             I_e_st[i].buffer(len(dfs)).average().save(f"I_e{i + 1}")
             Q_e_st[i].buffer(len(dfs)).average().save(f"Q_e{i + 1}")
+            I_f_st[i].buffer(len(dfs)).average().save(f"I_f{i + 1}")
+            Q_f_st[i].buffer(len(dfs)).average().save(f"Q_f{i + 1}")
 
 
 # %% {Simulate_or_execute}
@@ -180,13 +201,14 @@ if not node.parameters.simulate:
         # Fetch the data from the OPX and convert it into a xarray with corresponding axes (from most inner to outer loop)
         ds = fetch_results_as_xarray(job.result_handles, qubits, {"freq": dfs})
         # Convert IQ data into volts
-        ds = convert_IQ_to_V(ds, qubits, ["I_g", "Q_g", "I_e", "Q_e"])
+        ds = convert_IQ_to_V(ds, qubits, ["I_g", "Q_g", "I_e", "Q_e", "I_f", "Q_f"])
         # Derive the amplitude IQ_abs = sqrt(I**2 + Q**2) for |g> and |e> as well as the distance between the two blobs D
         ds = ds.assign(
             {
                 "D": np.sqrt((ds.I_g - ds.I_e) ** 2 + (ds.Q_g - ds.Q_e) ** 2),
                 "IQ_abs_g": np.sqrt(ds.I_g**2 + ds.Q_g**2),
                 "IQ_abs_e": np.sqrt(ds.I_e**2 + ds.Q_e**2),
+                "IQ_abs_f": np.sqrt(ds.I_f**2 + ds.Q_f**2),
             }
         )
         # Add the absolute frequency to the dataset
@@ -241,6 +263,7 @@ if not node.parameters.simulate:
     for ax, qubit in grid_iter(grid):
         (1e3 * ds.assign_coords(freq_MHz=ds.freq / 1e6).IQ_abs_g.loc[qubit]).plot(ax=ax, x="freq_MHz", label="g.s")
         (1e3 * ds.assign_coords(freq_MHz=ds.freq / 1e6).IQ_abs_e.loc[qubit]).plot(ax=ax, x="freq_MHz", label="e.s")
+        (1e3 * ds.assign_coords(freq_MHz=ds.freq / 1e6).IQ_abs_f.loc[qubit]).plot(ax=ax, x="freq_MHz", label="f.s")
         ax.axvline(
             fit_results[qubit["qubit"]]["detuning"] / 1e6,
             color="red",
@@ -266,4 +289,3 @@ if not node.parameters.simulate:
         node.results["initial_parameters"] = node.parameters.model_dump()
         node.machine = machine
         node.save()
-

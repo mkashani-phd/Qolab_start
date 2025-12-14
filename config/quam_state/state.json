@@ -1474,11 +1474,12 @@
                         "digital_marker": "ON",
                         "axis_angle": 0,
                         "amplitude": 0.08659655758346553,
-                        "alpha": -0.280000000000002,
+                        "alpha1": 1.4,
+                        "alpha2": 0.0,
                         "anharmonicity": "#/qubits/q4/anharmonicity",
-                        "detuning": 50000.0,
-                        "__class__": "quam.components.pulses.DragCosinePulse"
-                    },
+                        "detuning": -30000000.0,
+                       "__class__": "quam_libs.components.pulses.StarkShift_corrected_DragCosine"
+},
                     "x90_DragCosine": {
                         "length": "#../x180_DragCosine/length",
                         "digital_marker": "ON",
@@ -1503,7 +1504,7 @@
                         "digital_marker": "ON",
                         "axis_angle": 1.5707963267948966,
                         "amplitude": "#../x180_DragCosine/amplitude",
-                        "alpha": "#../x180_DragCosine/alpha",
+                        "alpha": "#../x180_DragCosine/alpha1",
                         "anharmonicity": "#../x180_DragCosine/anharmonicity",
                         "detuning": "#../x180_DragCosine/detuning",
                         "__class__": "quam.components.pulses.DragCosinePulse"

@@ -99,7 +99,12 @@ with program() as multi_res_spec:
         with for_(*from_array(df, dfs)):
             for i, rr in enumerate(resonators):
                 # Update the resonator frequencies for all resonators
+
+                qubits[i].wait(machine.thermalization_time * u.ns)
                 update_frequency(rr.name, df + rr.intermediate_frequency)
+                align()
+                qubits[i].xy.play('x180')
+                align()
                 # Measure the resonator
                 rr.measure("readout", qua_vars=(I[i], Q[i]))
                 # wait for the resonator to relax

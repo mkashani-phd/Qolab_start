@@ -161,7 +161,7 @@ with program() as power_rabi:
                     )
 
                     with for_(count[i], 0, count[i] < npi[i], count[i] + 1):
-                        qubit.xy.play("x180", amplitude_scale=a[i])
+                        qubit.xy.play("EF_x180", amplitude_scale=a[i])
 
  
                     qubit.align()
@@ -171,8 +171,10 @@ with program() as power_rabi:
                         qubit.xy.name, 
                         qubit.xy.intermediate_frequency
                     )
+                    qubit.align()
+
                     # save the amplitude pre-factor together with the measurement
-                    # save(a[i], I_st[i])
+                    save(a[i], I_st[i])
                     if state_discrimination:
                         
 
