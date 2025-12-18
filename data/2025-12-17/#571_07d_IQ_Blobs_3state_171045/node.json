@@ -1,0 +1,254 @@
+{
+    "created_at": "2025-12-17T17:10:45-06:00",
+    "metadata": {
+        "description": "Typical Runtime w/Default Params:\n30-35s for all qubits\n8-10s per qubit\n",
+        "run_start": "2025-12-17T17:10:17.006-06:00",
+        "run_end": "2025-12-17T17:10:45.648-06:00",
+        "name": "07d_IQ_Blobs_3state",
+        "data_path": "2025-12-17/#571_07d_IQ_Blobs_3state_171045"
+    },
+    "data": {
+        "parameters": {
+            "model": {
+                "qubits": [
+                    "q4"
+                ],
+                "num_runs": 8000,
+                "ef_operation": "EF_x180",
+                "ef_op_amplitude": null,
+                "ef_op_duration_ns": null,
+                "enable_x180_pre": true,
+                "num_EF_op_repeats": 1,
+                "enable_x180_post": false,
+                "reset_type_thermal_or_active": "thermal",
+                "flux_point_joint_or_independent": "independent",
+                "operation_name": "readout",
+                "simulate": false,
+                "simulation_duration_ns": 2500,
+                "timeout": 100,
+                "load_data_id": null,
+                "multiplexed": false
+            },
+            "schema": {
+                "additionalProperties": false,
+                "properties": {
+                    "qubits": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Qubits"
+                    },
+                    "num_runs": {
+                        "default": 2000,
+                        "title": "Num Runs",
+                        "type": "integer"
+                    },
+                    "ef_operation": {
+                        "default": "EF_x180",
+                        "title": "Ef Operation",
+                        "type": "string"
+                    },
+                    "ef_op_amplitude": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ef Op Amplitude"
+                    },
+                    "ef_op_duration_ns": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ef Op Duration Ns"
+                    },
+                    "enable_x180_pre": {
+                        "default": true,
+                        "title": "Enable X180 Pre",
+                        "type": "boolean"
+                    },
+                    "num_EF_op_repeats": {
+                        "default": 1,
+                        "title": "Num Ef Op Repeats",
+                        "type": "integer"
+                    },
+                    "enable_x180_post": {
+                        "default": false,
+                        "title": "Enable X180 Post",
+                        "type": "boolean"
+                    },
+                    "reset_type_thermal_or_active": {
+                        "default": "active",
+                        "enum": [
+                            "thermal",
+                            "active"
+                        ],
+                        "title": "Reset Type Thermal Or Active",
+                        "type": "string"
+                    },
+                    "flux_point_joint_or_independent": {
+                        "default": "independent",
+                        "enum": [
+                            "joint",
+                            "independent"
+                        ],
+                        "title": "Flux Point Joint Or Independent",
+                        "type": "string"
+                    },
+                    "operation_name": {
+                        "default": "readout",
+                        "title": "Operation Name",
+                        "type": "string"
+                    },
+                    "simulate": {
+                        "default": false,
+                        "title": "Simulate",
+                        "type": "boolean"
+                    },
+                    "simulation_duration_ns": {
+                        "default": 2500,
+                        "title": "Simulation Duration Ns",
+                        "type": "integer"
+                    },
+                    "timeout": {
+                        "default": 100,
+                        "title": "Timeout",
+                        "type": "integer"
+                    },
+                    "load_data_id": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Load Data Id"
+                    },
+                    "multiplexed": {
+                        "default": false,
+                        "title": "Multiplexed",
+                        "type": "boolean"
+                    }
+                },
+                "title": "Parameters",
+                "type": "object"
+            }
+        },
+        "outcomes": {
+            "q4": "successful"
+        },
+        "quam": "./quam_state"
+    },
+    "id": 571,
+    "parents": [
+        570
+    ],
+    "patches": [
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q4/resonator/matched_filter_W",
+            "value": [
+                [
+                    -107322.86580701536,
+                    -36179.84492675279
+                ],
+                [
+                    -34485.31561839594,
+                    -30619.54257731125
+                ],
+                [
+                    -61191.983487990154,
+                    -75113.60053850882
+                ]
+            ],
+            "old": [
+                [
+                    -192382.70455751044,
+                    -70670.97115667704
+                ],
+                [
+                    -48914.15246807558,
+                    -55088.6679146188
+                ],
+                [
+                    -106322.61815539049,
+                    -139435.97284016406
+                ]
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q4/resonator/matched_filter_C",
+            "value": [
+                -54.91884812810289,
+                -10.022205230339308,
+                -40.482508935679036
+            ],
+            "old": [
+                -99.21789458564469,
+                -13.77619861522376,
+                -72.91928766007099
+            ]
+        },
+        {
+            "op": "replace",
+            "path": "/quam/qubits/q4/resonator/confusion_matrix_3x3",
+            "value": [
+                [
+                    0.9155581260844419,
+                    0.12593556784900747,
+                    0.016460234680573664
+                ],
+                [
+                    0.06639676113360324,
+                    0.7750298296995336,
+                    0.050684485006518905
+                ],
+                [
+                    0.01804511278195489,
+                    0.09903460245145894,
+                    0.9328552803129074
+                ]
+            ],
+            "old": [
+                [
+                    0.9708929452392698,
+                    0.06409090909090909,
+                    0.009588268471517203
+                ],
+                [
+                    0.010853478046373951,
+                    0.925,
+                    0.05132543711223914
+                ],
+                [
+                    0.018253576714356193,
+                    0.01090909090909091,
+                    0.9390862944162437
+                ]
+            ]
+        }
+    ]
+}

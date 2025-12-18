@@ -237,11 +237,11 @@ if not node.parameters.simulate:
 
     # %% {Plotting}
 
-    plt.figure(figsize=(7, 6),dpi=300)
+    # plt.figure(figsize=(7, 6),dpi=300)
     
-    plt.plot(1e3 *  ds.I_e.sel(qubit='q4'), 1e3 * ds.Q_e.sel(qubit='q4'),".", alpha=0.2, label="Excited", markersize=1)
-    plt.plot(1e3 *  ds.I_g.sel(qubit='q4'), 1e3 * ds.Q_g.sel(qubit='q4'),".", alpha=0.2, label="Ground", markersize=1)
-    plt.show()
+    # plt.plot(1e3 *  ds.I_e.sel(qubit='q4'), 1e3 * ds.Q_e.sel(qubit='q4'),".", alpha=0.2, label="Excited", markersize=1)
+    # plt.plot(1e3 *  ds.I_g.sel(qubit='q4'), 1e3 * ds.Q_g.sel(qubit='q4'),".", alpha=0.2, label="Ground", markersize=1)
+    # plt.show()
 
 
 
@@ -249,8 +249,19 @@ if not node.parameters.simulate:
 
 
 
+    from qualang_tools.analysis.discriminator import plot_state_leakage
     grid = QubitGrid(ds, [q.grid_location for q in qubits])
+
     for ax, qubit in grid_iter(grid):
+        print(qubits[0].name, 3)
+        IQ, bar_leakage = plot_state_leakage(I_e=ds.I_e.sel(qubit=qubits[0].name).values,
+                           Q_e=ds.Q_e.sel(qubit=qubits[0].name).values,
+                           I_g=ds.I_g.sel(qubit=qubits[0].name).values,
+                           Q_g=ds.Q_g.sel(qubit=qubits[0].name).values,
+                           W=qubits[0].resonator.matched_filter_W,
+                           C=qubits[0].resonator.matched_filter_C)
+        node.results["figure_leakage_IQ_"+qubit["qubit"]] = IQ
+        node.results["figure_leakage_bar_"+qubit["qubit"]] = bar_leakage
         n_avg = n_runs // 2
         qn = qubit["qubit"]
         # TODO: maybe wrap it up in a function plot_IQ_blobs?
@@ -358,3 +369,4 @@ if not node.parameters.simulate:
         node.results["initial_parameters"] = node.parameters.model_dump()
         node.machine = machine
         node.save()
+

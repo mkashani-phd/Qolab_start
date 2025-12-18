@@ -1,0 +1,44 @@
+{
+    "ds": "./ds.h5",
+    "figs": {
+        "ellipses_q4": "./figs.ellipses_q4.png",
+        "raw_IQ_q4": "./figs.raw_IQ_q4.png"
+    },
+    "results": {
+        "q4": {
+            "matched_filter": {
+                "W": "./arrays.npz#results.q4.matched_filter.W",
+                "C": "./arrays.npz#results.q4.matched_filter.C",
+                "mu": "./arrays.npz#results.q4.matched_filter.mu",
+                "Sigma": "./arrays.npz#results.q4.matched_filter.Sigma",
+                "Sigma_01": "./arrays.npz#results.q4.matched_filter.Sigma_01",
+                "Sigma_01_inv": "./arrays.npz#results.q4.matched_filter.Sigma_01_inv",
+                "r0_sq": 4.0,
+                "r1_sq": 4.0,
+                "mask_2": "./arrays.npz#results.q4.matched_filter.mask_2",
+                "sigma_sq_per_class": "./arrays.npz#results.q4.matched_filter.sigma_sq_per_class"
+            },
+            "confusion_matrix": "./arrays.npz#results.q4.confusion_matrix"
+        }
+    },
+    "initial_parameters": {
+        "qubits": [
+            "q4"
+        ],
+        "num_runs": 8000,
+        "ef_operation": "EF_x180",
+        "ef_op_amplitude": null,
+        "ef_op_duration_ns": null,
+        "enable_x180_pre": true,
+        "num_EF_op_repeats": 1,
+        "enable_x180_post": false,
+        "reset_type_thermal_or_active": "thermal",
+        "flux_point_joint_or_independent": "independent",
+        "operation_name": "readout",
+        "simulate": false,
+        "simulation_duration_ns": 2500,
+        "timeout": 100,
+        "load_data_id": null,
+        "multiplexed": false
+    }
+}

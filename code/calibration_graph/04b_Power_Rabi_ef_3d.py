@@ -192,7 +192,11 @@ with program() as power_rabi:
                         # save the amplitude pre-factor together with the measurement
                         # save(a[i], I_st[i])
                         if state_discrimination:
-                            assign(state[i], I[i] > state_discrimination_thresh_1mV/1e3)
+                            from qualang_tools.analysis.discriminator import classify_iq
+                            W = qubit.resonator.matched_filter_W
+                            C = qubit.resonator.matched_filter_C
+                            assign(state[i],classify_iq(I[i], Q[i], W=W, C=C))
+
                             save(I[i], I_st[i])
                             save(Q[i], Q_st[i])
                             save(state[i], state_stream[i])
@@ -209,7 +213,7 @@ with program() as power_rabi:
         for i, qubit in enumerate(qubits):
             if operation in ["EF_x180","x180"]:
                 if state_discrimination:
-                    state_stream[i].boolean_to_int().buffer(len(amps)).buffer(len(dfs)).buffer(np.ceil(N_pi / 2)).average().save(
+                    state_stream[i].buffer(len(amps)).buffer(len(dfs)).buffer(np.ceil(N_pi / 2)).average().save(
                         f"state{i + 1}"
                     )
                 else:
