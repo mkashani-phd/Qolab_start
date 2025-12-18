@@ -1476,7 +1476,7 @@
                         "amplitude": 0.08659655758346553,
                         "alpha": -0.3800000000000021,
                         "anharmonicity": "#/qubits/q4/anharmonicity",
-                        "detuning": -140000.0,
+                        "detuning": -100000.0,
                         "__class__": "quam.components.pulses.DragCosinePulse"
                     },
                     "x90_DragCosine": {
@@ -1486,7 +1486,6 @@
                         "amplitude": 0.0429477354266447,
                         "alpha": -0.12000000000000188,
                         "anharmonicity": "#../x180_DragCosine/anharmonicity",
-                        "detuning": -30000.0,
                         "__class__": "quam.components.pulses.DragCosinePulse"
                     },
                     "-x90_DragCosine": {
